@@ -91,3 +91,47 @@ Marcadores de anonimización a usar en su lugar:
 | Exposición de datos sensibles | Muy alta | Anonimización obligatoria; modo confidencial; exclusión de funciones no-ZDR en casos sensibles |
 | Cita de autoridad equivocada | Muy alta | Authority map + reglas de fuente primaria + marcadores de incertidumbre |
 | Obsolescencia normativa | Muy alta | Authority map con ciclo de vida `draft`/`verified`/`deprecated` + revisión editorial periódica |
+
+## 8. Guarda de datos sensibles en commits (repo público)
+
+Desde la v0.2.0 este repositorio es **público**: cada commit pusheado es inmutable y visible.
+Un dato sensible commiteado no se "arregla después" — es un incidente. Estas son las reglas de
+método para todo contenido nuevo (en especial los evals construidos a partir de práctica real):
+
+### Método de trabajo
+
+1. **El borrador nunca toca el árbol de git.** Todo material que derive de casos reales se
+   redacta y calibra fuera del repositorio (área de planificación interna, no versionada).
+   Al repo entra únicamente la versión final.
+2. **Sintético primero.** Para evals de contratos y escritos, el documento del caso se
+   **fabrica** (usando las plantillas propias del repo, sembrando a propósito los defectos que
+   la rúbrica exige detectar). La práctica real informa los **patrones**, nunca el **texto**:
+   una cláusula copiada de un contrato real puede ser identificable aunque se cambien los
+   nombres.
+3. **Anonimizar es sustituir Y alterar.** Cuando un fragmento real sea imprescindible: marcadores
+   del catálogo (`[CLIENTE_EMPRESA]`, `[RUC]`, `[MONTO]`…) **más** alteración de lo no esencial
+   (montos, fechas, sector, ciudad). Nombre cambiado + hechos exactos = re-identificable.
+4. **Commit atómico y revisado.** Cada caso de eval entra al repo en un solo commit, completo y
+   revisado por el abogado responsable. Sin borradores incrementales de `caso.md` en el
+   historial.
+5. **Mensajes de commit estériles.** Nunca referenciar el cliente, expediente o asunto real que
+   inspiró un caso. La trazabilidad interna (si se desea) vive fuera del repo.
+
+### Guarda automática
+
+- **`scripts/check_sensitive.py`** barre el contenido staged contra patrones estructurales
+  (RUC, CI, correos, teléfonos, rutas de usuario, expedientes, matrículas) y bloquea el commit
+  si encuentra algo. Instalación del hook: `python scripts/check_sensitive.py --install`
+  (configura `core.hooksPath` → `scripts/hooks/pre-commit`).
+- **`.sensitive-patterns.local`** (gitignoreado, nunca se versiona): lista privada de regex con
+  los nombres que no deben aparecer (clientes, estudio, usuario de disco). Cada vez que un caso
+  real se use como insumo, **primero** se agrega su nombre a esta lista.
+- Barrida completa del árbol: `python scripts/check_sensitive.py --all` (correr antes de cada
+  release).
+
+### Si algo sensible llega a commitearse
+
+- **Sin push:** enmendar o descartar el commit local; verificar con `--all`.
+- **Con push:** tratarlo como incidente — reescritura del historial remoto, verificación
+  `git log --all -S "<dato>"`, y solicitud de garbage collection a soporte de GitHub para
+  purgar los objetos huérfanos. Documentar en el registro interno.

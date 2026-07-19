@@ -8,6 +8,9 @@ legal.local.md
 **/legal.local.md
 *.local.md
 
+# --- Guarda de sensibles: lista privada de patrones (nombres de clientes) ---
+.sensitive-patterns.local
+
 # --- Material jurídico real sin anonimizar (defensa en profundidad) ---
 # Por convención, los archivos/carpetas con datos reales llevan sufijo .private
 *.private

@@ -1,0 +1,5 @@
+#!/bin/sh
+# Guarda de datos sensibles — bloquea el commit si detecta patrones sensibles
+# en el contenido staged. Instalación: python scripts/check_sensitive.py --install
+# Método completo: docs/seguridad-y-privacidad.md §8.
+exec python "$(git rev-parse --show-toplevel)/scripts/check_sensitive.py" --staged
