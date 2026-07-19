@@ -1,0 +1,37 @@
+# =============================================================================
+#  Authority map — normas-inestables.yaml
+#  Normas y temas que cambian con frecuencia y exigen verificar vigencia
+#  EN CADA USO, aun cuando la entrada de leyes.yaml esté en `verified`.
+# =============================================================================
+
+unstable:
+
+  - law: "proteccion_datos"
+    reason: "Ley 7593/2025 reciente; reglamentación y autoridad de aplicación en desarrollo."
+
+  - law: "codigo_trabajo"
+    reason: "Salario mínimo y resoluciones MTESS se actualizan periódicamente; verificar valores y resoluciones vigentes."
+
+  - law: "codigo_procesal_civil"
+    reason: "Ley 1337/1988 con varias modificatorias (Ley 600/1995, 1493/2000, 4419/2011, 4867/2012, 4992/2013). Verificar texto vigente del artículo citado en la consolidación 2026-04-03."
+
+  - law: "organiza_csj"
+    reason: "Ley 609/1995 modificada por Ley 3986/2010 y Ley 7307/2024 (art. 11 inc. a). Verificar composición/competencia vigente."
+
+  - law: "codigo_civil"
+    reason: "~18 leyes modificatorias; verificar el texto del artículo concreto (familia, sucesiones, sociedades, etc.)."
+
+  - topic: "salario_minimo"
+    reason: "Se ajusta por decreto (p. ej. Decreto 4122 - Salario Mínimo 2025). Verificar valor vigente antes de TODA liquidación laboral."
+
+  - topic: "jornal_minimo"
+    reason: "Unidad de referencia laboral ligada al salario mínimo; verificar valor vigente."
+
+  - topic: "tasas_judiciales_y_plazos"
+    reason: "Acordadas de la CSJ pueden modificar ferias, plazos y cómputos. Consultar Acordadas Digitales (PJ/CSJ)."
+
+  - law: "res_mtess_991_2024"
+    reason: "Régimen REOP de comunicaciones MTESS: la Res. 991/2024 ya fue modificada por la Res. 915/2025 y los plazos sufrieron suspensiones por fallas técnicas del sistema en 2025. Verificar plazos y resoluciones modificatorias vigentes en mtess.gov.py (https://www.mtess.gov.py/?page_id=31671) antes de comunicar a un cliente como dato cerrado."
+
+  - topic: "honorarios_factores_ciudad"
+    reason: "Justiprecio de peritos usa tabla de factores por ciudad (Acordada 1718 y lista complementaria); verificar versión vigente."

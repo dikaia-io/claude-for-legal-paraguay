@@ -1,0 +1,58 @@
+# ============================================================================
+#  Claude for Legal Paraguay — .gitignore
+#  Este repositorio es OPEN SOURCE. Todo lo de abajo NUNCA debe versionarse.
+# ============================================================================
+
+# --- Configuración local con datos personales / del estudio (Fase 6) ---
+legal.local.md
+**/legal.local.md
+*.local.md
+
+# --- Material jurídico real sin anonimizar (defensa en profundidad) ---
+# Por convención, los archivos/carpetas con datos reales llevan sufijo .private
+*.private
+*.private.*
+**/private/
+**/_private/
+confidencial/
+**/confidencial/
+
+# --- Documentos de planificación interna ---
+# La planificación vive FUERA del árbol del repo (carpeta hermana), pero por si
+# alguien copia un plan aquí dentro por error, lo ignoramos igual.
+planificacion/
+**/planificacion/
+deep-research-report.md
+hoja-ruta-*.md
+
+# Specs/planes de proceso (superpowers): viven en planificacion/superpowers/,
+# fuera del repo. Bloqueados por si se recrean dentro del árbol git por error.
+docs/superpowers/
+**/superpowers/
+.superpowers/
+
+# --- Sistema operativo / editores ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
+
+# --- Python (scripts de validación) ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# --- Node (si más adelante hay tooling) ---
+node_modules/
+
+# --- Empaquetado de plugins ---
+*.zip
+dist/
+build/

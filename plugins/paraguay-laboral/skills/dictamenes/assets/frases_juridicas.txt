@@ -1,0 +1,199 @@
+# Banco de Frases y Conectores para Dictámenes Jurídicos
+
+## Frases Introductorias
+
+### Para Consulta Planteada
+- "Conforme a la consulta realizada..."
+- "Según lo planteado en la consulta..."
+- "De acuerdo a los antecedentes proporcionados..."
+- "Atendiendo a la situación expuesta..."
+- "En relación a la consulta formulada..."
+- "Respecto a la situación planteada..."
+
+### Para Iniciar Análisis Legal
+- "De conformidad con lo establecido en el artículo..."
+- "Según lo dispuesto en..."
+- "El Código del Trabajo establece en su artículo..."
+- "A tenor de lo dispuesto en esta norma..."
+- "La normativa aplicable al caso se encuentra contenida en..."
+- "El marco jurídico que regula esta situación está dado por..."
+
+### Para Referencias Constitucionales
+- "A nivel constitucional, el artículo..."
+- "La Constitución Nacional consagra en su artículo..."
+- "Este derecho encuentra su fundamento en el artículo... de la Carta Magna..."
+
+## Conectores Lógicos
+
+### Para Consecuencia/Resultado
+- "Por tanto..."
+- "En consecuencia..."
+- "Consecuentemente..."
+- "De ello se desprende que..."
+- "En virtud de ello..."
+- "Como resultado de lo anterior..."
+
+### Para Agregar Información
+- "En ese sentido..."
+- "Así mismo..." / "Asimismo..."
+- "Igualmente..."
+- "Del mismo modo..."
+- "Adicionalmente..."
+- "Por otra parte..."
+
+### Para Énfasis
+- "Cabe resaltar que..."
+- "Es importante destacar que..."
+- "Resulta fundamental señalar que..."
+- "Merece especial mención..."
+- "Debe tenerse presente que..."
+
+### Para Contraste
+- "Sin embargo..."
+- "No obstante..."
+- "Por el contrario..."
+- "A diferencia de..."
+- "Contrariamente a..."
+
+### Para Especificar/Detallar
+- "Es decir..."
+- "En efecto..."
+- "Específicamente..."
+- "En otras palabras..."
+- "Esto significa que..."
+
+### Para Finalizar Razonamiento
+- "Finalmente..."
+- "Para concluir..."
+- "En definitiva..."
+- "En suma..."
+
+## Frases para Análisis de Normativa
+
+- "Atendiendo a lo dispuesto en el artículo... podemos establecer que..."
+- "Esta disposición legal establece de manera inequívoca que..."
+- "La norma citada prescribe con claridad que..."
+- "Del análisis de la disposición mencionada se infiere que..."
+- "La interpretación sistemática de estos artículos nos lleva a concluir que..."
+
+## Frases para Evaluación de Riesgos
+
+- "Identificamos las siguientes contingencias..."
+- "Los riesgos asociados a esta decisión incluyen..."
+- "En caso de prosperar un eventual reclamo..."
+- "Desde una perspectiva de gestión de riesgos..."
+- "El escenario adverso implicaría..."
+- "Para mitigar estos riesgos identificados..."
+- "Considerando el contexto adversarial del sistema legal paraguayo..."
+- "Ante la posibilidad de mala fe de la contraparte..."
+
+## Frases para Cuantificación de Contingencias
+
+- "La contingencia económica estimada asciende a..."
+- "Conforme al cálculo realizado, el monto en riesgo alcanza..."
+- "Aplicando la fórmula del artículo 91 del Código del Trabajo..."
+- "Considerando [X] años de antigüedad y un salario de..."
+- "Este monto resulta de aplicar..."
+- "Debe adicionarse a este cálculo..."
+- "En un escenario adverso, la contingencia podría elevarse a..."
+
+## Frases para Recomendaciones
+
+### Generales
+- "Esta asesoría recomienda..."
+- "Se sugiere implementar..."
+- "Es recomendable considerar..."
+- "Resultaría conveniente..."
+- "Aconsejamos adoptar..."
+
+### Preventivas
+- "Para prevenir futuras contingencias..."
+- "A efectos de mitigar los riesgos identificados..."
+- "Con el objeto de fortalecer la posición jurídica de la empresa..."
+- "Para documentar adecuadamente estas acciones..."
+
+### Procedimentales
+- "El procedimiento a seguir consistiría en..."
+- "Los pasos recomendados son los siguientes..."
+- "Debería procederse conforme al siguiente esquema..."
+
+### Estratégicas
+- "Desde una perspectiva estratégica..."
+- "Evaluando la relación costo-beneficio..."
+- "Considerando el interés del cliente..."
+- "Atendiendo a las mejores prácticas..."
+
+## Frases de Transición entre Secciones
+
+### De Consulta a Análisis
+- "Planteada la consulta, procederemos al análisis jurídico correspondiente..."
+- "Expuestos los antecedentes, corresponde abordar el marco legal aplicable..."
+
+### De Análisis a Desarrollo
+- "Establecido el marco normativo, corresponde analizar su aplicación al caso concreto..."
+- "Sentadas estas bases legales, procedemos a evaluar las implicancias prácticas..."
+
+### De Desarrollo a Conclusiones
+- "Del análisis realizado se desprenden las siguientes conclusiones..."
+- "En virtud de lo expuesto, arribamos a las siguientes consideraciones finales..."
+
+### De Conclusiones a Recomendaciones
+- "En base a estas conclusiones, esta asesoría propone..."
+- "Conforme a los hallazgos expuestos, se recomienda..."
+
+## Frases para Citar Jurisprudencia
+
+- "Según el Acuerdo y Sentencia N°... del Tribunal de..."
+- "La jurisprudencia ha establecido de manera reiterada que..."
+- "Conforme a la interpretación jurisprudencial dominante..."
+- "Este criterio ha sido reforzado por el fallo..."
+
+## Frases para Expresar Incertidumbre Jurídica
+
+- "Cabe señalar que existe cierta incertidumbre respecto a..."
+- "En este punto, la normativa no es del todo clara..."
+- "La doctrina y jurisprudencia no son uniformes en cuanto a..."
+- "Ante la falta de regulación específica..."
+- "Esta cuestión podría ser objeto de interpretaciones diversas..."
+- "Recomendamos prudencia en vista de..."
+
+## Frases de Cierre
+
+- "Para cualquier información adicional estamos a su disposición."
+- "Estamos a su disposición para cualquier información adicional, dudas o consultas."
+- "Quedamos a su disposición en caso de requerir cualquier aclaración o información adicional con respecto a esta consulta."
+- "Para mayor información o consultas adicionales, no duden en contactarnos."
+
+## Expresiones a Evitar
+
+### NO usar:
+- Listas con viñetas en el cuerpo del dictamen
+- Lenguaje excesivamente técnico sin explicaciones
+- Afirmaciones categóricas sin fundamento normativo
+- Especulaciones sin base jurídica
+- Referencias vagas ("la ley dice...", "según las normas...")
+- Ambigüedades innecesarias
+
+### SÍ usar:
+- Párrafos conectados con fluidez
+- Terminología jurídica precisa con explicaciones cuando sea necesario
+- Citas específicas con artículo, inciso y norma
+- Análisis fundamentados en derecho positivo
+- Referencias exactas (artículo X de la Ley N° Y)
+- Claridad y precisión en conclusiones
+
+## Estilo General
+
+### Mantener:
+- Tono formal pero accesible
+- Objetividad profesional
+- Enfoque en soluciones prácticas
+- Coherencia en la argumentación
+- Precisión en citas normativas
+
+### Evitar:
+- Jerga innecesaria
+- Oraciones excesivamente largas
+- Ambigüedades
+- Contradicciones internas
+- Promesas de resultados que no se pueden garantizar

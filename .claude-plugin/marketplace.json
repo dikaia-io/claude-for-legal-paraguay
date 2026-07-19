@@ -1,0 +1,33 @@
+{
+  "name": "claude-for-legal-paraguay",
+  "owner": {
+    "name": "Miguel Fernando Díaz"
+  },
+  "metadata": {
+    "description": "Asistente jurídico para práctica paraguaya: laboral, civil-comercial y litigación.",
+    "version": "0.1.0",
+    "pluginRoot": "plugins"
+  },
+  "plugins": [
+    {
+      "name": "paraguay-legal-core",
+      "source": "./plugins/paraguay-legal-core",
+      "description": "Núcleo transversal: setup, diagnóstico, plazos, citación y fuentes oficiales paraguayas."
+    },
+    {
+      "name": "paraguay-laboral",
+      "source": "./plugins/paraguay-laboral",
+      "description": "Derecho laboral paraguayo orientado a empleadores: despidos, liquidaciones y estrategia."
+    },
+    {
+      "name": "paraguay-litigacion",
+      "source": "./plugins/paraguay-litigacion",
+      "description": "Litigación civil/comercial/laboral y eje constitucional (inconstitucionalidad)."
+    },
+    {
+      "name": "paraguay-contratos",
+      "source": "./plugins/paraguay-contratos",
+      "description": "Contratos civiles y comerciales paraguayos: revisión, red flags y redacción de borradores."
+    }
+  ]
+}

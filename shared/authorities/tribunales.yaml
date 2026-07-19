@@ -1,0 +1,106 @@
+# =============================================================================
+#  Authority map — tribunales.yaml
+#  Órganos jurisdiccionales paraguayos y su competencia.
+#  Estados de verificación análogos a leyes.yaml.
+# =============================================================================
+
+courts:
+
+  csj:
+    official_name: "Corte Suprema de Justicia"
+    source_url: "https://www.pj.gov.py/"
+    legal_basis: "Ley N° 609/1995"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-06"
+      verified_by: "MD"
+      verified_against: "LegalDataHunter:PY/BACN/2333 (Ley 609/1995)"
+      official_source_checked: true
+      notes: "Ejerce jurisdicción en toda la República. Funciona en pleno y por salas."
+
+  sala_constitucional:
+    parent: "csj"
+    official_name: "Sala Constitucional de la Corte Suprema de Justicia"
+    competence_note: "Control de constitucionalidad: acción y excepción de inconstitucionalidad."
+    legal_basis: "Ley N° 609/1995 (art. 11 y conc.); juicio de inconstitucionalidad en el CPC."
+    verification:
+      status: "verified"
+      verified_at: "2026-06-06"
+      verified_by: "MD"
+      verified_against: "LegalDataHunter:PY/BACN/2333 (Ley 609/1995)"
+      official_source_checked: true
+      notes: "Verificar artículo exacto de competencia por modificatorias (Ley 3986/2010, Ley 7307/2024)."
+
+  sala_civil_comercial:
+    parent: "csj"
+    official_name: "Sala Civil y Comercial de la Corte Suprema de Justicia"
+    competence_note: "Cuestiones civiles y comerciales recurribles ante la tercera instancia; revisión de resoluciones de los Tribunales de Apelación del Trabajo (art. 37 CPT)."
+    legal_basis: "Ley N° 609/1995, arts. 1 y 14 (art. 14 modificado por Ley 4542/2011)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-19"
+      verified_by: "MD"
+      verified_against: "local:Ley 609-1995 - Organiza la Corte Suprema de Justicia.pdf (PDF oficial BACN, arts. 1 y 14 leídos en sesión)"
+      official_source_checked: true
+      notes: "Art. 1°: la CSJ se organiza en TRES salas de 3 ministros (Constitucional, Civil y Comercial, Penal), sin perjuicio de la ampliación de salas (art. 16). Art. 14 (texto original): a) cuestiones de naturaleza civil y comercial recurribles ante la tercera instancia conforme a las leyes procesales; b) revisar las resoluciones de los Tribunales de Apelación en lo Laboral en los términos del art. 37 del Código Procesal del Trabajo — la Sala LABORAL de la CSJ no existe: la 3ª instancia laboral pasa por esta sala. OJO: el art. 14 fue MODIFICADO por la Ley 4542/2011; antes de citar el texto vigente del art. 14, contrastar esa modificatoria (el PDF local trae el texto original)."
+
+  sala_penal:
+    parent: "csj"
+    official_name: "Sala Penal de la Corte Suprema de Justicia"
+    competence_note: "Cuestiones penales, correccionales y del menor recurribles ante la tercera instancia; hábeas corpus en instancia original; extradición; revisión de resoluciones del Tribunal de Cuentas."
+    legal_basis: "Ley N° 609/1995, arts. 1 y 15"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-19"
+      verified_by: "MD"
+      verified_against: "local:Ley 609-1995 - Organiza la Corte Suprema de Justicia.pdf (PDF oficial BACN, arts. 1 y 15 leídos en sesión)"
+      official_source_checked: true
+      notes: "Art. 15, incisos a-g: a) cuestiones de naturaleza penal, correccional y tutelar del menor recurribles ante la tercera instancia; b) revisar resoluciones de las salas del Tribunal de Cuentas; c) supervisar institutos de detención y reclusión; d) pedidos de extradición; e) dictamen al pleno (art. 238 inc. 10 CN); f) sentencias de Tribunales de Apelación con pena de penitenciaría de 15 o más años (no causan ejecutoria sin pronunciamiento de la sala); g) hábeas corpus en instancia original, sin perjuicio de la competencia de otros jueces. Fuera del foco MVP; verificada por completitud del map."
+
+  tribunales_apelacion:
+    official_name: "Tribunales de Apelación (por fuero y circunscripción)"
+    competence_note: "Segunda instancia. Fueros: civil y comercial, laboral, penal, etc.; divididos en salas de no menos de 3 miembros."
+    legal_basis: "Ley N° 879/1981 (COJ), arts. 2, 31-32"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-19"
+      verified_by: "MD"
+      verified_against: "local:codigo_organizacion_judicial_879_1981.md (arts. 2, 31, 32, 36 laboral)"
+      official_source_checked: true
+      notes: "COJ art. 2: enumeración de órganos del Poder Judicial. Art. 31: habrá Tribunales de Apelación en los distintos fueros y Circunscripciones Judiciales, divididos en tantas salas como fuese necesario, cada una con no menos de 3 miembros. Art. 32 (competencia, incs. a-g): recursos contra sentencias definitivas y resoluciones recurribles de 1ª instancia/Paz Letrada/Instrucción; incidentes (ejecutoria); retardo o denegación de justicia; recusaciones; cuestiones de competencia; superintendencia en el interior (inc. g). Los Tribunales de Apelación del Trabajo conocen además de las resoluciones definitivas de organismos de previsión social y de la revisión de laudos arbitrales en conflictos económicos (COJ, capítulo del fuero laboral). Fallos reales clasificados por sala/circunscripción en el repositorio local de jurisprudencia (ver legal.local.md). OJO: la enumeración del art. 2 refleja la estructura de 1981 (incluye Juzgados de Instrucción, hoy reformados por el sistema procesal penal de la Ley 1286/1998)."
+
+  juzgados_primera_instancia:
+    official_name: "Juzgados de Primera Instancia (por fuero y circunscripción)"
+    competence_note: "Primera instancia por fueros: civil y comercial, penal (hoy con estructura de la Ley 1286/1998), laboral, y demás fueros creados por ley."
+    legal_basis: "Ley N° 879/1981 (COJ), arts. 2, 38-41"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-19"
+      verified_by: "MD"
+      verified_against: "local:codigo_organizacion_judicial_879_1981.md (arts. 2, 38-41)"
+      official_source_checked: true
+      notes: "COJ art. 38 (civil y comercial): residual — todo asunto que no competa a Paz Letrada o Paz, y recursos contra resoluciones de los Jueces de Paz. Art. 39 (criminal — estructura de 1981, hoy superada por el CPP Ley 1286/1998: citar con esa salvedad). Art. 40 (laboral): cuestiones judiciales/contenciosas del Código del Trabajo y contratos individuales o colectivos; reconocimiento sindical; conflictos sindicato-afiliados; controversias por trabajo en equipo; desalojo de inmuebles ocupados por la relación laboral; causan ejecutoria si el litigio no excede 30 jornales. Art. 41: recurribilidad de sus resoluciones salvo ejecutoria expresa."
+
+  juzgados_paz:
+    official_name: "Juzgados de Paz"
+    competence_note: "Competencia ampliada en lo civil, comercial, laboral y de la niñez hasta 300 jornales, con exclusiones (estado civil, familia, quiebras, acciones reales sobre inmuebles salvo tercería)."
+    legal_basis: "Ley N° 879/1981 (COJ) + Ley N° 6059/2018 (modif. por Ley N° 6351/2019)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-19"
+      verified_by: "MD"
+      verified_against: "local:ley_6059_2018_juzgados_paz.md + local:ley_6351_2019_modifica_6059.md + local:codigo_organizacion_judicial_879_1981.md (arts. 42-43, Paz Letrada)"
+      official_source_checked: true
+      notes: "Ley 6059/2018 ('Que modifica la Ley N° 879/81 Código de Organización Judicial, y amplía sus disposiciones y las funciones de los Juzgados de Paz', sanc. 11-04-2018, prom. 02-06-2018), art. 1: los Juzgados de Paz en lo Civil, Comercial, Laboral y de la Niñez y la Adolescencia conocen asuntos hasta 300 jornales (incs. a-k: incl. posesorias/sucesorias rurales hasta 50 ha, resolución de locación por falta de pago, alimentos de mayores de edad, curatela sin bienes, información sumaria), con exclusiones expresas (estado civil, familia, convocación de acreedores y quiebras, acciones reales y posesorias sobre inmuebles salvo tercería de dominio). Modificada por Ley 6351/2019. La 6059/2018 derogó además el art. 684 CPC (ya registrado en codigo_procesal_civil.modified_by). DISTINGUIR de la Justicia de Paz LETRADA (COJ arts. 42-43, cuantía 300 jornales), estructura distinta y anterior."
+
+  tsje:
+    official_name: "Tribunal Superior de Justicia Electoral"
+    competence_note: "Cabeza de la Justicia Electoral (convocatoria, juzgamiento, organización y fiscalización de elecciones y consultas populares; partidos y movimientos políticos)."
+    legal_basis: "Constitución Nacional, arts. 273-275; Ley N° 635/1995 (que reglamenta la Justicia Electoral) [texto pendiente en disco]"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-19"
+      verified_by: "MD"
+      verified_against: "local:constitucion_nacional_1992.md (arts. 273-275) + local:Ley 609-1995 (art. 3 inc. i, recursos ante la CSJ)"
+      official_source_checked: true
+      notes: "CN art. 273: competencia exclusiva de la Justicia Electoral (elecciones generales, departamentales y municipales; consultas populares; partidos y movimientos políticos). Art. 274: la Justicia Electoral se integra por el TSJE, tribunales, juzgados y fiscalías electorales. Art. 275: TSJE = 3 miembros, elegidos y removidos como los ministros de la CSJ; la ley fija qué resoluciones son recurribles ante la CSJ en procedimiento sumarísimo — concordante con Ley 609/1995 art. 3 inc. i (CSJ en pleno, texto Ley 4542/2011). Su ley reglamentaria es la Ley 635/1995: NO está en disco — antes de citar su articulado, conseguir el texto ([FUENTE OFICIAL PENDIENTE]). Fuera del foco MVP; existe como fuente PY/TSJE en Legal Data Hunter."

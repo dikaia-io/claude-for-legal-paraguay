@@ -1,0 +1,79 @@
+# =============================================================================
+#  Authority map — fuentes-oficiales.yaml
+#  Qué portal/repositorio es autoridad para qué materia.
+#  Orden de preferencia: fuente local curada -> portal oficial -> conector MCP.
+# =============================================================================
+
+sources:
+
+  legislacion:
+    authority: "BACN"
+    base_url: "https://www.bacn.gov.py/leyes-paraguayas"
+    note: "Fuente primaria del texto legal paraguayo."
+    access_notes: >-
+      Lecciones operativas (verificadas 2026-07-02): (1) el sitio devuelve 403 a los
+      fetchers HTTP genéricos; acceder con un cliente que envíe User-Agent de navegador
+      (p. ej. curl -A "Mozilla/5.0 ..."). (2) Los PDF descargables de BACN suelen ser
+      ESCANEADOS sin capa de texto: el texto útil de la ley está en el HTML de la página
+      de la norma, no en el PDF. (3) El buscador del sitio y los buscadores web indexan
+      bien el patrón /leyes-paraguayas/{id}/{slug}; nunca derivar el {id} por analogía —
+      confirmarlo por búsqueda antes de citar la URL.
+  jurisprudencia:
+    authority: "PJ/CSJ"
+    base_url: "https://www.pj.gov.py/"
+    note: "Jurisprudencia y resoluciones judiciales."
+  acordadas:
+    authority: "PJ/CSJ - Acordadas Digitales"
+    base_url: "https://www.pj.gov.py/acordadas-digitales/"
+    note: "Acordadas que afectan organización judicial, plazos y ferias."
+  laboral_admin:
+    authority: "MTESS"
+    base_url: "https://www.mtess.gov.py/"
+    resoluciones_url: "https://www.mtess.gov.py/?page_id=31671"
+    decretos_url: "https://www.mtess.gov.py/?page_id=32031"
+    note: "Ministerio de Trabajo, Empleo y Seguridad Social. Resoluciones y reglamentos del MTESS (p. ej. Res. 991/2024 - REOP) en resoluciones_url; decretos del Ejecutivo en materia laboral (p. ej. Decreto 1989/2024 - REOP) en decretos_url. BACN no indexa decretos del Ejecutivo ni resoluciones del MTESS, por eso se usa el portal del Ministerio."
+  seguridad_social:
+    authority: "IPS"
+    base_url: "https://portal.ips.gov.py/sistemas/ipsportal/"
+    note: "Instituto de Previsión Social."
+  tributario:
+    authority: "DNIT"
+    base_url: "https://www.dnit.gov.py/"
+    note: "Dirección Nacional de Ingresos Tributarios."
+  consumidor:
+    authority: "SEDECO"
+    base_url: null
+    note: "Secretaría de Defensa del Consumidor (Ley 1334/1998 y modif.)."
+
+# Repositorios locales curados (preferentes para verificación y cita textual).
+# Las rutas concretas se configuran en legal.local.md (no versionado), no aquí.
+local_repositories:
+  legislacion:
+    note: "Normativa por materia; normalizadas/ tiene leyes en Markdown con frontmatter (preferir para citar artículos). Ruta en legal.local.md."
+  jurisprudencia:
+    note: "Fallos reales por circunscripción/sala/año (CSJ, tribunales, MDP). Ruta en legal.local.md."
+  casos_practica:
+    note: "Casos reales y modelos. CONFIDENCIAL: anonimizar antes de incorporar al repo. Ruta en legal.local.md."
+
+# Conector MCP de verificación con cita.
+mcp_connector:
+  name: "Legal Data Hunter"
+  paraguay_sources:
+    - "PY/BACN"
+    - "PY/LeyesParaguayas"
+    - "PY/CSJJurisprudencia"
+    - "PY/TSJE"
+  note: "Usar cuando no se tiene el archivo local; entrega cita verificable."
+  quota_note: >-
+    El plan gratuito tiene cuota diaria baja (2026-07-02: agotada en la primera consulta
+    de la sesión). Las skills no deben asumir disponibilidad del conector: si la cuota
+    está agotada, caer al portal oficial (ver access_notes de cada fuente) y, en última
+    instancia, emitir [FUENTE OFICIAL PENDIENTE].
+
+# Regla de fallback (obligatoria).
+fallback:
+  rule: "Si no se puede verificar contra ninguna fuente (local, portal oficial o MCP), emitir [FUENTE OFICIAL PENDIENTE]. Nunca rellenar con memoria del modelo."
+  preference_order:
+    - "local_repositories (normalizadas)"
+    - "sources (portal oficial)"
+    - "mcp_connector (Legal Data Hunter)"

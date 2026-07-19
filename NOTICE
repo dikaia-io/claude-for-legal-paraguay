@@ -1,0 +1,33 @@
+Claude for Legal Paraguay
+Copyright 2026 Miguel Fernando Díaz García
+
+Licensed under the Apache License, Version 2.0 (the "License").
+See the LICENSE file for the full license text.
+
+------------------------------------------------------------------------
+Atribución de diseño
+------------------------------------------------------------------------
+
+Este proyecto NO copia contenido jurídico de terceros, pero su patrón de
+arquitectura (estructura de plugins/skills, disciplina de diagnóstico previo,
+marcadores de incertidumbre, carpeta de evals y disciplina de fuentes) deriva
+conceptualmente de:
+
+  - anthropics/claude-for-legal
+    https://github.com/anthropics/claude-for-legal
+    Apache License 2.0
+
+  - cristianaboitiz-eng/claude-for-legal-argentina (fork del anterior)
+    https://github.com/cristianaboitiz-eng/claude-for-legal-argentina
+    Apache License 2.0
+    (referencia de patrón únicamente; no se reutiliza su contenido normativo argentino)
+
+------------------------------------------------------------------------
+Aviso jurídico
+------------------------------------------------------------------------
+
+Este software es una herramienta de asistencia para profesionales del derecho.
+NO constituye asesoramiento legal. Toda salida debe ser revisada por un abogado
+matriculado. Las referencias normativas deben verificarse contra la fuente
+oficial (BACN, Poder Judicial / Corte Suprema de Justicia del Paraguay) antes
+de su uso profesional.

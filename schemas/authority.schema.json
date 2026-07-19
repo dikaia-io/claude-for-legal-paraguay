@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://claude-for-legal-paraguay/schemas/authority.schema.json",
+  "title": "Authority map — leyes.yaml",
+  "description": "Valida el mapa de autoridad normativa paraguaya. Cada entrada de `laws` debe declarar su bloque de verificación.",
+  "type": "object",
+  "required": ["laws"],
+  "properties": {
+    "laws": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["official_title", "short_cite", "jurisdiction", "verification"],
+        "properties": {
+          "official_title": {
+            "type": "string",
+            "description": "Título oficial completo de la norma."
+          },
+          "short_cite": {
+            "type": "string",
+            "description": "Plantilla de cita corta, con {art} como placeholder de artículo."
+          },
+          "year": {
+            "type": ["integer", "null"],
+            "description": "Año de la norma (promulgación/sanción)."
+          },
+          "jurisdiction": {
+            "enum": ["Paraguay", "Internacional"],
+            "description": "Jurisdicción de la norma. 'Internacional' para instrumentos como convenios OIT."
+          },
+          "source_url": {
+            "type": ["string", "null"],
+            "format": "uri",
+            "description": "URL en la fuente oficial (BACN/PJ). Puede ser null si solo hay fuente local."
+          },
+          "local_source": {
+            "type": ["string", "null"],
+            "description": "Etiqueta o referencia de la copia local verificable. No incluir rutas de disco personales en el repo público."
+          },
+          "modified_by": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Leyes modificatorias conocidas (para normas inestables)."
+          },
+          "verification": {
+            "type": "object",
+            "required": ["status", "official_source_checked"],
+            "properties": {
+              "status": {
+                "enum": ["draft", "verified", "deprecated"]
+              },
+              "verified_at": {
+                "type": ["string", "null"],
+                "format": "date"
+              },
+              "verified_by": {
+                "type": ["string", "null"]
+              },
+              "verified_against": {
+                "type": ["string", "null"],
+                "description": "Fuente concreta contra la que se verificó: 'BACN', 'local:<ruta>', 'LegalDataHunter:<source_id>'."
+              },
+              "official_source_checked": {
+                "type": "boolean"
+              },
+              "notes": {
+                "type": ["string", "null"]
+              }
+            },
+            "allOf": [
+              {
+                "description": "Una entrada verified exige official_source_checked y verified_at.",
+                "if": { "properties": { "status": { "const": "verified" } } },
+                "then": {
+                  "properties": { "official_source_checked": { "const": true } },
+                  "required": ["verified_at", "verified_against"]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

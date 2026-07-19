@@ -1,0 +1,32 @@
+# =============================================================================
+#  Authority map — formatos-de-cita.yaml
+#  Plantillas de cita por tipo de norma + controles obligatorios de autoridad.
+# =============================================================================
+
+formats:
+  ley_articulo: "{official_title}, art. {art}"
+  ley_corta: "{short_cite}"           # p. ej. "Ley N° 213, art. {art}"
+  ley_con_anio: "Ley N° {num}/{anio}" # p. ej. "Ley N° 1337/1988"
+  decreto: "Decreto N° {num}/{anio}"
+  resolucion_mtess: "Resolución MTESS N° {num}/{anio}"
+  resolucion_sedeco: "Resolución SEDECO N° {num}"
+  acordada: "Acordada N° {num}/{anio} CSJ"
+  jurisprudencia: "{tribunal}, \"{caratula}\", Ac. y Sent. N° {num}, {fecha}"
+
+# Notas de formato (estado de verificación)
+format_notes:
+  acordada: "[VERIFICAR] formato exacto de cita de acordadas contra PJ/CSJ."
+  jurisprudencia: "'Ac. y Sent.' = Acuerdo y Sentencia (uso forense común). [VERIFICAR] formato canónico contra PJ/CSJ antes de marcarlo definitivo."
+
+# Controles que TODA cita con contenido normativo debe declarar (gramática de autoridad).
+controls:
+  required_with_citation:
+    - "fuente_oficial"      # BACN / PJ-CSJ / fuente local / documento aportado
+    - "fecha_verificacion"  # cuándo se contrastó (o 'no verificado en esta sesión')
+    - "tipo_autoridad"      # ley / acordada / resolución / jurisprudencia
+    - "nivel_certeza"       # alto / medio / bajo
+
+# Moneda y unidades de uso forense.
+units:
+  moneda: "Guaraní (₲ / Gs.)"
+  note: "Los montos en juicios se expresan en guaraníes."

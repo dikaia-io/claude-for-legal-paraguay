@@ -1,0 +1,659 @@
+# =============================================================================
+#  Authority map — leyes.yaml
+#  Mapa de normas base paraguayas. Validar contra ../../schemas/authority.schema.json
+#
+#  Ciclo: draft -> verified -> deprecated. Una skill estable NO puede citar
+#  normas en draft/deprecated sin marcador [VERIFICAR VIGENCIA].
+#  Verificaciones registradas en verification-log.md.
+#
+#  Fuentes de verificación usadas:
+#   - local: repositorio local de legislación normalizada (configurable en legal.local.md)
+#   - BACN  (bacn.gov.py) vía conector Legal Data Hunter
+# =============================================================================
+
+laws:
+
+  # ---- VERIFICADAS (fuente local normalizada + BACN) ----
+
+  codigo_trabajo:
+    official_title: "Ley N° 213/1993 - Código del Trabajo"
+    short_cite: "Ley N° 213, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1993
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/2608/ley-n-213-establece-el-codigo-del-trabajo"
+    local_source: "local (texto normalizado)"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-06"
+      verified_by: "MD"
+      verified_against: "local:codigo_del_trabajo_paraguay.md + BACN/2608"
+      official_source_checked: true
+      notes: "Promulgada 29-10-1993. 398 artículos, 5 libros. Edición OIT 2019. Deroga Ley 729/1961. ANCLAJES de artículos clave (texto verificado): despido justificado causales art. 81; improcedencia de indemnizaciones + complementaria art. 82 (NO es plazo de caducidad); caducidad/condonación de la causal = art. 401 (30 días desde el conocimiento); prescripción general art. 399 (1 año); prescripciones de 60 días art. 400 (inc. c: acción para dar por terminado el contrato por causas legales); recargos salariales art. 234; certificado de trabajo art. 93; indemnización por despido art. 91; preaviso art. 87. ANCLAJES trabajo transfronterizo (verificados 2026-07-02): art. 23 (el CT NO rige para directores/gerentes/administradores con notoria independencia; rige si predomina la subordinación — clave para socio-administrador que se 'auto-emplea'); art. 46 inc. c (el contrato consigna 'el lugar o lugares de su prestación' = lugar de EJECUCIÓN física del trabajo, no del aprovechamiento del resultado); art. 48 (presunción de relación laboral con prestación subordinada); art. 57 (contrato de trabajadores paraguayos para servicios FUERA del país: aprobación y registro por la autoridad administrativa del trabajo + visado consular + cláusulas obligatorias de transporte, fianza de repatriación y edad mínima 20 años); art. 67 inc. l (derecho a repatriación por cuenta del empleador)."
+
+  codigo_procesal_trabajo:
+    official_title: "Ley N° 742/1961 - Código Procesal del Trabajo"
+    short_cite: "Ley N° 742, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1961
+    source_url: null
+    local_source: "local (texto normalizado)"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-06"
+      verified_by: "MD"
+      verified_against: "local:codigo_procesal_del_trabajo_742_1961.md"
+      official_source_checked: true
+      notes: "Sancionada 30-08-1961, promulgada 31-08-1961. Faltaba en el authority map inicial; relevante para litigación laboral."
+
+  codigo_civil:
+    official_title: "Ley N° 1183/1985 - Código Civil"
+    short_cite: "Ley N° 1183, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1985
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/5293/codigo-civil"
+    local_source: "local (texto normalizado)"
+    modified_by:
+      - "Ley 45/1991 (divorcio vincular)"
+      - "Ley 1/1992 (reforma parcial, familia)"
+      - "Ley 388/1994 (sociedades anónimas)"
+      - "Ley 7371/2025 (modifica Código Civil y Org. Judicial)"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-06"
+      verified_by: "MD"
+      verified_against: "local:CODIGO_CIVIL_LEY_1183_1985_normalizado.md + BACN/5293"
+      official_source_checked: true
+      notes: "Sancionado 18-12-1985, promulgado 23-12-1985. Tiene ~18 leyes modificatorias; verificar texto del artículo concreto."
+
+  codigo_procesal_civil:
+    official_title: "Ley N° 1337/1988 - Código Procesal Civil"
+    short_cite: "Ley N° 1337, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1988
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/3038/ley-n-1337--codigo-procesal-civil"
+    local_source: "local (texto normalizado)"
+    modified_by:
+      - "Ley 600/1995 (deroga art. 580 y modifica art. 582 — amparo: elevación a la Sala Constitucional)"
+      - "Ley 1493/2000 (arts. 530, 716, 717)"
+      - "Ley 4419/2011 (art. 409)"
+      - "Ley 4867/2012 (art. 173)"
+      - "Ley 4992/2013 (art. 37 inc. c derog.)"
+      - "Ley 5330/2014 (art. 701, luego derogado por Ley 7424/2025)"
+      - "Ley 6059/2018 (art. 684 derog.)"
+      - "Ley 6979/2022 (art. 621 modif. y ampliado)"
+      - "Ley 7424/2025 (arts. 480, 657, 665, 666 modif.; art. 701 derog.)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-05"
+      verified_by: "MD"
+      verified_against: "local:codigo_procesal_civil_vigente_consolidacion_2026-04-03.md + local:codigo_procesal_civil_1337_1988_vigente.txt"
+      official_source_checked: true
+      notes: "Consolidación de trabajo al 2026-04-03 a partir de leyes BACN. Ley 7614/2025 NO modifica el articulado (solo relacionada). ANCLAJES verificados 2026-07-05 (plugin paraguay-litigacion) contra el texto consolidado: PROCESO ORDINARIO — demanda art. 215 (incs. a-f + monto); documental art. 219; traslado y plazo de contestación 18 días arts. 222/234; excepciones previas arts. 223-224 (lista taxativa incl. convenio arbitral y arraigo); contestación art. 235; reconvención arts. 237-240; puro derecho 241-242; prueba arts. 243-269 (máx. 40 días art. 253; ofrecimiento 10 primeros días; posiciones 20 primeros días art. 277); alegatos 6 días por su orden art. 379; llamamiento de autos 382-383; plazos para resolver art. 162 (S.D. 40/60 días); diligencias preparatorias arts. 209-214 (caducidad 15 días). JUICIO EJECUTIVO — arts. 439-475 completos (procedencia 439; opción ordinaria 440; inapelabilidad 442; preparación 443-447, caducidad 20 días 447; títulos 448-449; intimación/embargo 450-456; costas 457; ampliaciones 458-459; pago 3er día y excepciones 5 días art. 460; irrenunciables 461; excepciones taxativas 462; nulidad 463; no causa 465; trámite 466-469; sentencia de remate 470 — OJO: epígrafe local dice 'Juicio posterior', error de epígrafe, contenido correcto; ordinario posterior 60 días 471; apelación 472; fianza 473 (remite art. 1457 CC); cumplimiento 475-479 y 501-502). EJECUCIONES ESPECIALES — hipotecaria 503-507 (excepciones 504; prelación 507); prendaria 508-510; dar cosa mueble 511-518; ejecución de resoluciones 519 y ss. El art. 480 (subasta de inmuebles) tiene texto según Ley 7424/2025. LAGUNA RESUELTA (2026-07-19): art. 114 inc. b, confirmación tácita de la nulidad = CINCO DÍAS desde el conocimiento del acto viciado — el número faltaba en la copia local, en la base del estudio Y en el HTML de BACN (laguna de transcripción de linaje común); verificado contra el escaneo oficial del texto original promulgado (PJ/CSJ, csj.gov.py/cache/lederes/P-1-011988-L-1337-1.pdf, pág. 21; copia en disco: 04 - PROCESAL). Coincide con el plazo residual de incidentes del art. 191."
+
+  organizacion_judicial:
+    official_title: "Ley N° 879/1981 - Código de Organización Judicial"
+    short_cite: "Ley N° 879, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1981
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/2321/ley-n-879-codigo-de-organizacion-judicial"
+    local_source: "local (texto normalizado)"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-06"
+      verified_by: "MD"
+      verified_against: "local:codigo_organizacion_judicial_879_1981.md"
+      official_source_checked: true
+      notes: "Año confirmado: 1981 (sancionado 19-11-1981, promulgado 02-12-1981). Antes figuraba sin año."
+
+  procedimientos_administrativos:
+    official_title: "Ley N° 6715/2021 - De Procedimientos Administrativos"
+    short_cite: "Ley N° 6715, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2021
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/10974/ley-n-6715-procedimientos-administrativos"
+    local_source: "local (texto normalizado)"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-06"
+      verified_by: "MD"
+      verified_against: "local:ley_6715_2021_procedimientos_administrativos.md"
+      official_source_checked: true
+      notes: "Año confirmado: 2021 (sancionada 23-03-2021, promulgada 29-09-2021)."
+
+  organiza_csj:
+    official_title: "Ley N° 609/1995 - Organiza la Corte Suprema de Justicia"
+    short_cite: "Ley N° 609, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1995
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/2333/ley-n-609-1995-organiza-la-corte-suprema-de-justicia"
+    local_source: "local (PDF oficial BACN)"
+    modified_by:
+      - "Ley 3181/2007 (modifica art. 19; sin PDF en BACN, pendiente)"
+      - "Ley 4542/2011 (modifica arts. 3 inc. m y 14)"
+      - "Ley 7307/2024 (modifica art. 11 inc. a; ABROGA la Ley 3986/2010)"
+      - "Ley 7615/2025 (modifica art. 8; DEROGA la Ley 7058/2023)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-18"
+      verified_by: "MD"
+      verified_against: "PDF oficial BACN (id 2333) leído completo en sesión; modificatorias verificadas contra LDH PY/LeyesParaguayas (BACN 12686 y 12936)"
+      official_source_checked: true
+      notes: >-
+        Sala Constitucional: competencia art. 11 (texto vigente según Ley 7307/2024:
+        comunicación electrónica del fallo en 24 hs. y publicación web gratuita),
+        rechazo in límine art. 12, excepción art. 13, ampliación de salas art. 16,
+        irrecurribilidad art. 17. OJO: el PDF local trae el texto ORIGINAL de los
+        arts. 8 y 11.a; para esos dos artículos rigen las modificatorias.
+
+  honorarios_abogados:
+    official_title: "Ley N° 1376/1988 - Arancel de Honorarios de Abogados y Procuradores"
+    short_cite: "Ley N° 1376, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1988
+    source_url: null
+    local_source: "local (texto normalizado)"
+    modified_by:
+      - "Ley 4590/2012 (modifica honorarios)"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-06"
+      verified_by: "MD"
+      verified_against: "local:ley_1376_1988_honorarios_abogados.md"
+      official_source_checked: true
+      notes: "Sancionada 20-12-1988, promulgada 22-12-1988."
+
+  feriados_nacionales:
+    official_title: "Ley N° 7544/2025 - Que determina los Feriados Nacionales de la República del Paraguay, se establecen los feriados móviles y se faculta al Poder Ejecutivo a instituir otros feriados en situaciones especiales"
+    short_cite: "Ley N° 7544/2025, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2025
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/12908/ley-n-7544-2025-que-determina-los-feriados-nacionales-de-la-republica-del-paragu"
+    local_source: null
+    derogates:
+      - "Ley 8/90 (feriados de la República)"
+      - "Ley 715/1995 (amplía Ley 8/90)"
+      - "Ley 1601/2000 (modifica art. 1 Ley 715/95)"
+      - "Ley 1723/2001 (traslado de feriados al lunes)"
+      - "Ley 4531/2011 (restablece 14 de mayo como feriado)"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-30"
+      verified_by: "MD"
+      verified_against: "LegalDataHunter:PY/LeyesParaguayas/12908 (BACN/12908)"
+      official_source_checked: true
+      notes: "Prom. 03-09-2025. 11 feriados + domingos (art. 1). Móviles trasladables a lunes por decreto (art. 2-3): 1-mar, 12-jun, 20-jun, 29-set; los demás no se mueven. Hasta 3 feriados adicionales por decreto (art. 4). Asuetos = días hábiles, salvo vencimiento que cae ese día (art. 7). Relevante para cómputo de plazos junto con feria judicial de enero (Ley 879/1981 art. 362)."
+
+  aporte_ips:
+    official_title: "Decreto-Ley N° 1860/1950 - Carta Orgánica del IPS (aprob. Ley 375/1956), arts. 2 y 17, redacción Ley 3990/2010"
+    short_cite: "DL 1860/50, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1950
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/933/modifica-los-articulos-2-17-inciso-a-y-24-del-decreto-ley-n-186050-aprobado-por-ley-n-37556-modificados-por-el-articulo-2-de-la-ley-n-9892"
+    local_source: null
+    modified_by:
+      - "Ley 98/1992 (art. 2° fija aporte obrero en 9%)"
+      - "Ley 2263/2003 (modifica parcialmente Ley 98/92)"
+      - "Ley 3990/2010 (nueva redacción de los arts. 2, 17 inc. a y 24 — texto vigente verificado contra BACN/933)"
+    related:
+      - "Ley 5407/2015 (aporte obrero 9% en trabajo doméstico)"
+      - "Ley 4933/2013 (incorporación voluntaria de independientes, empleadores, amas de casa y domésticos)"
+      - "Ley 7446/2025 (reforma IPS — jubilaciones; en repositorio local, pendiente de anclar)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-02"
+      verified_by: "MD"
+      verified_against: "BACN/933 (Ley 3990/2010, texto completo de los arts. 2 y 17 vigentes) + texto art. 17 inc. a aportado en sesión (2026-06-30)"
+      official_source_checked: true
+      notes: "Aporte obrero IPS = 9% del salario (art. 17 inc. a) — ÚNICO descuento al trabajador en la liquidación. Reparto según texto legal verificado (Ley 3990/2010): trabajador 9% (art. 17.a) + empleador 14% (art. 17.b) + Estado 1,5% (art. 17.c). La práctica administrativa refiere tasa patronal total 16,5% (14% + 2,5% SENEPA/SNPP, este último [VERIFICAR VIGENCIA] de su norma). Los aportes patronales NO se descuentan al trabajador. Base de descuento del 9%: todo menos aguinaldo. ÁMBITO (art. 2, texto Ley 3990/2010 verificado): sujetos del seguro social = 'los trabajadores asalariados que prestan servicios o ejecutan una obra en virtud de un contrato de trabajo, verbal o escrito, cualquiera sea su edad y el monto de la remuneración' — SIN limitación territorial expresa (relevante para trabajo transfronterizo: la afiliación de un trabajador con contrato paraguayo prestando servicios en el exterior no está textualmente excluida; la territorialidad opera vía práctica y convenios bilaterales). El mismo art. 2 crea el Seguro General Voluntario para el trabajador independiente. Excepciones (art. 2 in fine): Administración Central, bancos, FFAA/Policía, ferrocarril con caja propia."
+
+  decreto_1989_2024:
+    official_title: "Decreto N° 1989/2024 - Actualiza las disposiciones sobre inscripción en el Registro Obrero Patronal (REOP), documentos y libros de tenencia obligatoria, comunicaciones y transmisión de datos electrónicos ante el MTESS"
+    short_cite: "Decreto N° 1989/2024, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2024
+    source_url: "https://www.mtess.gov.py/?page_id=32031"
+    local_source: "local (PDF fuente primaria)"
+    derogates:
+      - "Decreto 8304/2017 (art. 3°)"
+      - "Decreto 9368/2018 (art. 3°)"
+    related:
+      - "Reglamentado por Res. MTESS 991/2024"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-30"
+      verified_by: "MD"
+      verified_against: "local:Decreto 1989 - Registro Obrero Patronal.pdf (texto primario completo)"
+      official_source_checked: true
+      notes: "Fecha: 27-06-2024. Deroga el Decreto 8304/17 (art. 3°). Anexo art. 10: enumera las comunicaciones obligatorias del empleador (inc. 1 entrada/salida de trabajadores; inc. 11 liquidaciones por terminación). El PLAZO no se fija en el decreto: el art. 10 lo delega al MTESS ('dentro de los plazos, orden y modalidad determinados por el MTESS') -> ver Res. MTESS 991/2024. ATENCIÓN: el '30 días' del art. 22 del decreto NO es el plazo de comunicación, es la escala de multa por mora (1 jornal si la mora no supera 30 días; 2 jornales 31-45; 3 jornales 46+). No confundir multa con plazo."
+
+  res_mtess_991_2024:
+    official_title: "Resolución MTESS N° 991/2024 - Aprueba el Reglamento para la Inscripción Patronal en el REOP y el Reglamento para las Comunicaciones del Capítulo II del Anexo al Decreto N° 1989/2024"
+    short_cite: "Res. MTESS N° 991/2024, Anexo {anexo}, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2024
+    source_url: "https://www.mtess.gov.py/?page_id=31671"
+    local_source: "local (PDF fuente primaria)"
+    related:
+      - "Reglamenta el Decreto 1989/2024"
+      - "Modificada por Res. MTESS 915/2025 [VERIFICAR VIGENCIA]"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-30"
+      verified_by: "MD"
+      verified_against: "local:Res MTESS 991 - Reglamento Inscripcion Patronal.pdf (texto primario completo)"
+      official_source_checked: true
+      notes: "Fecha: 17-10-2024. Fija los plazos delegados por el Decreto 1989/2024, vía sistema REOP. Comunicación de SALIDA de trabajadores (Anexo N° 2, Cap. III, art. 11): dentro de los 30 DÍAS HÁBILES desde que el trabajador dejó de prestar servicios. Art. 10 del mismo anexo: la documentación de salida es según Art. 78/81/84 CT o despido/retiro injustificado (hay que declarar el motivo). Otros plazos del Anexo 2: entrada 30 días hábiles (art. 7); accidentes laborales 8 días corridos (art. 27); aguinaldo dentro de los primeros 5 días hábiles del año (art. 39). Inscripción patronal: confirmada en 3 días hábiles (Anexo 1, art. 5). Deja sin efecto arts. 1° y 3° de la Res. MTESS 835/2016."
+
+  ley_1034_1983_comerciante:
+    official_title: "Ley N° 1034/1983 - Del Comerciante"
+    short_cite: "Ley N° 1034/1983, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1983
+    source_url: null
+    local_source: "local (texto normalizado)"
+    derogates:
+      - "Código de Comercio, Libro Primero (excepto Título III, bolsas y mercados de comercio) - art. 122"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-02"
+      verified_by: "MD"
+      verified_against: "local:ley_1034_1983_del_comerciante.md"
+      official_source_checked: true
+      notes: "Sancionada 06-12-1983. Título oficial 'DEL COMERCIANTE' confirmado contra el encabezado del texto normalizado. Regula la actividad profesional del comerciante, actos de comercio y transferencia de establecimientos mercantiles (art. 1°). Deroga el Libro Primero del Código de Comercio, salvo Título III (art. 122). Base para contratos y obligaciones mercantiles. Fase 4 tarea 0.2. No se pudo confirmar patrón de URL BACN exacto para esta norma sin arriesgar un ID inventado; queda source_url null hasta verificación puntual."
+
+  ley_1334_1998_defensa_consumidor:
+    official_title: "Ley N° 1334/1998 - De Defensa del Consumidor y del Usuario"
+    short_cite: "Ley N° 1334/1998, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1998
+    source_url: null
+    local_source: "local (texto normalizado)"
+    modified_by:
+      - "Ley 2340/2003"
+      - "Ley 5427/2015"
+      - "Ley 6366/2019 (arts. 4, 6, 10, 15 y 29 - claridad y transparencia en información sobre operaciones de crédito)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-02"
+      verified_by: "MD"
+      verified_against: "local:ley_1334_1998_defensa_consumidor.md + local:ley_6366_2019_modifica_1334.md"
+      official_source_checked: true
+      notes: "Sancionada 15-09-1998, promulgada 27-10-1998. Título oficial 'DE DEFENSA DEL CONSUMIDOR Y DEL USUARIO' confirmado contra el encabezado del texto normalizado, que ya trae 'Texto consolidado con las modificaciones de la Ley N° 2340/03 y la Ley N° 5427/15'. La Ley 6366/2019 ('QUE MODIFICA LA LEY N° 1334/98 ... Y ESTABLECE MAYOR CLARIDAD Y TRANSPARENCIA EN LA INFORMACIÓN SOBRE OPERACIONES DE CRÉDITO', sancionada 27-08-2019) modifica puntualmente los arts. 4°, 6°, 10, 15 y 29 (incluye definición de consumidor/usuario/proveedor/servicios). NO se carga como entrada propia en el map: se registra como modificatoria en `modified_by`, siguiendo el precedente de `codigo_civil`/`codigo_procesal_civil`. Relevante para relaciones de consumo en contratos civiles/comerciales. Fase 4 tarea 0.2."
+
+  ley_701_1995_pacto_retroventa:
+    official_title: "Ley N° 701/1995 - Que Precisa el Objeto de la Prohibición de la Venta con Pacto de Retroventa y el Pacto de Reventa"
+    short_cite: "Ley N° 701/1995, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1995
+    source_url: null
+    local_source: "local (texto normalizado)"
+    related:
+      - "Modifica el art. 770 de la Ley N° 1183/85 (Código Civil)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-02"
+      verified_by: "MD"
+      verified_against: "local:ley_701_1995_pacto_retroventa.md"
+      official_source_checked: true
+      notes: "Sancionada 14-09-1995, promulgada 28-09-1995. Título oficial 'QUE PRECISA EL OBJETO DE LA PROHIBICIÓN DE LA VENTA CON PACTO DE RETROVENTA Y EL PACTO DE REVENTA' confirmado contra el encabezado del texto normalizado. Art. 1° modifica el art. 770 del Código Civil (Ley 1183/85): prohíbe la venta con pacto de retroventa de inmuebles y demás bienes registrables, y el pacto de reventa de los mismos, con excepción de títulos/valores/acciones negociados en bolsa autorizada por la CNV. Fase 4 tarea 0.2."
+
+  ley_805_1996_cheque_pago_diferido:
+    official_title: "Ley N° 805/1996 - Que Modifica Varios Artículos del Capítulo XXVI, Título II, Libro III, del Código Civil y Crea la Figura del Cheque Bancario de Pago Diferido, Deroga la Ley N° 941/64 y Despenaliza el Cheque con Fecha Adelantada"
+    short_cite: "Ley N° 805/1996, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1996
+    source_url: null
+    local_source: "local (texto normalizado)"
+    modified_by:
+      - "Ley 3711/2009 (modifica arts. 10, 13 y 16; deroga Ley 2835/05)"
+    derogates:
+      - "Ley 941/1964"
+    related:
+      - "Modifica el art. 1696 y ss. de la Ley N° 1183/85 (Código Civil), Cap. XXVI, Tít. II, Libro III"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-02"
+      verified_by: "MD"
+      verified_against: "local:ley_805_1996_cheque_pago_diferido.md + local:ley_3711_2009_modifica_805_cheque.md"
+      official_source_checked: true
+      notes: "Sancionada 11-12-1995, promulgada 16-01-1996. Título oficial confirmado contra el encabezado del texto normalizado (título largo, ver official_title). Art. 1° modifica el art. 1696 del Código Civil creando el cheque bancario de pago diferido; deroga la Ley 941/64 y despenaliza el cheque con fecha adelantada. La Ley 3711/2009 ('QUE MODIFICA LOS ARTICULOS 10, 13 Y 16 DE LA LEY 805/96 ... Y DEROGA LA LEY 2835/05', sancionada 26-03-2009, promulgada 16-04-2009) modifica el régimen de multas e inhabilitación por cheques rechazados (arts. 10, 13, 16) y deroga la Ley 2835/05. Se registra como modificatoria en `modified_by`, siguiendo el precedente de `codigo_civil`/`codigo_procesal_civil`. Fase 4 tarea 0.2."
+
+  ley_7561_2025_arbitraje:
+    official_title: "Ley N° 7561/2025 - De Arbitraje"
+    short_cite: "Ley N° 7561/2025, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2025
+    source_url: null
+    local_source: "local (texto normalizado)"
+    derogates:
+      - "Ley 1879/2002 'De Arbitraje y Mediación', excepto arts. 53-67 (Título II, Mediación), que pasa a denominarse 'De Mediación' (art. 71)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-02"
+      verified_by: "MD"
+      verified_against: "local:ley_7561_2025_arbitraje.md"
+      official_source_checked: true
+      notes: "Sancionada 30-09-2025 (aprobada por Senadores 03-09-2025, sancionada por Diputados 30-09-2025). Título oficial 'DE ARBITRAJE' confirmado contra el encabezado del texto normalizado. Art. 71: deroga la Ley N° 1879/2002 'DE ARBITRAJE Y MEDIACIÓN', excepto sus arts. 53 a 67 (Título II, Mediación), que en adelante se denomina simplemente 'DE MEDIACIÓN'. Régimen transitorio (arts. previos al 71): laudos posteriores a la vigencia de esta ley se rigen por ella; reconocimiento/ejecución de laudos extranjeros ya iniciados antes de su vigencia sigue bajo la Ley 1879/2002. Norma reciente: no se pudo confirmar patrón de URL BACN exacto; queda source_url null. Fase 4 tarea 0.2."
+
+  ley_3283_2007:
+    official_title: "Ley N° 3283/2007 - De Protección de la Información no Divulgada y Datos de Prueba para los Registros Farmacéuticos"
+    short_cite: "Ley N° 3283/2007, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2007
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/3331/"
+    local_source: null
+    verification:
+      status: "verified"
+      verified_at: "2026-07-02"
+      verified_by: "MD"
+      verified_against: "LegalDataHunter:PY/BACN/PY_BACN_3331 (texto completo)"
+      official_source_checked: true
+      notes: "Promulgada 03-09-2007, publicada 19-09-2007. El TÍTULO sugiere ámbito farmacéutico, pero el Cap. I (arts. 1-8) contiene una protección sustantiva GENERAL de secretos industriales y comerciales, no limitada a fármacos: art. 1 (objeto: protección de la información no divulgada relativa a secretos industriales y comerciales), art. 2 y art. 3.B (define 'adquisición contraria a los usos comerciales honestos', incluyendo expresamente el incumplimiento de cláusulas de confidencialidad en contratos), art. 5 (deber de abstenerse de usar/revelar información confidencial conocida por trabajo, empleo, profesión o relación de negocios) y art. 8 (acciones civiles). Los Cap. II-IV (arts. 9-14) sí son específicos de registros farmacéuticos. MATIZ: el plazo de 3 años del art. 7 está anclado a la presentación ante la autoridad sanitaria; NO citar ese plazo para NDAs genéricos fuera del ámbito farmacéutico/sanitario. Ancla estatutaria directa del NDA en Paraguay para la protección sustantiva (arts. 1/2/3.B/5/8), no para el plazo (art. 7). Aplicación a NDAs genéricos sin jurisprudencia verificada — toda afirmación de aplicación judicial concreta fuera del ámbito farmacéutico/sanitario lleva [INSERTAR JURISPRUDENCIA VERIFICADA]. Verificada en tarea 0.3 (fase 4); cargada al map en tarea pendiente de 0.3. Ver verification-log.md → nda_ancla_ley3283_2007_secretos / nda_decision_ancla_final."
+
+  ley_6738_2021_teletrabajo:
+    official_title: "Ley N° 6738/2021 - Que establece la modalidad del Teletrabajo en relación de dependencia"
+    short_cite: "Ley N° 6738/2021, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2021
+    source_url: null
+    local_source: "local (texto normalizado)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-02"
+      verified_by: "MD"
+      verified_against: "local:ley_teletrabajo.md"
+      official_source_checked: true
+      notes: "Sancionada 06-05-2021, promulgada 24-05-2021. Título oficial confirmado contra el frontmatter del texto normalizado: 'QUE ESTABLECE LA MODALIDAD DEL TELETRABAJO EN RELACIÓN DEPENDENCIA'. ANCLAJES: art. 2 (ámbito: orden público, 'toda la República del Paraguay'); art. 4 (modalidad voluntaria, flexible y reversible); art. 6 (definición: trabajo a distancia mediante TIC 'realizado en el domicilio del trabajador o en un establecimiento distinto al lugar de trabajo del empleador' — el lugar de prestación del teletrabajador es donde él está); art. 7 (formas: total/parcial, online/offline); art. 8.a (igualdad de trato con el trabajador presencial). VACÍO NORMATIVO detectado (2026-07-02): la ley NO regula el teletrabajo transfronterizo (teletrabajador con domicilio en el extranjero); no lo prohíbe ni lo autoriza expresamente — las skills deben señalar el vacío, no resolverlo de memoria."
+
+  ley_6380_2019_tributario:
+    official_title: "Ley N° 6380/2019 - De Modernización y Simplificación del Sistema Tributario Nacional"
+    short_cite: "Ley N° 6380/2019, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2019
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/9332/ley-n-6380-de-modernizacion-y-simplificacion-del-sistema-tributario-nacional"
+    local_source: "local (PDF escaneado, sin capa de texto)"
+    modified_by:
+      - "Ley 7067/2023 (modifica art. 100 — en repositorio local)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-02"
+      verified_by: "MD"
+      verified_against: "BACN/9332 (texto HTML completo de la página oficial)"
+      official_source_checked: true
+      notes: "Promulgada 25-09-2019. ALCANCE de la verificación de articulado (caso extraterritorialidad laboral, 2026-07-02): SOLO arts. 5 (residencia de personas jurídicas: constituidas conforme a leyes nacionales), 6 (fuente IRE: 'actividades desarrolladas en la República' — criterio territorial), 49 (contribuyentes IRP: personas físicas RESIDENTES en el territorio nacional), 62 (rentas de servicios personales: chapeau exige trabajo 'prestado por un RESIDENTE'; num. 2: sueldos abonados por entidades residentes a sus funcionarios o empleados 'en Paraguay o en otros países'; num. 4: remuneraciones de miembros de directorios de entidades residentes), 72 (contribuyentes INR) y 73 (fuente INR; num. 9: servicios prestados DESDE el exterior por personas físicas solo son fuente paraguaya si están 'vinculados a la obtención de rentas gravadas por el IRE'). RESTO DEL ARTICULADO NO VERIFICADO — antes de citar cualquier otro artículo, contrastar contra BACN/9332 o usar [VERIFICAR VIGENCIA]. Definición reglamentaria de residencia fiscal de personas físicas: [FUENTE OFICIAL PENDIENTE] (decreto reglamentario del IRP, no verificado). OJO: los PDF de BACN y del repositorio local son ESCANEADOS; el texto útil está en el HTML de la página BACN."
+
+  # ---- EN BORRADOR (sin verificar contra fuente oficial todavía) ----
+
+  ley_5393_2015_contratos_internacionales:
+    official_title: "Ley N° 5393/2015 - Sobre el Derecho Aplicable a los Contratos Internacionales"
+    short_cite: "Ley N° 5393/2015, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2015
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/4553/ley-n-5393-sobre-el-derecho-aplicable-a-los-contratos-internacionales"
+    local_source: "local (texto normalizado + PDF oficial BACN)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-19"
+      verified_by: "MD"
+      verified_against: "BACN/4553 (HTML íntegro de la página oficial) + PDF oficial BACN leído completo en sesión (local:ley_5393_2015_contratos_internacionales.md)"
+      official_source_checked: true
+      notes: "Sancionada: Senadores 04-12-2014, Diputados 17-12-2014; promulgada 14-01-2015; publicada 20-01-2015. Texto completo (19 arts.) leído contra HTML BACN y cotejado con el PDF oficial. ANCLA de la exclusión: **art. 1° in fine** — 'Sus disposiciones no se aplican a contratos de consumo, a contratos de trabajo, ni a contratos de franquicia, representación, agencia y distribución' → la elección de derecho en un contrato laboral internacional NO puede apoyarse en esta ley; rige la lex loci executionis. Otras anclas: art. 4 (libertad de elección, sin vínculo exigido); art. 6 (elección expresa o tácita; cláusula de foro ≠ elección de derecho); art. 11 (sin elección: vínculos más estrechos); art. 13 (alcance del derecho elegido: interpretación, incumplimiento, prescripción, nulidad); art. 17 (leyes de policía paraguayas prevalecen + orden público); art. 18 (inaplica arts. 14, 17, 297, 687 y 699 CC a contratos internacionales). OJO art. 3°: la enumeración oficial es a), b), c), e), f) — NO EXISTE inciso d) en el texto promulgado (verificado contra HTML y PDF; no citar un 'art. 3 inc. d')."
+
+  ley_4933_2013_seguro_voluntario:
+    official_title: "Ley N° 4933/2013 - Autoriza la incorporación voluntaria de trabajadores independientes, empleadores, amas de casa y trabajadores domésticos al Seguro Social - Fondo de Jubilaciones y Pensiones del IPS"
+    short_cite: "Ley N° 4933/2013, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2013
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/4395/ley-n-4933--autoriza-la-incorporacion-voluntaria-de-trabajadores-independientes-empleadores-amas-de-casa-y-trabajadores-domesticos-al-seguro-social--fondo-de-jubilaciones-y-pensiones-del-instituto-de-prevision-social"
+    local_source: null
+    related:
+      - "DL 1860/50 art. 2 (Seguro General Voluntario)"
+      - "Ley 4290/2011 (jubilación proporcional, referida por el art. 4.a)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-19"
+      verified_by: "MD"
+      verified_against: "BACN/4395 (HTML íntegro de la página oficial) + PDF oficial BACN escaneado leído completo en sesión (local:ley_4933_2013_seguro_voluntario_ips.md)"
+      official_source_checked: true
+      notes: "Sancionada: Senadores 14-03-2013, Diputados 07-05-2013; promulgada 05-06-2013; publicada 13-11-2013. Texto completo (7 arts.) leído contra HTML BACN y cotejado con el PDF oficial. ALCANCE CONFIRMADO — art. 1° in fine: la afiliación voluntaria es SOLO al Fondo Común de Jubilaciones y Pensiones; 'Esta Ley no comprende las prestaciones médicas y asistenciales proveídos por el Seguro Social' → el canal previsional lícito del socio-administrador (excluido del CT por el art. 23) NO incluye seguro de salud IPS por esta vía. Sujetos (art. 2): definiciones del art. 76 incs. b y d del DL 1860/50 + art. 148 CT (doméstico). Aporte (art. 3): 13% sobre base ≥ 1 salario mínimo, elegida por el afiliado (12,5% jubilaciones + 0,5% administración). Prestaciones de largo plazo (art. 4): edad avanzada (60 años + 25 de aporte → 100% del promedio de los últimos 120 meses; 55 + 30 → 80% +4%/año hasta 59; 65 años + 750 semanas → proporcional Ley 4290/11 desde 15 años, 60%); invalidez y sobrevivencia según arts. 61-62 DL 1860/50 (texto Ley 98/92). Supletoria: DL 1860/50 (art. 5). Vigencia a los 60 días de la promulgación (art. 6)."
+
+  ley_1110_1985:
+    official_title: "Ley N° 1110/1985 - Que establece el Régimen de Notificaciones Judiciales"
+    short_cite: "Ley N° 1110/1985, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1985
+    source_url: null
+    local_source: null
+    related:
+      - "CPC (Ley 1337/1988) arts. 131-133: régimen de notificación automática martes/jueves que la absorbe para el fuero civil"
+    verification:
+      status: "draft"
+      verified_at: null
+      verified_by: null
+      verified_against: null
+      official_source_checked: false
+      notes: "Del 31-05-1985. IDENTIDAD CORREGIDA (2026-07-19, texto hallado en Justia Paraguay, fuente NO oficial): es una ley GENERAL de notificaciones judiciales, NO una modificatoria nominal del art. 81 CPT. Según ese texto: art. 1° notificación automática en Secretaría los MARTES y JUEVES (o día hábil siguiente si feriado; no se computa si el expediente no está en Secretaría); arts. 3-5 actos que exigen cédula/personal; art. 7° rige en juicios civiles, comerciales, criminales y contencioso-administrativos y EXCLUYE EXPRESAMENTE quiebras, FUERO LABORAL, menores y Justicia de Paz Letrada ('se rigen por leyes especiales'); art. 9° sábado inhábil; art. 10 derogación genérica. TRAMPA DE AUTORIDAD DETECTADA: esta ley NO puede citarse como fuente de los 'días de nota' martes/jueves del fuero laboral (su art. 7 lo excluye). El CPT art. 81 originario dice 'lunes, miércoles y viernes' y NO se halló norma que lo modifique; la práctica forense laboral real es martes/jueves, vía plausible: CPT art. 6 (remisión al CPC — cuyo art. 131 fija martes/jueves, verificado — y a 'la costumbre o el uso local en materia de procedimiento'). REGLA PARA SKILLS: citar martes/jueves en el fuero laboral como práctica forense uniforme con ancla normativa indirecta (CPT art. 6 + CPC art. 131), NUNCA como texto del art. 81 CPT ni como efecto de la Ley 1110/1985; la afirmación puntual lleva [VERIFICAR VIGENCIA]. BACN no indexa esta ley (la 'Ley 1110' de BACN id 10608 es la homónima de 1997, presupuesto UNA — no confundir). [FUENTE OFICIAL PENDIENTE] para el texto de la 1110/1985 (Gaceta Oficial / PJ)."
+
+  constitucion:
+    official_title: "Constitución de la República del Paraguay (1992)"
+    short_cite: "Const. Nac., art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1992
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/9580/constitucion-nacional-"
+    local_source: "local (texto normalizado)"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-30"
+      verified_by: "MD"
+      verified_against: "local:constitucion_nacional_1992.md"
+      official_source_checked: true
+      notes: "Sancionada y promulgada 20-06-1992 por la Convención Nacional Constituyente. Año y título confirmados contra la copia local normalizada."
+
+  codigo_penal:
+    official_title: "Ley N° 1160/1997 - Código Penal"
+    short_cite: "Ley N° 1160, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1997
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/3497/ley-n-1160-1997-codigo-penal"
+    local_source: null
+    modified_by:
+      - "Ley 3440/2008 (modifica varias disposiciones; entre ellas el art. 148)"
+      - "Ley 4614/2012 (arts. 236 y 309)"
+      - "Ley 6535/2020 (art. 103)"
+      - "Ley 7062/2023 (arts. 8, 105, 240; incorpora sicariato)"
+      - "Ley 7220/2024 (art. 172)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-02"
+      verified_by: "MD"
+      verified_against: "LegalDataHunter:PY/BACN/PY_BACN_3497 (identidad de la ley) + PJ/DINAPI Ley 3440/2008 (texto reformador art. 148)"
+      official_source_checked: true
+      notes: "IDENTIDAD verificada contra BACN vía LDH: Ley 1160/1997 'Código Penal' (prom. 26-11-1997), URL 3497. ALCANCE de la verificación de articulado (tarea 0.3-bis): solo los arts. 147, 148 y 149 (Cap. VII, Libro Segundo, 'Hechos punibles contra el ámbito de vida y la intimidad de la persona'), ancla penal del NDA. Arts. 147 y 149 NO modificados por Ley 3440/2008 → su texto vigente es el original de 1997 (documento LDH PY_BACN_3497). Art. 148 SÍ modificado por Ley 3440/2008 (Art. 1°, lista de arts.; vigencia al día siguiente por su Art. 3°): la remisión interna cambió de 'art. 14, inc. 1º, numeral 2' (original) a 'numeral 14' (vigente); pena (hasta 3 años), sujetos y régimen de instancia se mantienen. RESTO DEL ARTICULADO NO VERIFICADO: el CP tiene numerosas modificatorias; antes de citar CUALQUIER artículo distinto de 147-149 hay que contrastar el texto consolidado por la Ley 3440/2008 y posteriores; en su defecto usar [VERIFICAR VIGENCIA]. El documento LDH PY_BACN_3497 refleja la redacción ORIGINAL de 1997 (no consolidada): comprobado que su art. 148 aún dice 'numeral 2'."
+
+  codigo_procesal_penal:
+    official_title: "Ley N° 1286/1998 - Código Procesal Penal"
+    short_cite: "Ley N° 1286, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1998
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/203/ley-n-1286-codigo-procesal-penal"
+    local_source: null
+    verification:
+      status: "draft"
+      verified_at: null
+      verified_by: null
+      verified_against: null
+      official_source_checked: false
+      notes: "Año 1998 y título 'Código Procesal Penal' confirmados contra BACN (2026-06-30). Modificado por Ley 2341/2003, 4669/2012, 6353/2019. Se MANTIENE draft: articulado no verificado y fuera del foco MVP."
+
+  proteccion_datos:
+    official_title: "Ley N° 7593/2025 - Protección de Datos Personales en la República del Paraguay"
+    short_cite: "Ley N° 7593/2025, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2025
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/12924/ley-n-7593-2025-de-protecci-n-de-datos-personales-en-la-rep-blica-del-paraguay"
+    local_source: "local (texto normalizado)"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-30"
+      verified_by: "MD"
+      verified_against: "local:ley_7593_2025_proteccion_datos_personales.md"
+      official_source_checked: true
+      notes: "Sancionada 05-11-2025, promulgada 27-11-2025. Título y año confirmados contra copia local. Rige la política de privacidad del proyecto. ADVERTENCIA: sigue siendo norma inestable en la práctica — reglamentación y autoridad de aplicación en desarrollo; verificar reglamentaciones posteriores antes de citar plazos/procedimientos concretos."
+
+  proteccion_datos_crediticios:
+    official_title: "Ley N° 6534/2020 - De Protección de Datos Personales Crediticios"
+    short_cite: "Ley N° 6534, art. {art}"
+    year: 2020
+    jurisdiction: "Paraguay"
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/9417/ley-n-6534-de-proteccion-de-datos-personales-crediticios"
+    local_source: "local (texto normalizado)"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-30"
+      verified_by: "MD"
+      verified_against: "local:ley_6534_2020_datos_crediticios.md"
+      official_source_checked: true
+      notes: "Sancionada 23-09-2020, promulgada 27-10-2020. Año confirmado (antes null). Régimen SECTORIAL (datos crediticios); coexiste con la Ley 7593/2025 (protección de datos general), no derogada por ésta."
+
+  ley_5777_2016:
+    official_title: "Ley N° 5777/2016 - De Protección Integral a las Mujeres, contra toda forma de Violencia"
+    short_cite: "Ley N° 5777, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2016
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/8356/ley-n-5777-de-proteccion-integral-a-las-mujeres-contra-toda-forma-de-violencia"
+    local_source: null
+    verification:
+      status: "verified"
+      verified_at: "2026-06-30"
+      verified_by: "MD"
+      verified_against: "LegalDataHunter:PY/BACN/8356 (PY_BACN_8356)"
+      official_source_checked: true
+      notes: "Promulgada 27-12-2016, publicada 29-12-2016. Título oficial confirmado contra BACN. Vigente: la Ley 6806/2021 (emergencia por feminicidios) la COMPLEMENTA, no la deroga. Citada por la skill sumarios-acoso como normativa complementaria."
+
+  ley_5804_2017:
+    official_title: "Ley N° 5804/2017 - Que establece el Sistema Nacional de Prevención de Riesgos Laborales"
+    short_cite: "Ley N° 5804, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2017
+    source_url: null
+    local_source: "local (texto normalizado)"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-30"
+      verified_by: "MD"
+      verified_against: "local:ley_5804_2017_prevencion_riesgos_laborales.md"
+      official_source_checked: true
+      notes: "Sancionada 29-11-2016, promulgada 10-01-2017. TÍTULO OFICIAL CORREGIDO: es 'Sistema Nacional de Prevención de Riesgos Laborales' (antes se la rotulaba 'Seguridad y Salud en el Trabajo', inexacto). Citada por la skill sumarios-acoso como normativa complementaria."
+
+  res_mtess_195_2026:
+    official_title: "Resolución MTESS N° 195/2026 - Por la cual se aprueban los lineamientos de prevención, atención, investigación y respuesta ante situaciones de discriminación, violencia y acoso en el mundo del trabajo en el sector privado"
+    short_cite: "Resolución MTESS N° 195/2026, num. {num}"
+    jurisdiction: "Paraguay"
+    year: 2026
+    source_url: null
+    local_source: "local (PDF primario)"
+    modified_by:
+      - "Res. MTESS 564/2026 (modifica Anexo I: punto 3.i definición 'espacio de trabajo', punto 16 violencia de terceros, punto 17 denuncia excluyente MTESS/empresa; sustituye 'mundo del trabajo' por 'espacio de trabajo' en todo el texto)"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-30"
+      verified_by: "MD"
+      verified_against: "local:Res MTESS 195-2026 - Protocolo Violencia Laboral.pdf (texto primario, 36 págs.)"
+      official_source_checked: true
+      notes: "Norma base de la skill sumarios-acoso. Fecha 10-03-2026 (Exp. 2026-12015001-003040; la fecha 10-03 la confirma el texto de la Res. 564/2026, que la cita como 'de fecha 10 de marzo de 2026'). DEJA SIN EFECTO la Res. MTESS 388/2019 (del 18-02-2019). Ámbito: sector privado. Título oficial confirmado contra el PDF primario en disco. Al citar puntos del Anexo I, usar el texto según Res. 564/2026 para los puntos 3.i, 16 y 17; los PLAZOS (3/30/3 días hábiles) no fueron modificados (art. 7° de la 564 mantiene vigente lo no modificado)."
+
+  res_mtess_564_2026:
+    official_title: "Resolución MTESS N° 564/2026 - Por la cual se modifica parcialmente la Resolución MTESS N° 195/2026, de fecha 10 de marzo de 2026, por la cual se aprueban los lineamientos de prevención, atención, investigación y respuesta ante situaciones de discriminación, violencia y acoso en el mundo del trabajo en el sector privado"
+    short_cite: "Resolución MTESS N° 564/2026, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2026
+    source_url: null
+    local_source: "local (PDF primario)"
+    related:
+      - "Modifica parcialmente la Res. MTESS 195/2026 (ver res_mtess_195_2026)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-19"
+      verified_by: "MD"
+      verified_against: "local:Res MTESS 564-2026 - Modifica Res 195-2026 Violencia Laboral.pdf (texto primario completo, 7 págs.)"
+      official_source_checked: true
+      notes: "Firmada electrónicamente el 27-05-2026 (art. 8°: la fecha de la resolución es la de la firma electrónica de la Máxima Autoridad; Ministra Mónica Recalde). Exp. 2026-12015001-006856 del 25-05-2026 (Dir. Gral. de Promoción a la Mujer Trabajadora). CONTENIDO: art. 2° redefine 'Espacio de trabajo' (Anexo I punto 3.i) con 4 ámbitos (instalaciones; espacios de descanso/alimentación/higiene provistos o autorizados; desplazamientos/viajes/actividades organizadas o autorizadas; comunicaciones vinculadas al trabajo, incl. telemáticas) y EXCLUYE hechos sin 'relación directa, objetiva y verificable con la prestación laboral'. Art. 3°: en toda la Res. 195/2026, 'mundo del trabajo' se entiende sustituido por 'espacio de trabajo'. Art. 4° reescribe el punto 16 (violencia de TERCEROS: solo medidas razonables y proporcionales; sin incumplimiento por hechos no previsibles, evitables o controlables). Art. 5° reescribe el punto 17 (denuncia verbal o escrita, presencial o electrónica, ante MTESS o empresa; la presentación ante una instancia es EXCLUYENTE de la otra mientras el procedimiento esté en curso, salvo inacción o incumplimiento acreditado; denuncia contra la máxima autoridad o representante del empleador según art. 25 CT va DIRECTAMENTE al MTESS; contenido mínimo incs. a-d; NO se admiten denuncias anónimas). Art. 7°: mantiene vigente lo no modificado — los plazos 3/30/3 días hábiles de la 195/2026 NO cambian. Norma citada por la skill sumarios-acoso."
+
+  res_mtess_388_2019:
+    official_title: "Resolución MTESS N° 388/2019 - (régimen anterior de violencia/acoso laboral)"
+    short_cite: "Resolución MTESS N° 388/2019"
+    jurisdiction: "Paraguay"
+    year: 2019
+    source_url: null
+    local_source: null
+    verification:
+      status: "deprecated"
+      verified_at: null
+      verified_by: null
+      verified_against: null
+      official_source_checked: false
+      notes: "Derogada por la Res. 195/2026. Interés histórico para casos iniciados antes del 01/07/2026."
+
+  decreto_8304_2017:
+    official_title: "Decreto N° 8304/2017 - (régimen anterior de inscripción obrero patronal, planillas y comunicaciones ante el MTESS)"
+    short_cite: "Decreto N° 8304/2017"
+    jurisdiction: "Paraguay"
+    year: 2017
+    source_url: null
+    local_source: null
+    verification:
+      status: "deprecated"
+      verified_at: "2026-06-30"
+      verified_by: "MD"
+      verified_against: "local:Decreto 1989 - Registro Obrero Patronal.pdf (art. 3° lo deroga)"
+      official_source_checked: true
+      notes: "DEROGADO por el Decreto 1989/2024 (art. 3°), junto con el Decreto 9368/2018. NO citar como vigente. Régimen actual: decreto_1989_2024 + res_mtess_991_2024 (sistema REOP). Interés histórico para hechos anteriores a 2024."
+
+  res_mtess_672_2024:
+    official_title: "Resolución MTESS N° 672/2024 - Aprueba el Reglamento que establece el procedimiento sancionador para los sumarios administrativos instruidos por supuestas infracciones a las disposiciones legales y reglamentarias laborales, de seguridad social y de salud y seguridad ocupacional"
+    short_cite: "Resolución MTESS N° 672/2024"
+    jurisdiction: "Paraguay"
+    year: 2024
+    source_url: null
+    local_source: "local (PDF primario + anexo)"
+    verification:
+      status: "verified"
+      verified_at: "2026-06-30"
+      verified_by: "MD"
+      verified_against: "local:Res MTESS 672-2024 - Anexo.pdf (texto primario + anexo reglamentario)"
+      official_source_checked: true
+      notes: "Dictada 14-08-2024. DEJA SIN EFECTO las Res. MTESS 203/2018, 502/2018 y 476/2022. Su anexo es el Reglamento del procedimiento sancionador (sumarios administrativos). Citada por la skill sumarios-mtess. Título oficial confirmado contra el PDF primario en disco."
+
+  res_mtess_346_2024:
+    official_title: "Resolución MTESS N° 346/2024 - Por la cual se deja sin efecto la Resolución MTESS N° 47/2016, la Resolución MTESS 56/2017, se derogan los artículos 3° y 4° de la Resolución MTESS 29/2023 y se aprueba el Manual de Procedimiento de Inspección y Fiscalización Laboral, contenido en el Anexo I de la presente Resolución"
+    short_cite: "Resolución MTESS N° 346/2024, {parte}"
+    jurisdiction: "Paraguay"
+    year: 2024
+    source_url: null
+    local_source: "local (PDF primario firmado + Anexo I Manual, 69 págs.)"
+    derogates:
+      - "Res. MTESS 47/2016 (procedimiento general de inspección anterior; había dejado sin efecto la Res. 622/2015) - art. 1°"
+      - "Res. MTESS 56/2017 (ampliación del reglamento de trámite administrativo de verificación) - art. 2°"
+      - "Res. MTESS 29/2023, arts. 3° y 4° - art. 3°"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-19"
+      verified_by: "MD"
+      verified_against: "local:Res MTESS 346-2024 - Manual Inspeccion y Fiscalizacion.pdf (facsímil del documento oficial firmado, 69 págs. con OCR; parte resolutiva y estructura del Manual leídas en sesión)"
+      official_source_checked: true
+      notes: "Asunción, 21-05-2024. Firmada por la Ministra Mónica Recalde de Giacomi. Art. 4°: aprueba el Manual de Procedimiento de Inspección y Fiscalización Laboral (Anexo I, 64 fojas), alineado al Convenio OIT 81; art. 5°: implementación por el Viceministerio de Trabajo vía Dir. Gral. de Inspección y Fiscalización. El Manual regula el procedimiento completo: emisión de la Orden de Inspección y Fiscalización (OIF) de oficio, por denuncia particular/gremial o por requerimiento público/fiscal/judicial; plazo de validez de la OIF; etapas, visitas, entrevistas, y conclusión con informe final o acta de infracción. PROCEDENCIA del PDF: facsímil del documento oficial firmado obtenido de vouga.com.py (2026-07-19); el portal MTESS no expone URL directa estable — si aparece publicación oficial en mtess.gov.py, cargar source_url. Los PLAZOS puntuales del Manual (validez OIF, comparecencias, duración total) deben citarse contra la página exacta del Anexo I antes de usarse en una skill. Citada por la skill sumarios-mtess."
+
+  oit_c190:
+    official_title: "Convenio OIT N° 190 (2019) y Recomendación N° 206 - Violencia y acoso en el mundo del trabajo"
+    short_cite: "Convenio OIT N° 190"
+    jurisdiction: "Internacional"
+    year: 2019
+    source_url: null
+    local_source: null
+    verification:
+      status: "verified"
+      verified_at: "2026-07-19"
+      verified_by: "MD"
+      verified_against: "BACN (sin ley aprobatoria del C190, verificado 2026-06-30) + lista de ratificaciones del C190 derivada de NORMLEX (consultada 2026-07-19: Paraguay ausente entre los 55 Estados ratificantes)"
+      official_source_checked: true
+      notes: "ESTADO CONFIRMADO (2026-07-19): Paraguay NO ratificó el Convenio OIT N° 190. Doble anclaje: (1) BACN no registra ley aprobatoria — y sin ley aprobatoria del Congreso (CN arts. 141 y 202 num. 9) un tratado NO es derecho interno paraguayo (sí figuran el C182 Ley 1657/2001 y el C189 Ley 4819/2012); (2) la lista de ratificaciones del C190 (55 Estados al 2026, según NORMLEX — el acceso directo a normlex.ilo.org está bloqueado a fetchers, consultada vía réplica) no incluye a Paraguay; en Sudamérica ratificaron Uruguay (2020), Argentina (2021), Ecuador (2021), Perú (2022) y Chile (2023). REGLA PARA SKILLS: tratarlo como soft law / referencia interpretativa (la Res. MTESS 195/2026 se inspira en su enfoque), NUNCA citarlo como norma vinculante ni como derecho interno vigente. Si se afirma la ratificación futura, re-verificar contra NORMLEX."

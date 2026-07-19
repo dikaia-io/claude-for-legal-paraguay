@@ -1,0 +1,8 @@
+{
+  "name": "paraguay-legal-core",
+  "version": "0.1.0",
+  "description": "Núcleo transversal de Claude for Legal Paraguay: identidad y reglas inmodificables (agente asistente-paraguay) + skills setup, diagnostico, citacion, fuentes-oficiales y plazos. Del que dependen los demás plugins.",
+  "author": {
+    "name": "Miguel Fernando Díaz"
+  }
+}

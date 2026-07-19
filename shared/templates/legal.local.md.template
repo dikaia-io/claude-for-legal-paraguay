@@ -1,0 +1,100 @@
+# Configuración local del abogado / estudio
+
+> **CÓMO USAR ESTE ARCHIVO**
+>
+> 1. Copiá este archivo a `legal.local.md` (sin el sufijo `.template`).
+> 2. Completá los campos entre corchetes `[...]`.
+> 3. **NUNCA versiones `legal.local.md`.** Contiene datos personales y ya está bloqueado por
+>    `.gitignore`. Solo el `.template` (con placeholders) se versiona.
+>
+> **CÓMO SE CARGA**
+>
+> - **Claude Project:** pegá el contenido de tu `legal.local.md` junto al de `CLAUDE.base.md`
+>   en el campo "instrucciones del proyecto".
+> - **Plugin de Claude Code:** mantené tu `legal.local.md` en el workspace; el asistente lo
+>   lee como contexto. No lo incluyas en el paquete del plugin que distribuís.
+>
+> Este archivo **complementa** a `CLAUDE.base.md` (las reglas inmodificables); no lo reemplaza.
+> Ante conflicto, las reglas inmodificables de `CLAUDE.base.md` siempre prevalecen.
+
+---
+
+## Identidad profesional
+
+Firma: [COMPLETAR — nombre del estudio o "Profesional independiente"]
+Abogado responsable: [COMPLETAR — nombre y apellido]
+Matrícula CSJ: [COMPLETAR — número de matrícula de la Corte Suprema de Justicia]
+Jurisdicción principal: Paraguay
+Circunscripción habitual: [Capital / Central / otra — indicar cuál]
+
+## Práctica
+
+Rol predominante: [empleador / trabajador / mixto]
+Áreas prioritarias: [laboral / civil / comercial / litigación / otras — listar]
+Sector habitual de clientes: [comercio / servicios / industria / agro / construcción / maquila / otro]
+
+## Repositorios locales (opcional)
+
+Si tenés repositorios de legislación/jurisprudencia/modelos en disco, indicá las rutas
+acá para que el asistente los consulte antes que el portal web. Dejá vacío si no aplica.
+
+Legislación local: [COMPLETAR — ruta a tu repositorio de legislación normalizada, o vacío]
+Jurisprudencia local: [COMPLETAR — ruta a tu repositorio de fallos, o vacío]
+Casos y modelos: [COMPLETAR — CONFIDENCIAL, anonimizar antes de incorporar al repo]
+
+## Preferencias de estilo
+
+Estilo de salida: [formal-estratégico / formal-neutro / didáctico]
+Nivel de detalle por defecto: [ejecutivo / completo]
+Idioma de citas: español jurídico paraguayo
+
+## Datos de contacto (opcional, para encabezados de escritos)
+
+Domicilio procesal: [COMPLETAR o dejar vacío]
+Teléfono: [COMPLETAR o dejar vacío]
+Correo: [COMPLETAR o dejar vacío]
+
+## Posiciones del estudio — contratos (opcional)
+
+> Estas posiciones calibran `revision-contractual` y `redaccion-contractual`.
+> Si quedan vacías, las skills operan en modo neutral y lo declaran.
+> No cargues acá datos de clientes ni condiciones de una operación real.
+
+#### Limitación de responsabilidad
+- Preferida: [COMPLETAR — posición preferida]
+- Aceptable: [COMPLETAR — rango de fallback]
+- Nunca aceptar: [COMPLETAR — línea roja]
+
+#### Jurisdicción y arbitraje
+- Preferida: [COMPLETAR — tribunales ordinarios de qué ciudad / arbitraje local si aplica]
+- Aceptable: [COMPLETAR — alternativas negociables]
+- Nunca aceptar: [COMPLETAR — p. ej. jurisdicción extranjera sin aprobación expresa]
+
+#### Mediación previa (opcional)
+- Preferida: [COMPLETAR — sin mediación / mediación voluntaria ante centro paraguayo, con plazo máximo]
+- Aceptable: [COMPLETAR — alternativas negociables]
+- Nunca aceptar: [COMPLETAR — p. ej. mediación sin plazo, fuera de Paraguay o que bloquee medidas urgentes]
+
+#### Cláusula penal
+- Preferida: [COMPLETAR — criterio de proporcionalidad / tope]
+- Aceptable: [COMPLETAR — rango de fallback]
+- Nunca aceptar: [COMPLETAR — línea roja]
+
+#### Plazo de confidencialidad
+- Preferida: [COMPLETAR — plazo estándar]
+- Aceptable: [COMPLETAR — rango de fallback]
+- Nunca aceptar: [COMPLETAR — p. ej. plazo indefinido sin justificación]
+
+#### Reajuste en contratos de tracto largo
+- Preferida: [COMPLETAR — índice/fuente/metodología]
+- Aceptable: [COMPLETAR — rango de fallback]
+- Nunca aceptar: [COMPLETAR — línea roja]
+
+#### Garantías
+- Preferida: [COMPLETAR — garantía y formalidad preferida]
+- Aceptable: [COMPLETAR — alternativas negociables]
+- Nunca aceptar: [COMPLETAR — línea roja]
+
+## Notas internas (opcional — nunca se publica ni se cita)
+
+[Espacio libre para criterios propios del estudio, recordatorios o convenciones internas.]

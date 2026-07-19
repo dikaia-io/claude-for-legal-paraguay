@@ -1,0 +1,336 @@
+# =============================================================================
+#  Authority map — jurisprudencia.yaml
+#  Criterios jurisprudenciales paraguayos y fallos individuales verificados.
+#  Estados de verificación análogos a leyes.yaml (draft / verified / deprecated).
+#
+#  Estructura en DOS niveles:
+#   - criteria:  el CRITERIO o tendencia de los tribunales sobre un punto
+#                (lo que una skill puede afirmar como "práctica jurisprudencial").
+#   - rulings:   FALLOS individuales con carátula/sala/fecha/extracto, para CITAR.
+#
+#  Regla dura (gramática de autoridad):
+#   - Una skill puede afirmar un `criterion` verified como tendencia, SIN citar
+#     un fallo puntual, si el rango/criterio está confirmado.
+#   - Para CITAR un fallo concreto en un escrito hace falta una entrada en `rulings`
+#     con `caratula` y `official_source_checked: true` (confirmada contra PJ/CSJ).
+#   - Mientras un ruling no esté confirmado contra PJ/CSJ → [INSERTAR JURISPRUDENCIA VERIFICADA].
+#
+#  Fuentes de verificación (orden de preferencia):
+#   - PJ/CSJ (pj.gov.py) = fuente oficial primaria de jurisprudencia.
+#   - RAG local (repositorio de jurisprudencia ingestado del estudio) = fuente
+#     intermedia: más confiable que la memoria del modelo, NO es el portal oficial.
+# =============================================================================
+
+# ---- CRITERIOS jurisprudenciales (tendencias verificadas) ----
+
+criteria:
+
+  complementaria_art82_quantum:
+    topic: "Cuantificación de la indemnización complementaria (art. 82, 2º párr. CT)"
+    related_law: "codigo_trabajo"  # art. 82, 2º párrafo
+    criterion: >-
+      Aunque el art. 82 fija como tope el total de salarios desde la demanda hasta
+      la sentencia ejecutoriada (máximo 1 año de salario), los Tribunales de Apelación
+      del Trabajo la fijan en la práctica en un RANGO BAJO de 1 a 2 MESES de salario,
+      por "criterio de equidad". El tope de 12 meses NO se aplica en la práctica
+      relevada. La equidad se usa para REDUCIR, no para acercarse al tope. Excepción:
+      en litigios muy prolongados (varios años) y con alta antigüedad, algún tribunal
+      eleva el monto ponderando duración del proceso, desvalorización monetaria y costo
+      de vida, sin llegar al máximo.
+    divergence_note: >-
+      Hay divergencia entre salas en el PRESUPUESTO de procedencia: la Sala 1 (Trabajo)
+      tiende a otorgarla aun sin imputación expresa de causal si el empleador negó el
+      despido y no lo probó; la Sala 2 tiende a exigir imputación expresa de justa causa
+      en la contestación. Si la causal SÍ se prueba, la complementaria no procede.
+    practical_use: >-
+      En análisis de contingencia patronal, estimar la complementaria en ~1-2 meses de
+      salario (no en el tope legal). Es un rango de práctica, no una tasa legal.
+    verification:
+      status: "verified"
+      verified_at: "2026-06-30"
+      verified_by: "MD"
+      verified_against: "RAG local de jurisprudencia (Trib. Apel. Trabajo Sala 1 y 2, fallos 2023-2025)"
+      official_source_checked: false  # RAG, no portal PJ/CSJ
+      certainty: "alto para el rango 1-2 meses; medio para carátulas/quantum exacto de cada fallo"
+      notes: >-
+        Verificado contra ~9 fallos del RAG (Trib. Apel. Trabajo Sala 1 y Sala 2, años
+        2023-2025): predominan 1 y 2 meses; ningún fallo alcanzó el tope de 1 año; un
+        fallo de Sala 2 (litigio >3 años, 12 años de antigüedad) elevó el monto sin
+        llegar al máximo. Reemplaza la estimación previa de "≈2 meses" que figuraba como
+        práctica en las skills. Las CITAS individuales de esos fallos quedan PENDIENTES
+        de confirmación de carátula contra PJ/CSJ → cargarlas en `rulings` cuando se
+        confirmen. No citar un Ac. y Sent. puntual como verificado hasta entonces.
+
+  nulidad_ejecucion_trascendencia:
+    topic: "Excepción de nulidad de la ejecución (art. 463 CPC): vicio + perjuicio + defensas impedidas"
+    related_law: "codigo_procesal_civil"  # art. 463
+    criterion: >-
+      Los Tribunales de Apelación Civil y Comercial exigen para la nulidad de la ejecución
+      los presupuestos de toda nulidad procesal: un VICIO y un PERJUICIO cierto y concreto
+      (principio de trascendencia — "no procede la nulidad por la nulidad misma"). Quien la
+      opone debe INDICAR qué defensas se vio impedido de oponer; si no alega defensa alguna
+      ni desconoce la legitimidad del crédito, la nulidad carece de finalidad práctica y se
+      rechaza. Las causales son las taxativas del art. 463 CPC. Los tribunales citan de
+      manera uniforme a Alsina y a Tellechea Solís sobre el punto.
+    practical_use: >-
+      Del lado del ejecutado: nunca plantear la nulidad "seca" — articular siempre el
+      perjuicio concreto y la defensa que el vicio impidió oponer (idealmente, depositando u
+      oponiendo excepciones junto al planteo, art. 463 inc. a). Del lado del ejecutante: la
+      contestación ataca la falta de trascendencia antes que el vicio mismo.
+    verification:
+      status: "verified"
+      verified_at: "2026-07-05"
+      verified_by: "MD"
+      verified_against: "RAG local de jurisprudencia (Trib. Apel. Civ. y Com., salas 4, 5 y 6, fallos 2025)"
+      official_source_checked: false  # RAG, no portal PJ/CSJ
+      certainty: "alta para el criterio (texto uniforme en 4 fallos de 3 salas); carátulas pendientes"
+      notes: >-
+        Relevado de 4 A. y S. de 2025 (sala 5 N° 1 del 14-02; sala 6 N° 98 del 24-11;
+        sala 4 N° 59 del 11-09 y N° 10 del 19-03), todos confirmatorios, con fundamentación
+        casi idéntica. Carátulas pendientes de confirmar contra PJ/CSJ antes de cargar en
+        `rulings` y citar un fallo puntual.
+
+  inhabilidad_titulo_alcance:
+    topic: "Excepción de inhabilidad de título (art. 462 inc. d CPC): alcance e incompatibilidad con el pago"
+    related_law: "codigo_procesal_civil"  # art. 462 inc. d
+    criterion: >-
+      La inhabilidad de título refiere al CARÁCTER del título — las condiciones
+      indispensables para que tenga fuerza ejecutiva según la ley — y solo puede fundarse en
+      la falta de acción o en no ser el documento de los que traen aparejada ejecución
+      (art. 462 inc. d). Es INCOMPATIBLE con defensas que reconocen la deuda: quien opone
+      inhabilidad debe negar la deuda; si simultáneamente opone pago (aun parcial), reconoce
+      explícitamente la obligación y la inhabilidad deviene improcedente por carencia de
+      objeto. Los tribunales citan a Casco Pagano sobre el alcance de la excepción.
+    practical_use: >-
+      Al diagnosticar una defensa de ejecutado (skill diagnostico-escritos), marcar como
+      hallazgo crítico la coexistencia de inhabilidad + pago sobre la misma deuda: los
+      tribunales la resuelven contra el excepcionante. Elegir una teoría del caso.
+    verification:
+      status: "verified"
+      verified_at: "2026-07-05"
+      verified_by: "MD"
+      verified_against: "RAG local de jurisprudencia (Trib. Apel. Civ. y Com., salas 1 y 6, fallos 2024-2025)"
+      official_source_checked: false
+      certainty: "alta para el criterio; carátulas pendientes"
+      notes: >-
+        Relevado de A. y S. sala 6 N° 115 (17-12-2025) y N° 72 (07-10-2025) — este último
+        con la regla de incompatibilidad con el pago parcial — y sala 1 N° 96 (17-12-2024,
+        capital). Todos confirmatorios. Carátulas pendientes contra PJ/CSJ.
+
+  pago_documentado_requisitos:
+    topic: "Excepción de pago documentado (art. 462 inc. f CPC): requisitos del documento"
+    related_law: "codigo_procesal_civil"  # art. 462 inc. f
+    criterion: >-
+      Para que prospere la excepción de pago documentado (total o parcial) los tribunales
+      exigen que el documento de pago (a) emane del acreedor/ejecutante y cumpla las
+      formalidades del caso, y (b) haga referencia CONCRETA Y PRECISA a los documentos base
+      de la ejecución: recibos genéricos o que no se vinculan inequívocamente con la deuda
+      ejecutada no sustentan la excepción. La documentación probatoria debe acompañarse al
+      oponer la excepción.
+    practical_use: >-
+      Del lado del ejecutado: verificar antes de oponer que cada recibo/transferencia
+      identifique la obligación ejecutada (número de pagaré, cuota, factura); si no, la
+      excepción nace débil. Del lado del ejecutante: atacar la falta de vinculación
+      recibo-título antes que la autenticidad.
+    verification:
+      status: "verified"
+      verified_at: "2026-07-05"
+      verified_by: "MD"
+      verified_against: "RAG local de jurisprudencia (Trib. Apel. Civ. y Com., salas 1, 4 y 6, fallos 2024-2025)"
+      official_source_checked: false
+      certainty: "alta para el criterio (repetido entre salas y años); carátulas pendientes"
+      notes: >-
+        Relevado vía búsqueda híbrida: sala 4 A. y S. N° 8 (28-02-2025) y N° 57 (26-08-2025)
+        — "recibos que no hacen referencia concreta y precisa a los documentos base de la
+        ejecución"; sala 1 N° 115 (12-11-2025), N° 86 (20-11-2024), N° 16 (24-03-2025) y
+        N° 27 (10-05-2024) — requisitos formales y sustanciales, documento emanado del
+        acreedor; sala 6 N° 40 (12-07-2024) — requisitos propios específicos de viabilidad.
+        Carátulas pendientes contra PJ/CSJ.
+
+  nulidad_oficiosa_alzada:
+    topic: "Recurso de nulidad: análisis de oficio por el Tribunal de Apelación"
+    related_law: "codigo_procesal_civil"  # arts. 113, 405, 417
+    criterion: >-
+      Los Tribunales de Apelación Civil y Comercial analizan la nulidad de la resolución
+      recurrida DE OFICIO aun cuando el recurso de nulidad haya sido desistido o no se lo
+      haya fundado (implícito en la apelación, art. 405; nulidades declarables de oficio,
+      art. 113). Antes de tener por desistido el recurso, la Alzada deja constancia de que
+      no observa vicios que ameriten declaración oficiosa. El tribunal superior tampoco
+      queda atado a la forma de concesión del recurso (art. 417).
+    practical_use: >-
+      Al apelar o contestar agravios, revisar el expediente con ojos de nulidad aunque nadie
+      la haya fundado: la Alzada puede declararla de oficio. Desistir del recurso de nulidad
+      no inmuniza la resolución.
+    verification:
+      status: "verified"
+      verified_at: "2026-07-05"
+      verified_by: "MD"
+      verified_against: "RAG local de jurisprudencia (Trib. Apel. Civ. y Com., salas 3 y 4, fallos 2025)"
+      official_source_checked: false
+      certainty: "media-alta (2 fallos coherentes entre sí y con el texto legal); carátulas pendientes"
+      notes: >-
+        Relevado de A. y S. sala 4 N° 61 (02-10-2025: desistimiento del recurso de nulidad
+        con constancia de no observar vicios para declaración oficiosa; cita del art. 417) y
+        sala 3 N° 24 (18-03-2025: la nulidad va implícita en la apelación y las Alzadas la
+        analizan de oficio, criterio extendido incluso al amparo). Carátulas pendientes de
+        PJ/CSJ.
+
+  admisibilidad_fundamentacion_concreta:
+    topic: "Test de admisibilidad de la acción de inconstitucionalidad: agravio concreto vs. invocación genérica (art. 12 Ley 609/95, arts. 552/557 CPC)"
+    related_law: "organiza_csj"  # art. 12; concordante arts. 552 y 557 CPC
+    criterion: >-
+      La Sala Constitucional exige que el escrito de promoción se "autoabastezca": no
+      basta citar las normas o principios constitucionales que se dicen infringidos, hay
+      que demostrar la LESIÓN CONCRETA, actual y discriminada que la resolución impugnada
+      causa al accionante — no una mera disconformidad con lo resuelto ni un intento de
+      reeditar la instancia ordinaria como si fuera una tercera instancia de revisión.
+      Cuando el escrito se limita a relatar irregularidades procesales o a enunciar normas
+      sin conectar el agravio de rango constitucional con el caso concreto, la acción se
+      rechaza "in limine". Cuando en cambio el escrito precisa la norma constitucional
+      afectada y justifica el perjuicio concreto, la Sala da trámite y corre vista a la
+      Fiscalía General del Estado.
+    practical_use: >-
+      Al redactar una acción de inconstitucionalidad, no alcanza con enumerar los
+      artículos constitucionales invocados: hay que explicitar, caso por caso, qué lesión
+      concreta, actual y propia sufre el accionante (no el mero desacuerdo con la
+      interpretación del juzgador ni un relato de irregularidades procesales). Ese relato
+      de trámite, sin más, no sustituye al agravio constitucional exigido por el art. 12
+      Ley 609/95 y los arts. 552/557 CPC.
+    verification:
+      status: "verified"
+      verified_at: "2026-07-18"
+      verified_by: "MD"
+      verified_against: "Portal oficial CSJ (2 documentos de jurisprudencia completos, vía Legal Data Hunter)"
+      official_source_checked: true
+      certainty: >-
+        alta para el criterio (2 fallos con fundamentación textual coincidente y
+        resultados opuestos según se cumpla o no el estándar); el N° de A.I. propio de
+        cada resolución NO pudo confirmarse (ver notas) — por eso ninguno de los dos se
+        cargó en `rulings`.
+      notes: >-
+        Relevado de 2 fallos de la Sala Constitucional (CSJ) leídos COMPLETOS vía Legal
+        Data Hunter (source PY/CSJJurisprudencia): PY-CSJ-110300 (rechaza "in limine",
+        13-02-2025, "Julio Gómez Ayala y Alcides Obregón Ibarra c/ A.I. Nº 116/2023 del
+        Tribunal de Apelación en lo Penal") y PY-CSJ-110279 (DA TRÁMITE, 13-02-2025,
+        "Gloria Mercedes Pizzurno Jara c/ art. 1 Ley 4252/2010"). Ambos citan y aplican
+        literalmente el mismo estándar del art. 12 Ley 609/95 y arts. 552/557 CPC, con
+        resultado opuesto según se demuestre o no el agravio concreto — lo que refuerza el
+        criterio en vez de debilitarlo. ADVERTENCIA DE MÉTODO (por qué NO están en
+        `rulings`): el OCR del portal CSJ no permitió leer con claridad el N° propio del
+        Auto Interlocutorio en el cuerpo de NINGUNO de los dos documentos (el campo "A.I.
+        Nº" aparece en blanco o ilegible). El número que muestra el TÍTULO de cada
+        documento ("Nº 1831. Año 2023" y "Nº 1711. Año 2022" respectivamente) se contrastó
+        contra otros ~8 fallos del mismo lote de febrero de 2025 (mismo formato de título,
+        años de "AÑO" dispares — 2018, 2020, 2021, 2022, 2023 — para resoluciones dictadas
+        todas en la misma semana): esto confirma que ese número/año identifica el
+        EXPEDIENTE de la acción (año de radicación), NO el N° del A.I. de la Sala
+        Constitucional. Por eso ninguno de los dos fallos se cargó en `rulings` — no hay
+        N° de A.I. confirmado para citar puntualmente en un escrito. Un tercer fallo leído
+        en la misma sesión (PY-CSJ-110347, "Sesar Cristaldo Esquivel", A.I. del
+        03-02-2025) se descartó de este criterio porque su fundamento de rechazo fue
+        distinto (falta de personería/legitimación del abogado patrocinante, arts. 87
+        C.O.J. y 46/47 CPC), no la falta de fundamentación concreta del agravio
+        constitucional. Detalle completo de los 3 fallos leídos en `verification-log.md`
+        (fila 2026-07-18, entrada `admisibilidad_fundamentacion_concreta`).
+
+  control_concentrado_via_reservada:
+    topic: "Control de constitucionalidad concentrado: vía reservada a la Sala Constitucional"
+    related_law: "organiza_csj"  # art. 13; CN 260
+    criterion: >-
+      Los tribunales ordinarios no declaran la inconstitucionalidad de normas: la
+      Constitución la reserva a la Sala Constitucional de la CSJ (control concentrado).
+      El tribunal de mérito que advierte el planteo lo rechaza por incompetencia y
+      remite a la vía del art. 260 CN / art. 13 Ley 609.
+    practical_use: >-
+      No pedir a un juzgado o tribunal de apelación que "declare inconstitucional" una
+      norma: la vía es la excepción o la acción ante la Sala. Ante un planteo adverso
+      así formulado, atacar la vía antes que el fondo.
+    verification:
+      status: "verified"
+      verified_at: "2026-07-18"
+      verified_by: "MD"
+      verified_against: "RAG local de jurisprudencia (Trib. Apel. Civ. y Com., fuero civil, A. y S. 5 del 02-10-2025)"
+      official_source_checked: false
+      certainty: "media (fallo individual, coherente con el texto expreso de CN 260 y art. 13 Ley 609); carátula pendiente"
+      notes: >-
+        Relevado de un único fallo que cita expresamente el art. 13 de la Ley 609/1995.
+        La regla coincide con el texto constitucional y legal verificado, por eso se
+        carga pese a ser fallo único. Carátula pendiente de PJ/CSJ.
+
+  amparo_improcedente_accion_pendiente:
+    topic: "Amparo: improcedencia cuando la misma norma ya está atacada por acción de inconstitucionalidad pendiente"
+    related_law: "codigo_procesal_civil"  # arts. 565 y ss.; interacción con 550 y ss.
+    criterion: >-
+      El amparo no procede cuando la situación denunciada ya se encuentra en estudio
+      ante la Sala Constitucional mediante acción de inconstitucionalidad sobre la
+      misma norma: no hay urgencia que justifique la vía excepcional ni puede usarse
+      el amparo para anticipar el resultado de la acción pendiente.
+    practical_use: >-
+      Antes de plantear amparo contra la aplicación de una norma, verificar si existe
+      acción de inconstitucionalidad pendiente sobre ella (propia o de tercero): su
+      pendencia es defensa directa de la contraparte contra el amparo.
+    verification:
+      status: "verified"
+      verified_at: "2026-07-18"
+      verified_by: "MD"
+      verified_against: "RAG local de jurisprudencia (Trib. Apel. Trabajo Sala 1, A. y S. 167 del 21-08-2025)"
+      official_source_checked: false
+      certainty: "media (fallo individual con sumario doctrinario explícito); carátula pendiente"
+      notes: "Un solo fallo relevado; sumario/doctrina del propio documento. Carátula pendiente de PJ/CSJ."
+
+  diferimiento_por_accion_pendiente:
+    topic: "Efecto práctico de la acción de inconstitucionalidad pendiente sobre el proceso: diferimiento del pronunciamiento"
+    related_law: "codigo_procesal_civil"  # interacción con 559
+    criterion: >-
+      Ante una acción de inconstitucionalidad pendiente ante la CSJ vinculada al pleito,
+      el tribunal puede DIFERIR pronunciamientos (p. ej. finiquito y archivo) hasta que
+      la Corte resuelva, aun cuando la interposición de la demanda no tenga efecto
+      suspensivo automático (CPC 559).
+    practical_use: >-
+      En estrategia de contingencia: una acción pendiente de la contraparte puede
+      congelar de hecho etapas del proceso aunque no haya suspensión formal. Evaluar el
+      efecto práctico, y la finalidad dilatoria SOLO por los estándares de los arts.
+      52-54 CPC (a pedido de parte), nunca presumirla por la mera pendencia.
+    verification:
+      status: "verified"
+      verified_at: "2026-07-18"
+      verified_by: "MD"
+      verified_against: "RAG local de jurisprudencia (Trib. Apel. Trabajo Sala 1, A. y S. 152 del 20-08-2025)"
+      official_source_checked: false
+      certainty: "limitada (fallo individual; decisión de gestión procesal, no doctrina general)"
+      notes: "Un solo fallo relevado. Carátula pendiente de PJ/CSJ."
+
+  falta_comunicacion_accion_no_vicia:
+    topic: "La falta de comunicación de la acción de inconstitucionalidad al proceso principal no es vicio de nulidad"
+    related_law: "codigo_procesal_civil"  # arts. 111 y ss.; interacción con 558
+    criterion: >-
+      La falta de comunicación al proceso principal de que una parte promovió acción de
+      inconstitucionalidad no configura vicio de procedimiento que sustente una
+      excepción o incidente de nulidad: no impide defensa alguna ni genera perjuicio
+      (principio de trascendencia).
+    practical_use: >-
+      No fundar nulidades en la omisión de avisar la acción pendiente; conecta con el
+      test de trascendencia de la skill incidentes-nulidades (criterio
+      nulidad_ejecucion_trascendencia).
+    verification:
+      status: "verified"
+      verified_at: "2026-07-18"
+      verified_by: "MD"
+      verified_against: "RAG local de jurisprudencia (Trib. Apel. Trabajo Sala 1, A. y S. 189 del 20-11-2025)"
+      official_source_checked: false
+      certainty: "limitada (fallo individual); carátula pendiente"
+      notes: "Un solo fallo relevado; coherente con el principio de trascendencia ya cargado. Carátula pendiente de PJ/CSJ."
+
+# ---- FALLOS individuales (para citar; requieren carátula confirmada contra PJ/CSJ) ----
+# Vacío por ahora. Sesión 2026-07-18: se leyeron 3 fallos completos de la Sala
+# Constitucional (CSJ) vía Legal Data Hunter para esta tarea (PY-CSJ-110347, 110300 y
+# 110279). NINGUNO se cargó aquí: el OCR del portal CSJ no permite confirmar con
+# claridad el N° propio del Auto Interlocutorio en el cuerpo de esos 3 documentos (ver
+# nota de método en el criterio `admisibilidad_fundamentacion_concreta` de arriba y la
+# fila del verification-log.md). Dos de esos fallos sí sustentan ese criterio como
+# TENDENCIA (fallo completo leído, sin cita puntual). Los fallos de los demás criterios
+# de esta sección siguen relevados del RAG del estudio, con carátulas pendientes de
+# confirmar contra el portal oficial. Cargar una entrada aquí solo cuando se pueda
+# confirmar carátula + N° de A.I. + fecha con claridad contra el documento oficial.
+
+rulings: {}

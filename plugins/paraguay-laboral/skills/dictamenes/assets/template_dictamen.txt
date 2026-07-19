@@ -1,0 +1,44 @@
+DICTAMEN
+
+PARA: [Cliente/Empresa]
+ATN: [Persona específica]
+DE: [Nombre del abogado]
+FECHA: [Fecha actual]
+ASUNTO: [Descripción concisa del tema]
+
+─────────────────────────────────────────────────────
+
+• Consulta Planteada (o Planteamiento del Caso)
+
+[Describir los hechos relevantes en párrafos conectados. Citar textualmente aspectos clave cuando sea pertinente. Identificar claramente los puntos jurídicos a analizar.]
+
+[Usar frases introductorias: "Conforme a la consulta realizada...", "Según lo planteado...", "De acuerdo a los antecedentes proporcionados..."]
+
+• Análisis (o Análisis del Caso / Desarrollo y Análisis)
+
+[Comenzar con el marco legal aplicable. Desglosar sistemáticamente cada aspecto jurídico relevante mediante párrafos conectados con conectores lógicos.]
+
+[Vincular los hechos con las normas aplicables: "De conformidad con lo establecido en el artículo [X] del [norma]..."]
+
+[Analizar implicaciones prácticas. Identificar riesgos y contingencias, cuantificar cuando sea posible. Evaluar diferentes escenarios considerando posibilidades de mala fe de contrapartes.]
+
+[Conectores útiles: "Por tanto...", "En ese sentido...", "Así mismo...", "Asimismo...", "Cabe resaltar que...", "Sin embargo...", "En consecuencia...", "Consecuentemente..."]
+
+• Desarrollo (si es necesario separar del Análisis para casos complejos)
+
+[Profundizar en implicaciones prácticas. Detallar riesgos específicos con montos cuando corresponda. Evaluar escenarios alternativos considerando el contexto adversarial del ambiente jurídico paraguayo.]
+
+• Conclusiones (opcional, según complejidad del caso)
+
+[Resumir los hallazgos principales. Presentar la posición jurídica clara y fundamentada.]
+
+• Recomendaciones
+
+[Proponer soluciones concretas y prácticas. Sugerir medidas preventivas. Establecer pasos a seguir priorizando el beneficio del cliente. Evaluar relación costo-beneficio de las alternativas.]
+
+["Esta asesoría recomienda...", "Se sugiere implementar...", "Es recomendable considerar...", "Para mitigar los riesgos identificados..."]
+
+Estamos a su disposición para cualquier información adicional, dudas o consultas.
+
+[Nombre completo]
+Abogado/a
