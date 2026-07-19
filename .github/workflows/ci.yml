@@ -1,0 +1,41 @@
+# CI del proyecto — corre en cada push a main y en cada pull request.
+#
+# Dos guardas, en este orden:
+#   1. check_sensitive.py --all  → bloquea datos sensibles (RUC, CI, correos,
+#      rutas de usuario, expedientes) en los archivos versionados.
+#   2. validate_authorities.py   → valida el mapa de autoridad (schema, citas
+#      de skills estables, coherencia verified/log).
+#
+# PyYAML y jsonschema son opcionales para el validador (sin ellos degrada con
+# avisos); acá se instalan para que la validación sea completa.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Instalar dependencias de validación
+        run: pip install pyyaml jsonschema
+
+      - name: Guarda de datos sensibles
+        run: python scripts/check_sensitive.py --all
+
+      - name: Validar mapa de autoridad
+        run: python scripts/validate_authorities.py
