@@ -19,6 +19,14 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y e
   repo, casos de eval **sintéticos primero**, anonimizar = sustituir **y** alterar, commit
   atómico revisado, mensajes de commit estériles, protocolo de incidente.
 
+### Corregido
+
+- Versiones declaradas alineadas con la 0.2.0: `metadata.version` del marketplace y los
+  `plugin.json` de `paraguay-legal-core` y `paraguay-litigacion` seguían en 0.1.0.
+  `paraguay-contratos` permanece en 0.1.0 a propósito (evals pendientes).
+- Descripción de `paraguay-litigacion` actualizada: diagnóstico de escritos, incidentes/nulidades
+  e inconstitucionalidad ya no son "fases siguientes", están implementadas y estables.
+
 ## [0.2.0] — 2026-07-19
 
 Segunda versión: plugin de contratos implementado (evals pendientes: sus skills siguen en v0.1)
