@@ -74,13 +74,17 @@ Si usás Claude Code, instalá el marketplace **a nivel usuario** (no de proyect
 tus archivos de trabajo):
 
 ```bash
-# agregar el marketplace (ruta local del repo)
+# agregar el marketplace (directo desde GitHub)
+/plugin marketplace add dikaia-io/claude-for-legal-paraguay
+
+# (alternativa: desde un clon local del repo)
 /plugin marketplace add /ruta/a/claude-for-legal-paraguay
 
 # instalar el núcleo (obligatorio) y los plugins de práctica
 /plugin install paraguay-legal-core@claude-for-legal-paraguay
 /plugin install paraguay-laboral@claude-for-legal-paraguay
 /plugin install paraguay-contratos@claude-for-legal-paraguay
+/plugin install paraguay-litigacion@claude-for-legal-paraguay
 ```
 
 Para desarrollo/prueba de un solo plugin:

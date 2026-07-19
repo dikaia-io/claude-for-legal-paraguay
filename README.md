@@ -33,14 +33,12 @@ claude-for-legal-paraguay/
 └── examples/                         # casos anonimizados
 ```
 
-## Instalación (desarrollo local)
+## Instalación
+
+Desde Claude Code, directo desde GitHub:
 
 ```bash
-# desarrollo del plugin principal
-claude --plugin-dir ./plugins/paraguay-legal-core
-
-# o agregando el marketplace completo
-/plugin marketplace add /ruta/local/claude-for-legal-paraguay
+/plugin marketplace add dikaia-io/claude-for-legal-paraguay
 /plugin install paraguay-legal-core@claude-for-legal-paraguay
 /plugin install paraguay-laboral@claude-for-legal-paraguay
 /plugin install paraguay-contratos@claude-for-legal-paraguay
@@ -48,6 +46,16 @@ claude --plugin-dir ./plugins/paraguay-legal-core
 ```
 
 > Instalar **a nivel usuario** para no bloquear la lectura de archivos fuera del proyecto.
+
+### Desarrollo local
+
+```bash
+# desarrollo del plugin principal
+claude --plugin-dir ./plugins/paraguay-legal-core
+
+# o agregando el marketplace desde un clon local
+/plugin marketplace add /ruta/local/claude-for-legal-paraguay
+```
 
 ## Seguridad y privacidad
 
