@@ -4,6 +4,21 @@ Todas las novedades relevantes de **Claude for Legal Paraguay** se registran en 
 
 El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y el proyecto adhiere a [Versionado Semántico](https://semver.org/lang/es/).
 
+## [No publicado]
+
+### Añadido
+
+**Seguridad — guarda de datos sensibles para el repo público**
+- `scripts/check_sensitive.py`: barrida del contenido staged (o de todo el árbol con `--all`)
+  contra patrones estructurales de datos sensibles (RUC, CI, correos, teléfonos, rutas de
+  usuario, expedientes, matrículas) más una lista privada de patrones en
+  `.sensitive-patterns.local` (gitignoreada, nunca se versiona).
+- Hook `pre-commit` versionado en `scripts/hooks/` (instalación:
+  `python scripts/check_sensitive.py --install`).
+- Método de trabajo documentado en `docs/seguridad-y-privacidad.md` §8: borrador fuera del
+  repo, casos de eval **sintéticos primero**, anonimizar = sustituir **y** alterar, commit
+  atómico revisado, mensajes de commit estériles, protocolo de incidente.
+
 ## [0.2.0] — 2026-07-19
 
 Segunda versión: plugin de contratos implementado (evals pendientes: sus skills siguen en v0.1)
@@ -109,6 +124,18 @@ Correcciones detectadas al correr los evals de litigación contra el plugin real
 - Frontmatter de 4 evals: `citacion` removida de las skills esperadas (expectativa desalineada
   con el diseño: la disciplina de citación la impone el agente) y reformulada la frase-mandato
   "la cita pasa por la skill `citacion`" a descripción de la disciplina en 3 skills.
+
+### Pendiente (fuera de v0.2)
+
+- **Evals de contratos** (`evals/contratos/`, 8+1 casos diseñados): escribirlos, correrlos con
+  el harness headless y recién entonces pasar las skills de `paraguay-contratos` a estables.
+- Verificar las 2 entradas `draft` restantes del authority map (CPP, fuera de foco; Ley
+  1110/1985, sin fuente oficial disponible — `[FUENTE OFICIAL PENDIENTE]`).
+- Carátulas de los criterios de `jurisprudencia.yaml` contra PJ/CSJ (hoy se citan como
+  tendencia, nunca como fallo puntual).
+- Scripts previstos: `package_plugins.sh`, `validate_frontmatter.py`, `check_official_links.py`;
+  CI que corra `validate_authorities.py` + `check_sensitive.py --all` en cada push.
+- Publicación: visibilidad pública del repositorio y Release v0.2.0 en GitHub.
 
 ## [0.1.0] — 2026-06-30
 
