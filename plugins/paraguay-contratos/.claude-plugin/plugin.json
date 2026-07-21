@@ -1,8 +1,9 @@
 {
   "name": "paraguay-contratos",
-  "version": "0.1.0",
-  "description": "Derecho contractual civil y comercial paraguayo: revisión de contratos, detección de red flags y redacción de borradores con estructura forense paraguaya. Depende de paraguay-legal-core.",
+  "version": "0.2.1",
+  "description": "[BETA — evals pendientes] Derecho contractual civil y comercial paraguayo: revisión de contratos, detección de red flags y redacción de borradores con estructura forense paraguaya. Depende de paraguay-legal-core.",
   "author": {
     "name": "Miguel Fernando Díaz"
-  }
+  },
+  "dependencies": ["paraguay-legal-core"]
 }

@@ -39,13 +39,15 @@ Desde Claude Code, directo desde GitHub:
 
 ```bash
 /plugin marketplace add dikaia-io/claude-for-legal-paraguay
-/plugin install paraguay-legal-core@claude-for-legal-paraguay
 /plugin install paraguay-laboral@claude-for-legal-paraguay
 /plugin install paraguay-contratos@claude-for-legal-paraguay
 /plugin install paraguay-litigacion@claude-for-legal-paraguay
 ```
 
 > Instalar **a nivel usuario** para no bloquear la lectura de archivos fuera del proyecto.
+> Cada plugin de práctica declara su dependencia sobre `paraguay-legal-core`: el núcleo se
+> instala y habilita automáticamente si falta. `paraguay-contratos` y `paraguay-litigacion`
+> están en **beta** (evals pendientes de correr).
 
 ### Desarrollo local
 

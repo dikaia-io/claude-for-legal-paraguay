@@ -5,8 +5,7 @@
   },
   "metadata": {
     "description": "Asistente jurídico para práctica paraguaya: laboral, civil-comercial y litigación.",
-    "version": "0.2.0",
-    "pluginRoot": "plugins"
+    "version": "0.2.1"
   },
   "plugins": [
     {
@@ -22,12 +21,12 @@
     {
       "name": "paraguay-litigacion",
       "source": "./plugins/paraguay-litigacion",
-      "description": "Litigación civil/comercial/laboral y eje constitucional (inconstitucionalidad)."
+      "description": "[BETA — evals pendientes] Litigación civil/comercial/laboral y eje constitucional (inconstitucionalidad)."
     },
     {
       "name": "paraguay-contratos",
       "source": "./plugins/paraguay-contratos",
-      "description": "Contratos civiles y comerciales paraguayos: revisión, red flags y redacción de borradores."
+      "description": "[BETA — evals pendientes] Contratos civiles y comerciales paraguayos: revisión, red flags y redacción de borradores."
     }
   ]
 }

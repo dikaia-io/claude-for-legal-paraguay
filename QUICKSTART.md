@@ -80,12 +80,18 @@ tus archivos de trabajo):
 # (alternativa: desde un clon local del repo)
 /plugin marketplace add /ruta/a/claude-for-legal-paraguay
 
-# instalar el núcleo (obligatorio) y los plugins de práctica
-/plugin install paraguay-legal-core@claude-for-legal-paraguay
+# instalar los plugins de práctica (cada uno declara su dependencia sobre el
+# núcleo paraguay-legal-core, que se instala solo si falta)
 /plugin install paraguay-laboral@claude-for-legal-paraguay
 /plugin install paraguay-contratos@claude-for-legal-paraguay
 /plugin install paraguay-litigacion@claude-for-legal-paraguay
 ```
+
+> **Dónde queda `shared/` al instalar.** Cada plugin lleva en su raíz un enlace `shared/` al
+> mapa de autoridad, las plantillas y el glosario. Al instalar desde el marketplace, Claude Code
+> copia ese contenido dentro de cada plugin en la caché, así las referencias de las skills a
+> `shared/authorities/...` resuelven igual que en el repo. `paraguay-contratos` y
+> `paraguay-litigacion` están marcados **beta** hasta correr sus evals.
 
 Para desarrollo/prueba de un solo plugin:
 ```bash

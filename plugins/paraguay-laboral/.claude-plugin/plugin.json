@@ -1,8 +1,9 @@
 {
   "name": "paraguay-laboral",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Derecho laboral paraguayo orientado a empleadores: diagnóstico de contingencia, liquidaciones (motor calculo-laboral con descuento IPS), estrategia patronal y análisis de despidos. Depende de paraguay-legal-core.",
   "author": {
     "name": "Miguel Fernando Díaz"
-  }
+  },
+  "dependencies": ["paraguay-legal-core"]
 }
