@@ -8,6 +8,21 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y e
 
 ### Añadido
 
+**Empaquetado — correcciones de instalación desde el marketplace (auditoría 2026-07-21)**
+- **`shared/` ahora viaja con cada plugin instalado**: enlace simbólico `shared/` en la raíz de
+  los 4 plugins apuntando a `../../shared`. Al instalar desde el marketplace, Claude Code
+  dereferencia el enlace y copia el contenido (authority map, plantillas, glosario) dentro de la
+  caché del plugin. Antes, un plugin instalado desde GitHub quedaba **sin el mapa de autoridad**
+  (las referencias `shared/authorities/...` de las skills no resolvían fuera del clon del repo) —
+  la falla era silenciosa y anulaba justamente el mecanismo de control de autoridad.
+- **Dependencia del núcleo declarada**: `paraguay-laboral`, `paraguay-contratos` y
+  `paraguay-litigacion` declaran `dependencies: ["paraguay-legal-core"]` en su `plugin.json`.
+  Instalar un vertical instala (y habilita) el núcleo automáticamente; antes un usuario podía
+  instalar solo el vertical y operar degradado sin advertencia.
+- **Marca beta visible al instalar**: `paraguay-contratos` y `paraguay-litigacion` llevan
+  `[BETA — evals pendientes]` en la descripción que el usuario ve en el marketplace y en el
+  `plugin.json`, no solo en el README.
+
 **Seguridad — guarda de datos sensibles para el repo público**
 - `scripts/check_sensitive.py`: barrida del contenido staged (o de todo el árbol con `--all`)
   contra patrones estructurales de datos sensibles (RUC, CI, correos, teléfonos, rutas de
@@ -21,9 +36,16 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y e
 
 ### Corregido
 
+- **Versiones alineadas en 0.2.1 para los 4 plugins y el marketplace.** Con `version` declarado,
+  Claude Code fija el plugin a ese string y los usuarios instalados solo reciben actualizaciones
+  cuando cambia: dejar `paraguay-laboral`/`paraguay-contratos` en 0.1.0 habría dejado a los
+  usuarios sin estas correcciones. Regla adoptada: **se bumpea la versión en cada release que
+  toque el contenido del plugin**; la madurez se señala con la marca beta en la descripción, no
+  congelando el número de versión.
+- `metadata.pluginRoot` removido del `marketplace.json`: redundante (las entradas ya usan rutas
+  completas `./plugins/...`).
 - Versiones declaradas alineadas con la 0.2.0: `metadata.version` del marketplace y los
   `plugin.json` de `paraguay-legal-core` y `paraguay-litigacion` seguían en 0.1.0.
-  `paraguay-contratos` permanece en 0.1.0 a propósito (evals pendientes).
 - Descripción de `paraguay-litigacion` actualizada: diagnóstico de escritos, incidentes/nulidades
   e inconstitucionalidad ya no son "fases siguientes", están implementadas y estables.
 
