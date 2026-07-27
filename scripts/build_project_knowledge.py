@@ -67,6 +67,12 @@ def recolectar():
         items.append({"origen": yaml_file, "destino": yaml_file.name,
                       "plugin": None, "skill": None, "tipo": "yaml"})
 
+    log = REPO / "shared" / "authorities" / "verification-log.md"
+    if not log.exists():
+        raise BuildError(f"Falta el registro de verificaciones: {log}")
+    items.append({"origen": log, "destino": log.name,
+                  "plugin": None, "skill": None, "tipo": "log"})
+
     glosario = REPO / "shared" / "glossaries" / "terminologia-paraguay.md"
     if not glosario.exists():
         raise BuildError(f"Falta el glosario: {glosario}")
@@ -139,10 +145,14 @@ def mapa_reescritura(items):
             mapa[f"shared/authorities/{it['origen'].name}"] = it["destino"]
         elif it["tipo"] == "glosario":
             mapa[f"shared/glossaries/{it['origen'].name}"] = it["destino"]
+        elif it["tipo"] == "log":
+            mapa[f"shared/authorities/{it['origen'].name}"] = it["destino"]
     mapa["shared/templates/legal.local.md.template"] = "plantilla-perfil.md"
     mapa["docs/seguridad-y-privacidad.md"] = "seguridad-y-privacidad.md"
     # Encabezado §5 de CLAUDE.base.md: menciona la carpeta a secas, sin archivo.
     mapa["(`shared/authorities/`)"] = "(los archivos `.yaml` del Knowledge)"
+    # estructura-canonica.md menciona las cuatro plantillas por comodín.
+    mapa["references/plantilla-*.md"] = "REF-redaccion-contractual--plantilla-*.md"
     return mapa
 
 

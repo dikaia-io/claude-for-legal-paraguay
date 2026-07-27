@@ -28,7 +28,8 @@ class TestRecolectar(unittest.TestCase):
         self.assertEqual(len(self.por_tipo["glosario"]), 1)
         self.assertEqual(len(self.por_tipo["plantilla"]), 1)
         self.assertEqual(len(self.por_tipo["seguridad"]), 1)
-        self.assertEqual(len(self.items), 52)
+        self.assertEqual(len(self.por_tipo["log"]), 1)
+        self.assertEqual(len(self.items), 53)
 
     def test_destinos_clave(self):
         for esperado in [
@@ -41,6 +42,7 @@ class TestRecolectar(unittest.TestCase):
             "seguridad-y-privacidad.md",
             "leyes.yaml",
             "terminologia-paraguay.md",
+            "verification-log.md",
         ]:
             self.assertIn(esperado, self.destinos, esperado)
 
@@ -135,7 +137,7 @@ class TestConstruirYZip(unittest.TestCase):
         for nombre in ["LEEME-PRIMERO.md", "instrucciones-del-proyecto.md",
                        "manifiesto.json", "LICENSE", "NOTICE"]:
             self.assertTrue((self.out / nombre).exists(), nombre)
-        self.assertEqual(len(list((self.out / "knowledge").iterdir())), 52)
+        self.assertEqual(len(list((self.out / "knowledge").iterdir())), 53)
 
     def test_manifiesto(self):
         import hashlib
