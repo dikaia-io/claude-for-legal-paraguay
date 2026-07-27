@@ -50,7 +50,9 @@ def main():
             except UnicodeDecodeError as e:
                 errores.append(f"{nombre}: no es UTF-8 válido ({e})")
                 continue
-            if "�" in texto or "Ã" in texto:
+            # La «Ã» suelta puede ser legítima (verification-log.md documenta un barrido
+            # de mojibake); solo el par Ã+vocal latin-1 delata doble codificación.
+            if "�" in texto or re.search(r"Ã[¡©­³º±¼]", texto):
                 errores.append(f"{nombre}: mojibake detectado (¿doble codificación?)")
 
         # 2. Cero residuos de rutas del repo en knowledge + instrucciones.
