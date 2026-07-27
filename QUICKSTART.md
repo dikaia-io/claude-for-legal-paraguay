@@ -90,8 +90,8 @@ tus archivos de trabajo):
 > **Dónde queda `shared/` al instalar.** Cada plugin lleva en su raíz un enlace `shared/` al
 > mapa de autoridad, las plantillas y el glosario. Al instalar desde el marketplace, Claude Code
 > copia ese contenido dentro de cada plugin en la caché, así las referencias de las skills a
-> `shared/authorities/...` resuelven igual que en el repo. `paraguay-contratos` y
-> `paraguay-litigacion` están marcados **beta** hasta correr sus evals.
+> `shared/authorities/...` resuelven igual que en el repo. `paraguay-contratos` está marcado
+> **beta** hasta correr sus evals.
 
 Para desarrollo/prueba de un solo plugin:
 ```bash

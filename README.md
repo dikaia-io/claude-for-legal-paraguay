@@ -46,8 +46,8 @@ Desde Claude Code, directo desde GitHub:
 
 > Instalar **a nivel usuario** para no bloquear la lectura de archivos fuera del proyecto.
 > Cada plugin de práctica declara su dependencia sobre `paraguay-legal-core`: el núcleo se
-> instala y habilita automáticamente si falta. `paraguay-contratos` y `paraguay-litigacion`
-> están en **beta** (evals pendientes de correr).
+> instala y habilita automáticamente si falta. `paraguay-contratos` está en **beta**
+> (evals pendientes de correr); las demás materias tienen sus evals aprobados.
 
 ### Desarrollo local
 
