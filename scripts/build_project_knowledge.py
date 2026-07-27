@@ -224,6 +224,70 @@ def contenido_destino(item, mapa):
     return texto.encode("utf-8")
 
 
+def construir(out, yaml_como_txt=False):
+    out = Path(out)
+    if out.exists():
+        shutil.rmtree(out)
+    (out / "knowledge").mkdir(parents=True)
+
+    items = recolectar()
+    if yaml_como_txt:
+        for it in items:
+            if it["destino"].endswith(".yaml"):
+                it["destino"] += ".txt"
+    mapa = mapa_reescritura(items)
+
+    archivos = []
+    for it in items:
+        destino = out / "knowledge" / it["destino"]
+        contenido = contenido_destino(it, mapa)
+        destino.write_bytes(contenido)
+        archivos.append({
+            "origen": it["origen"].relative_to(REPO).as_posix(),
+            "destino": f"knowledge/{it['destino']}",
+            "plugin": it["plugin"],
+            "sha256": hashlib.sha256(contenido).hexdigest(),
+        })
+
+    instrucciones = generar_instrucciones(mapa).encode("utf-8")
+    (out / "instrucciones-del-proyecto.md").write_bytes(instrucciones)
+    archivos.append({"origen": "shared/templates/CLAUDE.base.md (+bootstrap)",
+                     "destino": "instrucciones-del-proyecto.md", "plugin": None,
+                     "sha256": hashlib.sha256(instrucciones).hexdigest()})
+
+    for origen, destino in [("docs/instalacion-claude-ai.md", "LEEME-PRIMERO.md"),
+                            ("LICENSE", "LICENSE"), ("NOTICE", "NOTICE")]:
+        fuente = REPO / origen
+        if not fuente.exists():
+            raise BuildError(f"Falta {origen} (requerido por el paquete)")
+        contenido = fuente.read_bytes()
+        (out / destino).write_bytes(contenido)
+        archivos.append({"origen": origen, "destino": destino, "plugin": None,
+                         "sha256": hashlib.sha256(contenido).hexdigest()})
+
+    manifiesto = {
+        "version": leer_version(),
+        "commit": commit_actual(),
+        "fecha": datetime.date.today().isoformat(),
+        "contrato_instalacion": leer_contrato(),
+        "estado_plugins": ESTADO_PLUGINS,
+        "archivos": archivos,
+        "total_archivos": len(archivos),
+    }
+    (out / "manifiesto.json").write_text(
+        json.dumps(manifiesto, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return manifiesto
+
+
+def empaquetar_zip(out, zip_path):
+    out, zip_path = Path(out), Path(zip_path)
+    zip_path.parent.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
+        for ruta in sorted(out.rglob("*")):
+            if ruta.is_file():
+                z.write(ruta, ruta.relative_to(out).as_posix())
+
+
 def main():
     ap = argparse.ArgumentParser(description="Construye el paquete claude.ai.")
     ap.add_argument("--out", default=str(SALIDA))
@@ -231,8 +295,16 @@ def main():
     ap.add_argument("--yaml-como-txt", action="store_true",
                     help="Publica los .yaml como .yaml.txt (plan B, spec §4.6).")
     args = ap.parse_args()
-    items = recolectar()
-    print(f"{len(items)} archivos relevados.")  # las fases siguientes se agregan en Tasks 4-6
+    try:
+        manifiesto = construir(Path(args.out), yaml_como_txt=args.yaml_como_txt)
+    except BuildError as e:
+        print(f"ERROR DE EMPAQUETADO: {e}")
+        return 1
+    print(f"Paquete v{manifiesto['version']} ({manifiesto['total_archivos']} archivos) "
+          f"en {args.out}")
+    if args.zip:
+        empaquetar_zip(Path(args.out), Path(args.zip))
+        print(f"ZIP: {args.zip}")
     return 0
 
 

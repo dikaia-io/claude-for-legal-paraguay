@@ -2,7 +2,9 @@
 """Tests del empaquetador del paquete claude.ai (corre contra el árbol real del repo)."""
 import re
 import sys
+import tempfile
 import unittest
+import zipfile as zf
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -116,6 +118,53 @@ class TestInstruccionesYBanner(unittest.TestCase):
         self.assertIsNotNone(sello)
         self.assertEqual(sello.group(1), bpk.leer_version())
         self.assertEqual(sello.group(4), bpk.leer_contrato())
+
+
+class TestConstruirYZip(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.TemporaryDirectory()
+        cls.out = Path(cls.tmp.name) / "paquete"
+        cls.manifiesto = bpk.construir(cls.out)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
+
+    def test_estructura(self):
+        for nombre in ["LEEME-PRIMERO.md", "instrucciones-del-proyecto.md",
+                       "manifiesto.json", "LICENSE", "NOTICE"]:
+            self.assertTrue((self.out / nombre).exists(), nombre)
+        self.assertEqual(len(list((self.out / "knowledge").iterdir())), 52)
+
+    def test_manifiesto(self):
+        import hashlib
+        self.assertEqual(self.manifiesto["version"], bpk.leer_version())
+        self.assertEqual(self.manifiesto["estado_plugins"], bpk.ESTADO_PLUGINS)
+        self.assertEqual(self.manifiesto["total_archivos"],
+                         len(self.manifiesto["archivos"]))
+        for entrada in self.manifiesto["archivos"]:
+            ruta = self.out / entrada["destino"]
+            self.assertTrue(ruta.exists(), entrada["destino"])
+            self.assertEqual(hashlib.sha256(ruta.read_bytes()).hexdigest(),
+                             entrada["sha256"], entrada["destino"])
+
+    def test_zip(self):
+        destino_zip = Path(self.tmp.name) / "paquete-claude-ai.zip"
+        bpk.empaquetar_zip(self.out, destino_zip)
+        with zf.ZipFile(destino_zip) as z:
+            nombres = z.namelist()
+            self.assertIn("LEEME-PRIMERO.md", nombres)
+            self.assertIn("knowledge/SKILL-setup.md", nombres)
+            leeme = z.read("LEEME-PRIMERO.md").decode("utf-8")
+            self.assertIn("Contrato de instalación v1", leeme)
+
+    def test_yaml_como_txt(self):
+        out2 = Path(self.tmp.name) / "paquete-txt"
+        bpk.construir(out2, yaml_como_txt=True)
+        nombres = {p.name for p in (out2 / "knowledge").iterdir()}
+        self.assertIn("leyes.yaml.txt", nombres)
+        self.assertNotIn("leyes.yaml", nombres)
 
 
 if __name__ == "__main__":
