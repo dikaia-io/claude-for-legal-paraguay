@@ -1,0 +1,79 @@
+# Release del paquete claude.ai — un solo flujo que FALLA CERRADO (spec §4.4):
+# la release se crea únicamente si todas las validaciones y pruebas pasaron,
+# en Ubuntu y en Windows. Disparo por tag v*; workflow_dispatch = ensayo sin release.
+
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probar:
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Instalar dependencias de validación
+        run: pip install pyyaml jsonschema
+
+      - name: Coherencia de versiones (solo en tag)
+        if: startsWith(github.ref, 'refs/tags/')
+        run: python scripts/check_versiones.py "${{ github.ref_name }}"
+
+      - name: Guarda de datos sensibles
+        run: python scripts/check_sensitive.py --all
+
+      - name: Validar mapa de autoridad
+        run: python scripts/validate_authorities.py
+
+      - name: Tests del empaquetador
+        run: python -m unittest discover -s scripts/tests -v
+
+      - name: Construir paquete
+        run: python scripts/build_project_knowledge.py --zip
+
+      - name: Probar paquete
+        run: python scripts/test_paquete.py build/paquete-claude-ai.zip
+
+  publicar:
+    needs: probar
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Construir paquete
+        run: python scripts/build_project_knowledge.py --zip
+
+      - name: Probar paquete contra el tag
+        run: python scripts/test_paquete.py build/paquete-claude-ai.zip --tag "${{ github.ref_name }}"
+
+      - name: Crear release y adjuntar el paquete
+        run: |
+          gh release create "${{ github.ref_name }}" build/paquete-claude-ai.zip \
+            --verify-tag \
+            --title "${{ github.ref_name }}" \
+            --notes "Novedades en CHANGELOG.md. Para claude.ai: descargá paquete-claude-ai.zip y seguí LEEME-PRIMERO.md (o docs/instalacion-claude-ai.md)."
