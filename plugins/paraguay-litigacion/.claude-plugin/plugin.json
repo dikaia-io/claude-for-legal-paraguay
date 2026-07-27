@@ -1,6 +1,6 @@
 {
   "name": "paraguay-litigacion",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Litigación civil, comercial y laboral paraguaya: escritos judiciales (demandas, contestaciones, excepciones), juicio ejecutivo, diagnóstico de escritos, incidentes y nulidades, e inconstitucionalidad. Depende de paraguay-legal-core.",
   "author": {
     "name": "Miguel Fernando Díaz"

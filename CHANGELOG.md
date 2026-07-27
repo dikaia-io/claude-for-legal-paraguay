@@ -4,9 +4,28 @@ Todas las novedades relevantes de **Claude for Legal Paraguay** se registran en 
 
 El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y el proyecto adhiere a [Versionado Semántico](https://semver.org/lang/es/).
 
-## [No publicado]
+## [0.3.0] — 2026-07-27
 
 ### Añadido
+
+**Instalación accesible — paquete claude.ai y flujo de release**
+- **`paquete-claude-ai.zip` en cada release** (asset de nombre fijo, enlace estable
+  `releases/latest/download/`): paquete completo para usar como Claude Project sin terminal ni
+  Python — skills con sus `references/` y `assets/` (nombres aplanados y enlaces reescritos),
+  authority map, glosario, plantilla de perfil, doc de seguridad, `LICENSE`/`NOTICE`,
+  instrucciones listas para pegar (con bootstrap de perfil y sello de versión) y
+  `manifiesto.json` con SHA-256 por archivo.
+- **Perfil persistente**: el perfil del abogado vive en `perfil-del-abogado.md` (Knowledge) y
+  sobrevive a las actualizaciones del paquete; `setup` gana un **modo exprés** de 4 campos.
+- **Workflow de release que falla cerrado**: tag `v*` → coherencia de versiones (tag =
+  marketplace = 4 plugin.json) → guardas → tests → build y prueba de humo en Ubuntu y Windows
+  (UTF-8 estricto, enlaces, hashes, banners) → recién ahí se crea la release con el asset.
+- **Estado real de las materias**: `paraguay-litigacion` restituido a **estable** (7/7 evals
+  aprobados el 2026-07-19; la marca beta de la auditoría fue un arrastre). `paraguay-contratos`
+  sigue beta y sus skills empaquetadas llevan **banner de advertencia** visible.
+- **Docs**: `docs/instalacion-claude-ai.md` (fuente única de pasos, contrato de instalación v1),
+  `docs/instalador-conversacional.md` (prompt guía), QUICKSTART/README con los tres subflujos
+  (paquete claude.ai · plugins gráficos web/Cowork · Claude Code con auto-update).
 
 **Empaquetado — correcciones de instalación desde el marketplace (auditoría 2026-07-21)**
 - **`shared/` ahora viaja con cada plugin instalado**: enlace simbólico `shared/` en la raíz de
