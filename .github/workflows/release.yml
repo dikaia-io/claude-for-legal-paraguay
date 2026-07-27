@@ -52,7 +52,8 @@ jobs:
 
   publicar:
     needs: probar
-    if: startsWith(github.ref, 'refs/tags/v')
+    # Solo push de tag: un workflow_dispatch lanzado sobre un tag NO debe publicar (fix Task 8).
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
