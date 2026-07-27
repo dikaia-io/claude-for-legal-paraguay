@@ -121,6 +121,45 @@ def recolectar():
     return items
 
 
+RE_RESIDUOS = re.compile(
+    r"(?:references|assets)/[A-Za-z0-9_.\-]+"
+    r"|shared/[A-Za-z0-9_./\-]+"
+    r"|docs/[A-Za-z0-9_.\-]+\.md")
+
+
+def mapa_reescritura(items):
+    """Mapa original→aplanado. Las references se resuelven por basename (único global)."""
+    mapa = {}
+    for it in items:
+        if it["tipo"] == "ref":
+            mapa[f"references/{it['origen'].name}"] = it["destino"]
+        elif it["tipo"] == "asset":
+            mapa[f"assets/{it['origen'].name}"] = it["destino"]
+        elif it["tipo"] == "yaml":
+            mapa[f"shared/authorities/{it['origen'].name}"] = it["destino"]
+        elif it["tipo"] == "glosario":
+            mapa[f"shared/glossaries/{it['origen'].name}"] = it["destino"]
+    mapa["shared/templates/legal.local.md.template"] = "plantilla-perfil.md"
+    mapa["docs/seguridad-y-privacidad.md"] = "seguridad-y-privacidad.md"
+    # Encabezado §5 de CLAUDE.base.md: menciona la carpeta a secas, sin archivo.
+    mapa["(`shared/authorities/`)"] = "(los archivos `.yaml` del Knowledge)"
+    return mapa
+
+
+def reescribir(texto, mapa):
+    for clave in sorted(mapa, key=len, reverse=True):
+        texto = texto.replace(clave, mapa[clave])
+    return texto
+
+
+def validar_sin_residuos(nombre, texto):
+    residuos = sorted(set(RE_RESIDUOS.findall(texto)))
+    if residuos:
+        raise BuildError(
+            f"{nombre}: referencias sin reescribir o fuera del paquete: {residuos}. "
+            "O falta empaquetar el archivo citado, o hay un enlace roto en la fuente.")
+
+
 def main():
     ap = argparse.ArgumentParser(description="Construye el paquete claude.ai.")
     ap.add_argument("--out", default=str(SALIDA))
