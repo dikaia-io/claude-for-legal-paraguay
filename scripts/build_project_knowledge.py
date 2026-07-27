@@ -160,6 +160,70 @@ def validar_sin_residuos(nombre, texto):
             "O falta empaquetar el archivo citado, o hay un enlace roto en la fuente.")
 
 
+BOOTSTRAP = """
+---
+
+## Arranque del asistente (paquete Claude Project)
+
+- El perfil del abogado vive en el archivo `perfil-del-abogado.md` del **Knowledge** de este
+  Project. Consultalo siempre antes de asumir identidad, rol o preferencias.
+- Si ese archivo no existe: en el **primer mensaje** de la conversación, ofrecé la
+  **configuración exprés** — 4 preguntas: abogado responsable, matrícula CSJ, circunscripción
+  habitual y rol predominante (detalle en `SKILL-setup.md`). Entregá el resultado como un bloque
+  listo para guardar como `perfil-del-abogado.md` y subir al Knowledge (indicá cómo: guardarlo
+  con el Bloc de notas y arrastrarlo al Knowledge del Project). Ofrecé la entrevista completa de
+  `SKILL-setup.md` como paso opcional posterior.
+- Las skills cuyo archivo empiece con el banner «⚠️ BETA» son de materias con evals pendientes:
+  advertilo cada vez que las uses.
+- Si preguntan qué versión del paquete está instalada, respondé con el sello de abajo.
+"""
+
+
+def leer_version():
+    mk = json.loads((REPO / ".claude-plugin" / "marketplace.json").read_text(encoding="utf-8"))
+    version = mk.get("metadata", {}).get("version")
+    if not version:
+        raise BuildError("marketplace.json sin metadata.version")
+    return version
+
+
+def leer_contrato():
+    doc = REPO / "docs" / "instalacion-claude-ai.md"
+    m = re.search(r"Contrato de instalación v(\d+)", doc.read_text(encoding="utf-8"))
+    if not m:
+        raise BuildError(f"{doc.name}: falta el pie «Contrato de instalación vN»")
+    return m.group(1)
+
+
+def commit_actual():
+    try:
+        return subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=REPO,
+                              capture_output=True, text=True, check=True).stdout.strip()
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return "sin-git"
+
+
+def generar_instrucciones(mapa):
+    base = (REPO / "shared" / "templates" / "CLAUDE.base.md").read_text(encoding="utf-8")
+    texto = reescribir(base, mapa) + BOOTSTRAP + (
+        f"\n---\nPaquete v{leer_version()} — commit {commit_actual()} — generado el "
+        f"{datetime.date.today().isoformat()}. Contrato de instalación v{leer_contrato()}.\n")
+    validar_sin_residuos("instrucciones-del-proyecto.md", texto)
+    return texto
+
+
+def contenido_destino(item, mapa):
+    """Contenido final (bytes) de un item de knowledge: reescrito + banner beta si toca."""
+    if item["origen"].suffix not in (".md", ".yaml", ".template"):
+        return item["origen"].read_bytes()
+    texto = reescribir(item["origen"].read_text(encoding="utf-8"), mapa)
+    validar_sin_residuos(item["destino"], texto)
+    es_beta = item["plugin"] is not None and ESTADO_PLUGINS[item["plugin"]] == "beta"
+    if es_beta and item["destino"].endswith(".md"):
+        texto = BANNER_BETA + texto
+    return texto.encode("utf-8")
+
+
 def main():
     ap = argparse.ArgumentParser(description="Construye el paquete claude.ai.")
     ap.add_argument("--out", default=str(SALIDA))

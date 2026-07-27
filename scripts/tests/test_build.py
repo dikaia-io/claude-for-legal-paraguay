@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Tests del empaquetador del paquete claude.ai (corre contra el árbol real del repo)."""
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -80,6 +81,41 @@ class TestReescritura(unittest.TestCase):
             bpk.validar_sin_residuos("prueba", "leer references/no-existe.md")
         with self.assertRaises(bpk.BuildError):
             bpk.validar_sin_residuos("prueba", "ver shared/authorities/leyes.yaml")
+
+
+class TestInstruccionesYBanner(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.items = bpk.recolectar()
+        cls.mapa = bpk.mapa_reescritura(cls.items)
+
+    def _item(self, destino):
+        return next(it for it in self.items if it["destino"] == destino)
+
+    def test_banner_solo_en_beta(self):
+        beta = bpk.contenido_destino(self._item("SKILL-red-flags.md"), self.mapa)
+        estable = bpk.contenido_destino(self._item("SKILL-liquidaciones.md"), self.mapa)
+        self.assertTrue(beta.decode("utf-8").startswith("> ⚠️ **BETA"))
+        self.assertFalse(estable.decode("utf-8").startswith("> ⚠️"))
+
+    def test_asset_no_md_intacto(self):
+        item = self._item("ASSET-dictamenes--template_dictamen.txt")
+        self.assertEqual(bpk.contenido_destino(item, self.mapa),
+                         item["origen"].read_bytes())
+
+    def test_instrucciones(self):
+        texto = bpk.generar_instrucciones(self.mapa)
+        self.assertTrue(texto.startswith("# Perfil de práctica"))
+        self.assertIn("## Arranque del asistente", texto)
+        self.assertIn("perfil-del-abogado.md", texto)
+        self.assertIn("configuración exprés", texto)
+        self.assertNotIn("shared/authorities/", texto)
+        self.assertNotIn("docs/seguridad-y-privacidad.md", texto)
+        sello = re.search(r"Paquete v(\d+\.\d+\.\d+) — commit (\S+) — generado el "
+                          r"(\d{4}-\d{2}-\d{2})\. Contrato de instalación v(\d+)\.", texto)
+        self.assertIsNotNone(sello)
+        self.assertEqual(sello.group(1), bpk.leer_version())
+        self.assertEqual(sello.group(4), bpk.leer_contrato())
 
 
 if __name__ == "__main__":
