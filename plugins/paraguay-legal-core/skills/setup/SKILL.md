@@ -42,6 +42,14 @@ Hacer las preguntas **una sección a la vez**, en este orden. Para cada pregunta
 paréntesis las opciones cuando las haya, y **por qué se pregunta** (impacto), para que el abogado
 responda con criterio. Aceptar «no aplica» o dejar el campo vacío cuando corresponda.
 
+### Modo exprés (primera configuración rápida)
+
+Si el abogado pide la «configuración exprés» (o llega desde el paquete de claude.ai, cuyo
+bootstrap la ofrece en el primer mensaje), preguntar **solo estos 4 campos, en un único
+mensaje**: abogado responsable, matrícula CSJ, circunscripción habitual y rol predominante.
+El resto de la plantilla queda con `[COMPLETAR]`, y se ofrece la entrevista completa como paso
+opcional posterior. La regla de privacidad (sección 2) aplica igual.
+
 ### Bloque 1 — Identidad profesional
 1. **Firma / estudio.** Nombre del estudio, o «Profesional independiente».
 2. **Abogado responsable.** Nombre y apellido.
@@ -103,8 +111,12 @@ responda con criterio. Aceptar «no aplica» o dejar el campo vacío cuando corr
 4. **Escritura del archivo según la superficie:**
    - **Claude Code / Cowork:** ofrecer escribir `legal.local.md` en el workspace (no dentro del
      paquete del plugin). Confirmar la ruta antes de escribir.
-   - **Claude Project:** no hay escritura de archivo; entregar el bloque listo para **pegar** en
-     «instrucciones del proyecto», junto al contenido de `CLAUDE.base.md`.
+   - **Claude Project:** no hay escritura de archivo; entregar el contenido listo para guardar
+     como **`perfil-del-abogado.md`** y **subir al Knowledge** del Project. **No pegarlo en las
+     instrucciones del proyecto**: ahí se perdería al actualizar el paquete (las instrucciones
+     se reemplazan enteras en cada versión; el Knowledge conserva el perfil). Indicar el cómo:
+     guardar el bloque con el Bloc de notas como `perfil-del-abogado.md` y arrastrarlo al
+     Knowledge.
 5. Recordar la **regla de privacidad** (sección 2) al entregar el resultado.
 
 ---
