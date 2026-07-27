@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Tests del empaquetador del paquete claude.ai (corre contra el árbol real del repo)."""
 import re
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -167,6 +168,31 @@ class TestConstruirYZip(unittest.TestCase):
         nombres = {p.name for p in (out2 / "knowledge").iterdir()}
         self.assertIn("leyes.yaml.txt", nombres)
         self.assertNotIn("leyes.yaml", nombres)
+
+
+class TestScriptsDeVerificacion(unittest.TestCase):
+    def _correr(self, *args):
+        return subprocess.run([sys.executable, *args], capture_output=True,
+                              text=True, encoding="utf-8", cwd=bpk.REPO)
+
+    def test_paquete_ok_y_tag_mal(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "paquete"
+            bpk.construir(out)
+            destino_zip = Path(tmp) / "paquete-claude-ai.zip"
+            bpk.empaquetar_zip(out, destino_zip)
+            ok = self._correr("scripts/test_paquete.py", str(destino_zip))
+            self.assertEqual(ok.returncode, 0, ok.stdout + ok.stderr)
+            mal = self._correr("scripts/test_paquete.py", str(destino_zip),
+                               "--tag", "v9.9.9")
+            self.assertEqual(mal.returncode, 1)
+
+    def test_check_versiones(self):
+        version = bpk.leer_version()
+        ok = self._correr("scripts/check_versiones.py", f"v{version}")
+        self.assertEqual(ok.returncode, 0, ok.stdout + ok.stderr)
+        mal = self._correr("scripts/check_versiones.py", "v9.9.9")
+        self.assertEqual(mal.returncode, 1)
 
 
 if __name__ == "__main__":
