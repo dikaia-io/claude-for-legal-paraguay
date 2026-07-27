@@ -2,9 +2,14 @@
 
 Asistente jurídico para práctica profesional paraguaya, construido como **marketplace de plugins de Claude Code**. Orientado inicialmente a **derecho laboral empresarial**, **contratos civiles/comerciales** y **litigación**.
 
-> ✅ **Estado: v0.1 + desarrollo activo.** Núcleo (`paraguay-legal-core`) y MVP laboral (`paraguay-laboral`) operativos con evals aprobados. MVP contratos (`paraguay-contratos`, 3 skills) y MVP litigación (`paraguay-litigacion`, 4 skills: escritos judiciales, juicio ejecutivo, diagnóstico de escritos, incidentes y nulidades) implementados, **pendientes de correr sus evals** (`evals/contratos/`, `evals/procesal/`). Las normas con `verification.status: draft` se citan siempre con `[VERIFICAR VIGENCIA]`. Changelog en [`CHANGELOG.md`](CHANGELOG.md).
+> ✅ **Estado: v0.1 + desarrollo activo.** Núcleo (`paraguay-legal-core`) y MVP laboral (`paraguay-laboral`) operativos con evals aprobados. MVP litigación (`paraguay-litigacion`, 5 skills, incl. inconstitucionalidad) **estable** con 7/7 evals aprobados. MVP contratos (`paraguay-contratos`, 3 skills) en **beta** (evals de `evals/contratos/` pendientes de correr). Las normas con `verification.status: draft` se citan siempre con `[VERIFICAR VIGENCIA]`. Changelog en [`CHANGELOG.md`](CHANGELOG.md).
 >
 > **¿Cómo lo uso?** → ver [`QUICKSTART.md`](QUICKSTART.md) (vía Claude Project o plugin de Claude Code).
+>
+> **¿Sos abogado y querés usarlo sin instalar nada?** Descargá el
+> [paquete para claude.ai](https://github.com/dikaia-io/claude-for-legal-paraguay/releases/latest/download/paquete-claude-ai.zip)
+> y seguí la [guía en español, sin terminal](docs/instalacion-claude-ai.md) (~15 minutos,
+> sirve la cuenta gratuita).
 
 ## Qué es
 

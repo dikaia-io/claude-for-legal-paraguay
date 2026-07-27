@@ -26,45 +26,20 @@ los servidores de Anthropic. Reemplazá nombres, RUC, CI, domicilios y expedient
 
 ## Vía A — Usar como Claude Project (recomendada para empezar)
 
-Un Claude Project tiene **dos lugares** para cargar contenido, y no son lo mismo:
+**Sin terminal, sin instalar nada.** Funciona incluso con la cuenta gratuita de claude.ai
+(hasta 5 proyectos; el plan Pro se recomienda por capacidad).
 
-| Dónde | Qué va | Para qué |
-|---|---|---|
-| **Instrucciones del proyecto** | `CLAUDE.base.md` + tu `legal.local.md` | Las **reglas** que el asistente sigue siempre. |
-| **Knowledge** (archivos) | El authority map, el glosario y las skills | El **conocimiento** que consulta al trabajar. |
+1. Descargá el paquete listo:
+   <https://github.com/dikaia-io/claude-for-legal-paraguay/releases/latest/download/paquete-claude-ai.zip>
+2. Seguí los 5 pasos de la guía incluida (`LEEME-PRIMERO.md`, que es
+   [`docs/instalacion-claude-ai.md`](docs/instalacion-claude-ai.md)): descomprimir → crear el
+   Project → pegar `instrucciones-del-proyecto.md` → arrastrar `knowledge/` → primer mensaje
+   `Configurá mi perfil`.
+3. Tu perfil queda en `perfil-del-abogado.md` (Knowledge). Al actualizar el paquete, ese archivo
+   **se conserva**; el resto se reemplaza (detalle en la guía, sección «¿Cómo actualizo?»).
 
-### Paso 1 — Tu perfil (`legal.local.md`)
-1. Copiá `shared/templates/legal.local.md.template` a un archivo nuevo `legal.local.md`.
-2. Completá los `[COMPLETAR]` (firma, matrícula CSJ, circunscripción, rol y posiciones opcionales).
-3. Guardalo en tu carpeta privada. **Nunca lo subas a git** (contiene tus datos personales).
-
-### Paso 2 — Crear el Project
-En claude.ai → **Projects** → **Create project**. Nombre sugerido: `Legal Paraguay`.
-
-### Paso 3 — Cargar las Instrucciones
-En el campo **"Instrucciones del proyecto"**, pegá:
-1. Todo el contenido de `shared/templates/CLAUDE.base.md`.
-2. Un separador `---`.
-3. Todo el contenido de tu `legal.local.md`.
-
-### Paso 4 — Cargar el Knowledge
-**No subas los archivos a mano.** Como todas las skills se llaman `SKILL.md`, colisionarían en el
-Knowledge. Corré este script una vez y te deja todo listo en una carpeta:
-
-```bash
-# desde la raíz del repo
-python scripts/build_project_knowledge.py
-```
-
-Genera `build/project-knowledge/` con el authority map, el glosario y las skills ya renombradas a
-`SKILL-<nombre>.md`. **Arrastrá el contenido de esa carpeta al Knowledge** del Project.
-
-> Este renombrado es **solo** una limitación del Knowledge de Claude Project (sube archivos planos).
-> En la **Vía B (plugin)** no hace falta: ahí las skills se identifican por su carpeta, no por el
-> nombre del archivo. Si usás el plugin, ignorá este paso.
-
-### Paso 5 — Trabajar
-Abrí una conversación en el Project y pedile lo que necesités (ver "Ejemplos" abajo).
+> **Para desarrolladores:** el paquete lo construye el CI en cada release. Para generarlo local:
+> `python scripts/build_project_knowledge.py --zip` (sale en `build/`).
 
 ---
 
@@ -86,6 +61,23 @@ tus archivos de trabajo):
 /plugin install paraguay-contratos@claude-for-legal-paraguay
 /plugin install paraguay-litigacion@claude-for-legal-paraguay
 ```
+
+Tras instalar, activá los plugins en la sesión y dejá las actualizaciones configuradas:
+
+```bash
+/reload-plugins            # activar en la sesión actual (o reiniciar Claude Code)
+```
+
+> **Actualizaciones:** para marketplaces de terceros como este, el auto-update viene
+> **desactivado por defecto**. Activalo una vez: `/plugin` → **Marketplaces** →
+> `claude-for-legal-paraguay` → **Enable auto-update**. Alternativa manual:
+> `/plugin marketplace update claude-for-legal-paraguay` cuando quieras traer la última versión.
+
+> **Instalación gráfica (sin comandos):** si usás Claude en el navegador o Cowork con plan pago,
+> podés instalar sin terminal: **Customize → Plugins → Add marketplace** →
+> `dikaia-io/claude-for-legal-paraguay` → instalar los plugins. *(Camino en validación: hasta
+> confirmar que las reglas del núcleo gobiernan esa superficie, la vía recomendada sigue siendo
+> la A o los comandos de Claude Code.)*
 
 > **Dónde queda `shared/` al instalar.** Cada plugin lleva en su raíz un enlace `shared/` al
 > mapa de autoridad, las plantillas y el glosario. Al instalar desde el marketplace, Claude Code
