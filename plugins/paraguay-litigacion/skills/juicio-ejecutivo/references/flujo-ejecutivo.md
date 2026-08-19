@@ -99,7 +99,7 @@ flowchart TD
 |---|---|---|
 | Dinero | Liquidación (capital, intereses, costas) → traslado → aprobación → pago inmediato | 475 |
 | Muebles / semovientes | Remate sin base y al contado por martillero; avisos 3 días con 5 de anticipación | 476-479 |
-| Inmuebles | Subasta con los recaudos del art. 480 y ss. (texto según Ley 7424/2025) | 480 y ss. |
+| Inmuebles | Subasta con los recaudos del art. 480 y ss. (texto consolidado verificado) | 480 y ss. |
 - Si el ejecutante no liquida en **5 días**, puede liquidar el ejecutado (501). Fianza para
   percibir si el ejecutado la pide; queda cancelada si no promueve el ordinario en **30 días** (501).
 - Preferencia: las sumas depositadas no se aplican a otro destino mientras el ejecutante no esté

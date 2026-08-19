@@ -6,7 +6,7 @@ description: Impugnación de inconstitucionalidad paraguaya (excepción y acció
 # Skill · Impugnación de inconstitucionalidad (Paraguay)
 
 > **Fuentes.** CN arts. 132, 259 inc. 5 y 260; Ley N° 609/1995 (`verified`, art. 11 con el
-> texto según Ley 7307/2024) y CPC (Ley 1337/1988, `verified`) arts. 538-564 y 582,
+> texto vigente verificado) y CPC (Ley 1337/1988, `verified`) arts. 538-564 y 582,
 > verificados contra fuente primaria el 2026-07-18 (`verification-log.md`). Criterios de
 > tribunales: `jurisprudencia.yaml` (`control_concentrado_via_reservada`,
 > `admisibilidad_fundamentacion_concreta`, `diferimiento_por_accion_pendiente`). La Sala
@@ -23,7 +23,7 @@ description: Impugnación de inconstitucionalidad paraguaya (excepción y acció
 En Paraguay el control de constitucionalidad es **concentrado**: solo la Corte Suprema de
 Justicia declara la inconstitucionalidad de normas y de resoluciones judiciales (art. 132 CN;
 art. 259 inc. 5 CN), y la ejerce por su **Sala Constitucional** (art. 260 CN; competencia del
-art. 11 de la Ley N° 609, texto según Ley 7307/2024). La declaración tiene efecto **solo inter
+art. 11 de la Ley N° 609, texto vigente verificado). La declaración tiene efecto **solo inter
 partes** — no deroga la norma con alcance general (art. 555 CPC).
 
 En supuestos especiales la competencia es del **pleno** de la Corte, no de la Sala: las

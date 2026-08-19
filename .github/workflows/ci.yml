@@ -1,13 +1,8 @@
 # CI del proyecto — corre en cada push a main y en cada pull request.
 #
-# Dos guardas, en este orden:
-#   1. check_sensitive.py --all  → bloquea datos sensibles (RUC, CI, correos,
-#      rutas de usuario, expedientes) en los archivos versionados.
-#   2. validate_authorities.py   → valida el mapa de autoridad (schema, citas
-#      de skills estables, coherencia verified/log).
-#
-# PyYAML y jsonschema son opcionales para el validador (sin ellos degrada con
-# avisos); acá se instalan para que la validación sea completa.
+# La matriz Windows/Linux protege la portabilidad del paquete. Todos los
+# controles fallan cerrado: estado, estructura, privacidad, autoridades,
+# tests y construcción del ZIP instalable.
 
 name: CI
 
@@ -21,7 +16,11 @@ permissions:
 
 jobs:
   validar:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -34,8 +33,23 @@ jobs:
       - name: Instalar dependencias de validación
         run: pip install pyyaml jsonschema
 
+      - name: Validar estado y versiones
+        run: python scripts/check_project_status.py
+
+      - name: Validar estructura de plugins y skills
+        run: python scripts/validate_plugins.py
+
       - name: Guarda de datos sensibles
         run: python scripts/check_sensitive.py --all
 
       - name: Validar mapa de autoridad
-        run: python scripts/validate_authorities.py
+        run: python scripts/validate_authorities.py --strict
+
+      - name: Tests del empaquetador y controles
+        run: python -m unittest discover -s scripts/tests -v
+
+      - name: Construir paquete
+        run: python scripts/build_project_knowledge.py --zip
+
+      - name: Probar paquete
+        run: python scripts/test_paquete.py build/paquete-claude-ai.zip

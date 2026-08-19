@@ -4,12 +4,14 @@
   "title": "Authority map — leyes.yaml",
   "description": "Valida el mapa de autoridad normativa paraguaya. Cada entrada de `laws` debe declarar su bloque de verificación.",
   "type": "object",
+  "additionalProperties": false,
   "required": ["laws"],
   "properties": {
     "laws": {
       "type": "object",
       "additionalProperties": {
         "type": "object",
+        "additionalProperties": false,
         "required": ["official_title", "short_cite", "jurisdiction", "verification"],
         "properties": {
           "official_title": {
@@ -42,9 +44,27 @@
             "items": { "type": "string" },
             "description": "Leyes modificatorias conocidas (para normas inestables)."
           },
+          "derogates": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Normas que esta entrada deroga expresamente."
+          },
+          "related": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Normas relacionadas que no son modificatorias directas."
+          },
           "verification": {
             "type": "object",
-            "required": ["status", "official_source_checked"],
+            "additionalProperties": false,
+            "required": [
+              "status",
+              "verified_at",
+              "verified_by",
+              "verified_against",
+              "official_source_checked",
+              "notes"
+            ],
             "properties": {
               "status": {
                 "enum": ["draft", "verified", "deprecated"]
@@ -72,8 +92,12 @@
                 "description": "Una entrada verified exige official_source_checked y verified_at.",
                 "if": { "properties": { "status": { "const": "verified" } } },
                 "then": {
-                  "properties": { "official_source_checked": { "const": true } },
-                  "required": ["verified_at", "verified_against"]
+                  "properties": {
+                    "official_source_checked": { "const": true },
+                    "verified_at": { "type": "string", "format": "date" },
+                    "verified_by": { "type": "string", "minLength": 1 },
+                    "verified_against": { "type": "string", "minLength": 1 }
+                  }
                 }
               }
             ]

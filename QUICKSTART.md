@@ -29,8 +29,8 @@ los servidores de Anthropic. Reemplazá nombres, RUC, CI, domicilios y expedient
 **Sin terminal, sin instalar nada.** Funciona incluso con la cuenta gratuita de claude.ai
 (hasta 5 proyectos; el plan Pro se recomienda por capacidad).
 
-1. Descargá el paquete listo:
-   <https://github.com/dikaia-io/claude-for-legal-paraguay/releases/latest/download/paquete-claude-ai.zip>
+1. Descargá [`paquete-claude-ai.zip`](https://github.com/dikaia-io/claude-for-legal-paraguay/releases/latest/download/paquete-claude-ai.zip)
+   de la [última release](https://github.com/dikaia-io/claude-for-legal-paraguay/releases/latest).
 2. Seguí los 5 pasos de la guía incluida (`LEEME-PRIMERO.md`, que es
    [`docs/instalacion-claude-ai.md`](docs/instalacion-claude-ai.md)): descomprimir → crear el
    Project → pegar `instrucciones-del-proyecto.md` → arrastrar `knowledge/` → primer mensaje

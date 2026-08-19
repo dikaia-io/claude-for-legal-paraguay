@@ -38,6 +38,7 @@ memoria del modelo (regla de `fallback.rule`).
 | Materia | Autoridad | Portal |
 |---|---|---|
 | Legislación (texto legal) | **BACN** | bacn.gov.py/leyes-paraguayas |
+| Decretos del Ejecutivo (toda materia) | **Presidencia — Portal de Normas y Decretos** | decretos.presidencia.gov.py (API pública; ver `access_notes` en el YAML) |
 | Jurisprudencia y resoluciones judiciales | **PJ/CSJ** | pj.gov.py |
 | Acordadas (organización judicial, plazos, ferias) | **PJ/CSJ — Acordadas Digitales** | pj.gov.py/acordadas-digitales |
 | Laboral administrativo (resoluciones) | **MTESS** | mtess.gov.py |

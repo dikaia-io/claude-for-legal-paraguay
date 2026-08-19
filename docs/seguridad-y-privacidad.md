@@ -128,6 +128,14 @@ método para todo contenido nuevo (en especial los evals construidos a partir de
   real se use como insumo, **primero** se agrega su nombre a esta lista.
 - Barrida completa del árbol: `python scripts/check_sensitive.py --all` (correr antes de cada
   release).
+- Barrida de todos los blobs históricos: `python scripts/check_sensitive.py --history`. El
+  workflow de release la ejecuta con `fetch-depth: 0` y falla cerrado.
+
+> **Estado 2026-08-19:** el árbol y el historial alcanzable pasan las guardas: `--all` sobre 172
+> archivos y `--history` sobre un clon del remoto (183 archivos, cero hallazgos).
+> Tener presente la limitación descrita arriba: `--history` recorre `git rev-list --objects --all`,
+> que solo ve lo alcanzable desde una ref. Una auditoría completa se hace contra el remoto, no
+> desde un clon.
 
 ### Si algo sensible llega a commitearse
 

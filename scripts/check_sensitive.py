@@ -13,6 +13,7 @@ archivo está gitignoreado y NUNCA se versiona).
 Uso:
     python scripts/check_sensitive.py --staged     # diff staged (hook pre-commit)
     python scripts/check_sensitive.py --all        # todos los archivos versionados
+    python scripts/check_sensitive.py --history    # todos los blobs del historial git
     python scripts/check_sensitive.py --files A B  # archivos puntuales
     python scripts/check_sensitive.py --install    # configura el hook (core.hooksPath)
 
@@ -122,7 +123,10 @@ def staged_content(root: Path) -> list[tuple[str, str]]:
 
 
 def tracked_content(root: Path) -> list[tuple[str, str]]:
-    out = subprocess.run(["git", "ls-files"], capture_output=True, text=True,
+    """Archivos seguidos y nuevos no ignorados del árbol de trabajo."""
+    out = subprocess.run(
+        ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
+        capture_output=True, text=True,
                          check=True, cwd=root)
     result = []
     for f in out.stdout.splitlines():
@@ -133,6 +137,67 @@ def tracked_content(root: Path) -> list[tuple[str, str]]:
             result.append((f, p.read_text(encoding="utf-8")))
         except (UnicodeDecodeError, OSError):
             continue
+    return result
+
+
+def history_content(root: Path) -> list[tuple[str, str]]:
+    """Devuelve blobs de todo el historial, una vez por objeto, con su ruta conocida."""
+    out = subprocess.run(
+        ["git", "rev-list", "--objects", "--all"],
+        capture_output=True,
+        text=True,
+        check=True,
+        cwd=root,
+    )
+    paths: dict[str, str] = {}
+    for line in out.stdout.splitlines():
+        parts = line.split(" ", 1)
+        sha = parts[0]
+        path = parts[1] if len(parts) == 2 else "<sin-ruta>"
+        if sha in paths or Path(path).suffix.lower() in BINARY_EXT:
+            continue
+        paths[sha] = path
+
+    # Dos procesos batch reemplazan miles de invocaciones `git cat-file` individuales.
+    pedidos = "".join(f"{sha}\n" for sha in paths)
+    checked = subprocess.run(
+        ["git", "cat-file", "--batch-check=%(objectname) %(objecttype) %(objectsize)"],
+        input=pedidos,
+        capture_output=True,
+        text=True,
+        check=True,
+        cwd=root,
+    ).stdout.splitlines()
+    blobs = [
+        line.split()[0]
+        for line in checked
+        if len(line.split()) == 3 and line.split()[1] == "blob"
+    ]
+    batch = subprocess.run(
+        ["git", "cat-file", "--batch"],
+        input="".join(f"{sha}\n" for sha in blobs).encode("ascii"),
+        capture_output=True,
+        check=True,
+        cwd=root,
+    ).stdout
+
+    result: list[tuple[str, str]] = []
+    offset = 0
+    for expected_sha in blobs:
+        header_end = batch.index(b"\n", offset)
+        header = batch[offset:header_end].decode("ascii").split()
+        sha, object_type, size_text = header
+        if sha != expected_sha or object_type != "blob":
+            raise RuntimeError(f"respuesta batch inesperada para {expected_sha}")
+        size = int(size_text)
+        start = header_end + 1
+        blob = batch[start:start + size]
+        offset = start + size + 1
+        try:
+            text = blob.decode("utf-8")
+        except UnicodeDecodeError:
+            continue
+        result.append((f"{sha[:12]}:{paths[sha]}", text))
     return result
 
 
@@ -149,6 +214,7 @@ def main() -> int:
     mode = ap.add_mutually_exclusive_group(required=True)
     mode.add_argument("--staged", action="store_true", help="escanear el índice (pre-commit)")
     mode.add_argument("--all", action="store_true", help="escanear todos los archivos versionados")
+    mode.add_argument("--history", action="store_true", help="escanear todos los blobs del historial git")
     mode.add_argument("--files", nargs="+", help="escanear archivos puntuales")
     mode.add_argument("--install", action="store_true", help="configurar el hook pre-commit")
     args = ap.parse_args()
@@ -163,6 +229,8 @@ def main() -> int:
         targets = staged_content(root)
     elif args.all:
         targets = tracked_content(root)
+    elif args.history:
+        targets = history_content(root)
     else:
         targets = []
         for f in args.files:

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-19",
+  "product": "Claude for Legal Paraguay",
+  "version": "0.3.1",
+  "release": {
+    "published": true,
+    "latest_published_version": "0.3.1",
+    "package_asset": "paquete-claude-ai.zip",
+    "package_available": true
+  },
+  "security": {
+    "history_sanitized": true,
+    "release_blocked": false,
+    "note": "Árbol limpio (check_sensitive --all, 172 archivos) e historial alcanzable limpio: un clon del remoto pasa check_sensitive --history con 183 archivos y cero hallazgos (verificado 2026-08-19). Limitación conocida de --history: git rev-list --objects --all solo recorre lo alcanzable desde una ref, así que la auditoría de objetos sin ref se hace sobre el remoto y no desde un clon."
+  },
+  "plugins": {
+    "paraguay-legal-core": {
+      "status": "stable",
+      "eval_directories": [],
+      "evals_total": 0,
+      "evals_approved": 0,
+      "evals_pending": 0,
+      "note": "Núcleo transversal; se cubre también mediante los evals de los plugins verticales."
+    },
+    "paraguay-laboral": {
+      "status": "stable",
+      "eval_directories": [
+        "evals/laboral"
+      ],
+      "evals_total": 11,
+      "evals_approved": 10,
+      "evals_pending": 1,
+      "note": "Diez evals históricos aprobados; el caso de contratación extraterritorial queda pendiente de corrida formal."
+    },
+    "paraguay-litigacion": {
+      "status": "stable",
+      "eval_directories": [
+        "evals/procesal",
+        "evals/constitucional"
+      ],
+      "evals_total": 7,
+      "evals_approved": 7,
+      "evals_pending": 0,
+      "note": "Cuatro evals procesales y tres constitucionales aprobados en headless real el 2026-07-19."
+    },
+    "paraguay-contratos": {
+      "status": "beta",
+      "eval_directories": [
+        "evals/contratos"
+      ],
+      "evals_total": 9,
+      "evals_approved": 0,
+      "evals_pending": 9,
+      "preliminary_passed": 8,
+      "preliminary_attention": 1,
+      "note": "Corrida preliminar 8 verdes + 1 observación; falta aplicar correcciones, re-correr y cerrar jurídicamente el set."
+    }
+  }
+}

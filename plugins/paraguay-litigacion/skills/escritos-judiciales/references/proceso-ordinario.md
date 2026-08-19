@@ -1,7 +1,7 @@
 # Proceso de conocimiento ordinario (CPC, Ley N° 1337/1988) — mapa de etapas
 
 > Artículos verificados contra el texto consolidado local del CPC (consolidación 2026-04-03,
-> modificatorias hasta la Ley 7424/2025). Registro: `shared/authorities/verification-log.md`.
+> modificatorias incorporadas hasta la fecha de verificación). Registro: `shared/authorities/verification-log.md`.
 > Los plazos son los legales; la práctica de cada juzgado puede variar (si se afirma una práctica,
 > señalarla como tal, no como texto legal).
 

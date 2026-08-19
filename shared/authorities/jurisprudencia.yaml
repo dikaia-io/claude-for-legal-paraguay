@@ -51,6 +51,8 @@ criteria:
       verified_by: "MD"
       verified_against: "RAG local de jurisprudencia (Trib. Apel. Trabajo Sala 1 y 2, fallos 2023-2025)"
       official_source_checked: false  # RAG, no portal PJ/CSJ
+      evidence_level: "local_corpus"
+      allowed_use: "trend_only"
       certainty: "alto para el rango 1-2 meses; medio para carátulas/quantum exacto de cada fallo"
       notes: >-
         Verificado contra ~9 fallos del RAG (Trib. Apel. Trabajo Sala 1 y Sala 2, años
@@ -83,6 +85,8 @@ criteria:
       verified_by: "MD"
       verified_against: "RAG local de jurisprudencia (Trib. Apel. Civ. y Com., salas 4, 5 y 6, fallos 2025)"
       official_source_checked: false  # RAG, no portal PJ/CSJ
+      evidence_level: "local_corpus"
+      allowed_use: "trend_only"
       certainty: "alta para el criterio (texto uniforme en 4 fallos de 3 salas); carátulas pendientes"
       notes: >-
         Relevado de 4 A. y S. de 2025 (sala 5 N° 1 del 14-02; sala 6 N° 98 del 24-11;
@@ -111,6 +115,8 @@ criteria:
       verified_by: "MD"
       verified_against: "RAG local de jurisprudencia (Trib. Apel. Civ. y Com., salas 1 y 6, fallos 2024-2025)"
       official_source_checked: false
+      evidence_level: "local_corpus"
+      allowed_use: "trend_only"
       certainty: "alta para el criterio; carátulas pendientes"
       notes: >-
         Relevado de A. y S. sala 6 N° 115 (17-12-2025) y N° 72 (07-10-2025) — este último
@@ -138,6 +144,8 @@ criteria:
       verified_by: "MD"
       verified_against: "RAG local de jurisprudencia (Trib. Apel. Civ. y Com., salas 1, 4 y 6, fallos 2024-2025)"
       official_source_checked: false
+      evidence_level: "local_corpus"
+      allowed_use: "trend_only"
       certainty: "alta para el criterio (repetido entre salas y años); carátulas pendientes"
       notes: >-
         Relevado vía búsqueda híbrida: sala 4 A. y S. N° 8 (28-02-2025) y N° 57 (26-08-2025)
@@ -167,6 +175,8 @@ criteria:
       verified_by: "MD"
       verified_against: "RAG local de jurisprudencia (Trib. Apel. Civ. y Com., salas 3 y 4, fallos 2025)"
       official_source_checked: false
+      evidence_level: "local_corpus"
+      allowed_use: "trend_only"
       certainty: "media-alta (2 fallos coherentes entre sí y con el texto legal); carátulas pendientes"
       notes: >-
         Relevado de A. y S. sala 4 N° 61 (02-10-2025: desistimiento del recurso de nulidad
@@ -202,6 +212,8 @@ criteria:
       verified_by: "MD"
       verified_against: "Portal oficial CSJ (2 documentos de jurisprudencia completos, vía Legal Data Hunter)"
       official_source_checked: true
+      evidence_level: "official_primary"
+      allowed_use: "trend_only"
       certainty: >-
         alta para el criterio (2 fallos con fundamentación textual coincidente y
         resultados opuestos según se cumpla o no el estándar); el N° de A.I. propio de
@@ -251,6 +263,8 @@ criteria:
       verified_by: "MD"
       verified_against: "RAG local de jurisprudencia (Trib. Apel. Civ. y Com., fuero civil, A. y S. 5 del 02-10-2025)"
       official_source_checked: false
+      evidence_level: "local_corpus"
+      allowed_use: "trend_only"
       certainty: "media (fallo individual, coherente con el texto expreso de CN 260 y art. 13 Ley 609); carátula pendiente"
       notes: >-
         Relevado de un único fallo que cita expresamente el art. 13 de la Ley 609/1995.
@@ -275,6 +289,8 @@ criteria:
       verified_by: "MD"
       verified_against: "RAG local de jurisprudencia (Trib. Apel. Trabajo Sala 1, A. y S. 167 del 21-08-2025)"
       official_source_checked: false
+      evidence_level: "local_corpus"
+      allowed_use: "trend_only"
       certainty: "media (fallo individual con sumario doctrinario explícito); carátula pendiente"
       notes: "Un solo fallo relevado; sumario/doctrina del propio documento. Carátula pendiente de PJ/CSJ."
 
@@ -297,6 +313,8 @@ criteria:
       verified_by: "MD"
       verified_against: "RAG local de jurisprudencia (Trib. Apel. Trabajo Sala 1, A. y S. 152 del 20-08-2025)"
       official_source_checked: false
+      evidence_level: "local_corpus"
+      allowed_use: "trend_only"
       certainty: "limitada (fallo individual; decisión de gestión procesal, no doctrina general)"
       notes: "Un solo fallo relevado. Carátula pendiente de PJ/CSJ."
 
@@ -318,6 +336,8 @@ criteria:
       verified_by: "MD"
       verified_against: "RAG local de jurisprudencia (Trib. Apel. Trabajo Sala 1, A. y S. 189 del 20-11-2025)"
       official_source_checked: false
+      evidence_level: "local_corpus"
+      allowed_use: "trend_only"
       certainty: "limitada (fallo individual); carátula pendiente"
       notes: "Un solo fallo relevado; coherente con el principio de trascendencia ya cargado. Carátula pendiente de PJ/CSJ."
 

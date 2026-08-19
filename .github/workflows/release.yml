@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Python
         uses: actions/setup-python@v6
@@ -35,11 +37,20 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         run: python scripts/check_versiones.py "${{ github.ref_name }}"
 
+      - name: Validar estado y versiones
+        run: python scripts/check_project_status.py --for-release
+
+      - name: Validar estructura de plugins y skills
+        run: python scripts/validate_plugins.py
+
       - name: Guarda de datos sensibles
         run: python scripts/check_sensitive.py --all
 
+      - name: Guarda de datos sensibles en el historial
+        run: python scripts/check_sensitive.py --history
+
       - name: Validar mapa de autoridad
-        run: python scripts/validate_authorities.py
+        run: python scripts/validate_authorities.py --strict
 
       - name: Tests del empaquetador
         run: python -m unittest discover -s scripts/tests -v

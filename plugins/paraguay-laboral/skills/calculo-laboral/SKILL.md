@@ -53,19 +53,17 @@ Si falta algún dato determinante → `[VACÍO FÁCTICO]` y pedirlo antes de cal
   EXCEPTO el aguinaldo** (el aguinaldo no integra la base de aporte).
 - **Fórmula:** `Aporte IPS = (Total liquidación − Aguinaldo proporcional) × 0,09`. Se muestra como
   **descuento** (resta) en la liquidación.
-- **Base normativa (verificada):** **art. 17° inc. a) del Decreto-Ley N° 1860/1950** (Carta Orgánica
-  del IPS, aprobado por Ley 375/1956), en la redacción dada por el **art. 2° de la Ley N° 98/1992**:
-  *«La cuota mensual de los trabajadores, que será el 9% (nueve por ciento) de sus salarios»*.
-  Para trabajo doméstico, el 9% obrero está en la Ley 5407/2015.
+- **Base normativa (verificada):** **art. 17° inc. a) del Decreto-Ley N° 1860/1950**, en su texto
+  vigente verificado en `aporte_ips`: cuota obrera del **9%** de los salarios. Para trabajo
+  doméstico, la referencia específica es la Ley 5407/2015 `[VERIFICAR VIGENCIA]`.
 - **Reparto total del aporte** (referencia; lo que importa para el descuento al trabajador es el 9%):
   - **Trabajador: 9%** (lo que se descuenta de la liquidación).
   - **Empleador: 16,5%** = 14% IPS (art. 17 inc. b) + **2,5% adicional** destinado a **SENEPA** y **SNPP**.
   - **Estado: 1,5%** (art. 17 inc. c).
   - El 2,5% patronal (SENEPA/SNPP) `[VERIFICAR VIGENCIA]` de la norma puntual que lo fija.
 
-> Estas normas (Decreto-Ley 1860/50, Ley 98/92, Ley 5407/2015) todavía no son entradas propias de
-> `leyes.yaml`; conviene cargarlas para que `citacion` las dé por `verified` (texto del art. 17 inc. a
-> confirmado en sesión, 2026-06-30).
+> Fuente estructurada: `[[auth:aporte_ips#art17-a]]`. No reconstruir la cadena de reformas desde
+> memoria: usar el texto vigente y la procedencia registrados en el authority map.
 
 ## Bases de cálculo por rubro
 

@@ -24,7 +24,7 @@ para vicios en las **resoluciones**. Elegir mal la vía es un error técnico fre
 |---|---|---|
 | Una actuación (notificación defectuosa, audiencia mal practicada, traslado omitido) | **Incidente de nulidad**, en la instancia del vicio | 117; trámite 180-191 |
 | Una resolución (S.D. o A.I. dictados con violación de formas o solemnidades) | **Recurso de nulidad** — implícito en la apelación | 404-405 |
-| Una sentencia **firme** que perjudica a un **tercero** en indefensión | **Acción autónoma de nulidad** (residual: solo si falsedad de la ejecutoria o inhabilidad de título no alcanzan) | 409 (texto según Ley 4419/2011) |
+| Una sentencia **firme** que perjudica a un **tercero** en indefensión | **Acción autónoma de nulidad** (residual: solo si falsedad de la ejecutoria o inhabilidad de título no alcanzan) | 409 (texto consolidado verificado) |
 | El procedimiento del **juicio ejecutivo civil** | Excepción de nulidad (hasta la citación) → régimen propio | 463 → skill `juicio-ejecutivo` |
 | La **ejecución laboral** | Excepción hasta la citación de remate; incidente después | 357 CPT → `escritos-laborales.md` |
 

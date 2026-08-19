@@ -382,6 +382,39 @@ laws:
       official_source_checked: true
       notes: "Promulgada 25-09-2019. ALCANCE de la verificación de articulado (caso extraterritorialidad laboral, 2026-07-02): SOLO arts. 5 (residencia de personas jurídicas: constituidas conforme a leyes nacionales), 6 (fuente IRE: 'actividades desarrolladas en la República' — criterio territorial), 49 (contribuyentes IRP: personas físicas RESIDENTES en el territorio nacional), 62 (rentas de servicios personales: chapeau exige trabajo 'prestado por un RESIDENTE'; num. 2: sueldos abonados por entidades residentes a sus funcionarios o empleados 'en Paraguay o en otros países'; num. 4: remuneraciones de miembros de directorios de entidades residentes), 72 (contribuyentes INR) y 73 (fuente INR; num. 9: servicios prestados DESDE el exterior por personas físicas solo son fuente paraguaya si están 'vinculados a la obtención de rentas gravadas por el IRE'). RESTO DEL ARTICULADO NO VERIFICADO — antes de citar cualquier otro artículo, contrastar contra BACN/9332 o usar [VERIFICAR VIGENCIA]. Definición reglamentaria de residencia fiscal de personas físicas: [FUENTE OFICIAL PENDIENTE] (decreto reglamentario del IRP, no verificado). OJO: los PDF de BACN y del repositorio local son ESCANEADOS; el texto útil está en el HTML de la página BACN."
 
+  ley_1016_1997_juegos_azar:
+    official_title: "Ley N° 1016/1997 - Que establece el régimen jurídico para la explotación de los juegos de suerte o de azar"
+    short_cite: "Ley N° 1016/1997, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 1997
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/3130/ley-n-1016-establece-el-regimen-juridico-para-la-explotacion-de-los-juegos-de-suerte-o-de-azar"
+    local_source: "local (texto normalizado con notas de vigencia por artículo)"
+    modified_by:
+      - "Ley 4716/2012 (arts. 15, 16 y 17; el art. 17 — tipificación penal del juego clandestino — conserva esta redacción)"
+      - "Ley 7438/2025 (arts. 3, 4, 5, 6, 8, 12, 13, 15, 16, 19, 20, 21, 22, 23, 25, 29 y 30; incorpora arts. 6 bis y 23 bis)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-28"
+      verified_by: "MD"
+      verified_against: "local:ley_1016_1997_juegos_de_azar.md + BACN/3130 (PDF escaneado 9 págs., transcripción cotejada página por página)"
+      official_source_checked: true
+      notes: "Sancionada 22-05-1997 (art. 208 CN, con objeciones parciales), promulgada 30-06-1997. 34 artículos. Texto original NO consolidado: 17 artículos sustituidos por las modificatorias (ver modified_by); conservan redacción original los arts. 1, 2, 7, 9, 10, 11, 14, 18, 24, 26, 27, 28 y 31-34. El PDF de BACN es escaneo sin capa de texto y la página BACN no trae el texto en HTML: la fuente textual verificada es la transcripción local."
+
+  ley_7438_2025_juegos_azar:
+    official_title: "Ley N° 7438/2025 - Que modifica y amplía la Ley N° 1016/1997 \"Que establece el régimen jurídico para la explotación de los juegos de suerte o de azar\""
+    short_cite: "Ley N° 7438/2025, art. {art}"
+    jurisdiction: "Paraguay"
+    year: 2025
+    source_url: "https://www.bacn.gov.py/leyes-paraguayas/12694/ley-n-7438-2025-que-modifica-y-ampl-a-la-ley-n-1016-1997-que-establece-el-r-gimen-jur-dico-para-la-explotaci-n-de-los-juegos-de-suerte-o-de-azar"
+    local_source: "local (texto normalizado; enumeración de incisos reconstruida del PDF oficial)"
+    verification:
+      status: "verified"
+      verified_at: "2026-07-28"
+      verified_by: "MD"
+      verified_against: "local:ley_7438_2025_modifica_amplia_1016_juegos_azar.md + BACN/12694 (HTML íntegro + PDF con capa de texto, cotejados entre sí)"
+      official_source_checked: true
+      notes: "Sancionada 17-12-2024, promulgada 03-01-2025, Gaceta Oficial N° 3 del 06-01-2025. Reforma estructural: CONAJZAR pasa a órgano desconcentrado de la DNIT (interactúa con Ley 7143/2023, art. 17 num. 1 — deducción 0,7% del canon); desmonopoliza quiniela y apuestas deportivas (hasta 3 concesiones, art. 20); define casino online, quiniséis y lotto (art. 3 nums. 11-13); premios no reclamados van al FONARESS (art. 19, plazo 60 días hábiles + depósito 30 días hábiles). Reglamentada por Decreto 3846/2025 del 07-05-2025 (crea la Dirección General de Juegos de Azar; PDF en repositorio local, obtenido de la API de decretos.presidencia.gov.py — ver decretos_ejecutivo en fuentes-oficiales.yaml). CUIDADO al citar incisos: el HTML de BACN pierde las letras (a...ñ...u); la enumeración verificada está en el archivo local normalizado. Ley conexa (no modificatoria): Ley 6903/2022, protección de menores ante tragamonedas (en repositorio local)."
+
   # ---- EN BORRADOR (sin verificar contra fuente oficial todavía) ----
 
   ley_5393_2015_contratos_internacionales:
@@ -432,7 +465,7 @@ laws:
       verified_by: null
       verified_against: null
       official_source_checked: false
-      notes: "Del 31-05-1985. IDENTIDAD CORREGIDA (2026-07-19, texto hallado en Justia Paraguay, fuente NO oficial): es una ley GENERAL de notificaciones judiciales, NO una modificatoria nominal del art. 81 CPT. Según ese texto: art. 1° notificación automática en Secretaría los MARTES y JUEVES (o día hábil siguiente si feriado; no se computa si el expediente no está en Secretaría); arts. 3-5 actos que exigen cédula/personal; art. 7° rige en juicios civiles, comerciales, criminales y contencioso-administrativos y EXCLUYE EXPRESAMENTE quiebras, FUERO LABORAL, menores y Justicia de Paz Letrada ('se rigen por leyes especiales'); art. 9° sábado inhábil; art. 10 derogación genérica. TRAMPA DE AUTORIDAD DETECTADA: esta ley NO puede citarse como fuente de los 'días de nota' martes/jueves del fuero laboral (su art. 7 lo excluye). El CPT art. 81 originario dice 'lunes, miércoles y viernes' y NO se halló norma que lo modifique; la práctica forense laboral real es martes/jueves, vía plausible: CPT art. 6 (remisión al CPC — cuyo art. 131 fija martes/jueves, verificado — y a 'la costumbre o el uso local en materia de procedimiento'). REGLA PARA SKILLS: citar martes/jueves en el fuero laboral como práctica forense uniforme con ancla normativa indirecta (CPT art. 6 + CPC art. 131), NUNCA como texto del art. 81 CPT ni como efecto de la Ley 1110/1985; la afirmación puntual lleva [VERIFICAR VIGENCIA]. BACN no indexa esta ley (la 'Ley 1110' de BACN id 10608 es la homónima de 1997, presupuesto UNA — no confundir). [FUENTE OFICIAL PENDIENTE] para el texto de la 1110/1985 (Gaceta Oficial / PJ)."
+      notes: "Del 31-05-1985. Texto hallado en Justia Paraguay (fuente NO oficial): art. 1° notificación automática en Secretaría los MARTES y JUEVES (o día hábil siguiente si feriado; no se computa si el expediente no está en Secretaría); arts. 3-5 actos que exigen cédula/personal; art. 7° enumera materias regidas por leyes especiales; art. 9° sábado inhábil; art. 10 derogación genérica. CORRECCIÓN OPERATIVA 2026-08-08: una providencia laboral actual aportada en sesión declara martes y jueves como días de notificación en Secretaría bajo apercibimiento del art. 1 de la Ley 1110/85. Esto confirma la aplicación judicial actual de la norma al fuero laboral y descarta interpretar el art. 7 como exclusión práctica. La copia local del CPT conserva el art. 81 originario (lunes/miércoles/viernes). REGLA PARA SKILLS: aplicar martes/jueves en Secretaría al fuero laboral y citar art. 1 Ley 1110/1985 con [VERIFICAR VIGENCIA] hasta cotejar Gaceta Oficial o PJ. BACN no indexa esta ley (la 'Ley 1110' de BACN id 10608 es la homónima de 1997, presupuesto UNA — no confundir). [FUENTE OFICIAL PENDIENTE]."
 
   constitucion:
     official_title: "Constitución de la República del Paraguay (1992)"

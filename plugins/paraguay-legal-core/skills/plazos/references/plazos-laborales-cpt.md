@@ -68,17 +68,14 @@ Se computan en **días hábiles**, salvo excepción o habilitación especial (re
 2. En los plazos **procesales** solo se cuentan los **días hábiles**, salvo habilitación especial.
 3. En los plazos del **Código del Trabajo** (sustantivos) se computan **todos los días** —domingos y
    feriados inclusive— porque son continuos (art. 341 CC), salvo excepción especial.
-4. **Notificación automática por ministerio de la ley ("días de nota"):** en el fuero laboral las
-   providencias de mero trámite y las interlocutorias quedan notificadas en Secretaría los días
-   **martes y jueves** posteriores a su dictado (o el siguiente día hábil si fuese feriado), **siempre
-   que el expediente esté en Secretaría** (art. 81 CPT, en su redacción vigente por la **Ley N° 1110
-   del 31-05-1985** `[VERIFICAR VIGENCIA]`).
-   > ⚠️ **Ojo con las copias del texto originario.** El texto de 1961 del art. 81 decía "lunes,
-   > miércoles y viernes"; la **Ley 1110/1985 lo modificó a martes y jueves**, que es la práctica
-   > forense laboral vigente. Una copia normalizada del CPT que aún diga "lunes, miércoles y viernes"
-   > **no tiene consolidada** esa reforma — no usarla para este punto. (Ver `verification-log.md`,
-   > fila `notificacion_ministerio_ley`.) Confirmar el texto de la Ley 1110/1985 contra BACN cuando
-   > esté disponible.
+4. **Notificación automática por ministerio de la ley ("días de nota"):** en el **fuero laboral**
+   son **martes y jueves**, en Secretaría (o el siguiente día hábil si uno fuese feriado), siempre
+   que el expediente se encuentre allí. Esta es la regla operativa confirmada por el abogado
+   responsable y por una providencia laboral actual aportada en sesión, que la funda expresamente
+   en el **art. 1 de la Ley 1110/1985** `[VERIFICAR VIGENCIA]`. Debe aplicarse al cómputo laboral.
+   > ⚠️ La copia local del CPT conserva la redacción originaria de 1961 y no incorpora esta regla.
+   > La Ley 1110/1985 permanece en `draft` hasta cotejar su texto en fuente oficial. Esa cautela de
+   > autoridad **no** altera la aplicación judicial actual de martes/jueves en Secretaría.
 5. Todo **traslado o vista sin plazo especialmente fijado** se evacúa dentro de **3 días** (art. 80 CPT).
 
 ---

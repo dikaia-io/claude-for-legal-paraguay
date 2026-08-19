@@ -11,13 +11,49 @@ sources:
     base_url: "https://www.bacn.gov.py/leyes-paraguayas"
     note: "Fuente primaria del texto legal paraguayo."
     access_notes: >-
-      Lecciones operativas (verificadas 2026-07-02): (1) el sitio devuelve 403 a los
-      fetchers HTTP genéricos; acceder con un cliente que envíe User-Agent de navegador
-      (p. ej. curl -A "Mozilla/5.0 ..."). (2) Los PDF descargables de BACN suelen ser
-      ESCANEADOS sin capa de texto: el texto útil de la ley está en el HTML de la página
-      de la norma, no en el PDF. (3) El buscador del sitio y los buscadores web indexan
-      bien el patrón /leyes-paraguayas/{id}/{slug}; nunca derivar el {id} por analogía —
-      confirmarlo por búsqueda antes de citar la URL.
+      Lecciones operativas (verificadas 2026-07-02, ampliadas 2026-07-28): (1) el sitio
+      devuelve 403 a los fetchers HTTP genéricos; acceder con un cliente que envíe
+      User-Agent de navegador (p. ej. curl -A "Mozilla/5.0 ..."). (2) Descarga de PDF:
+      el patrón /descarga/{id}/{archivo}.pdf sirve un VISOR HTML (HTTP 200 pero contenido
+      <!DOCTYPE html>); el binario real está en /archivos/{id}/{archivo}.pdf, con espacios
+      codificados como "+" (no %20, que da 403). Validar SIEMPRE magic bytes %PDF: el 200
+      no garantiza PDF. El nombre de archivo es arbitrario por ley (LEY6480.pdf,
+      Ley+5895.pdf, timestamps tipo 20150316142253.pdf en leyes viejas): extraerlo del
+      HTML de la página, nunca adivinarlo. (3) Capa de texto: las leyes anteriores a
+      ~2013 suelen ser escaneos sin texto (transcribir del PDF renderizado); las
+      recientes traen capa de texto OCR con ruido. El HTML de la página tiene el texto
+      limpio PERO pierde las letras de los incisos (a, b, c... ñ) porque el CMS usa
+      listas auto-numeradas: para citar un inciso concreto, cotejar la enumeración
+      contra el PDF oficial. El HTML además mezcla encoding UTF-8 con bytes Latin-1
+      sueltos. (4) El buscador del sitio y los buscadores web indexan el patrón
+      /leyes-paraguayas/{id}/{slug}; nunca derivar el {id} por analogía Y ADEMÁS no
+      confiar en el slug: se observó (2026-07-28) un {id} cuyo slug decía "ley 7438"
+      pero cuya página servía la Ley 7505. Regla dura: verificar el <title> del HTML
+      descargado antes de usar la página. (5) Las leyes extensas pueden estar divididas
+      en varios PDF (multi-parte); bajar todas las partes. Los decretos reglamentarios
+      a veces están adjuntos en la página de la ley base — si no están, usar
+      decretos_ejecutivo.
+  decretos_ejecutivo:
+    authority: "Presidencia de la República — Portal de Normas y Decretos"
+    base_url: "https://decretos.presidencia.gov.py/"
+    note: >-
+      Fuente primaria para decretos del Poder Ejecutivo de cualquier materia (BACN no
+      los indexa salvo que estén adjuntos a la página de la ley base). Cubre p. ej. el
+      Decreto 3846/2025 (reglamentario de la Ley 7438/2025, juegos de azar), que no
+      figura en BACN.
+    access_notes: >-
+      API REST pública sin autenticación (verificada 2026-07-28). (1) Búsqueda:
+      GET /api/norma/?filter=&page=0&pageSize=20&sortAsc=false&nroNorma={NNNN}&tipoDocumento=&acapite=&fechaElaboracion=&fechaPromulgacionDesde=&fechaPromulgacionHasta=&derogado=&presidente=&oee=&etiqueta=
+      — TODOS los parámetros de filtro deben ir presentes aunque vacíos (si faltan:
+      HTTP 500; rutas inventadas como /api/norma/list: HTTP 401). nroNorma matchea por
+      número y devuelve homónimos de todos los años (3846-2025, 3846-2020...); filtrar
+      por fechaPromulgacion en el JSON. El JSON incluye acapite (título completo),
+      presidente, oee y estado de derogación. (2) Descarga del PDF:
+      GET /api/norma/download/{normaDocumentoId} — usar el campo normaDocumentoId de la
+      respuesta, NO el campo id. El PDF es escaneo oficial firmado; validar %PDF igual
+      que en BACN. (3) La SPA en el navegador es solo fachada de esta API; no hay URLs
+      HTML estables por decreto para citar — citar "Decreto N° X/AAAA" + el portal como
+      autoridad.
   jurisprudencia:
     authority: "PJ/CSJ"
     base_url: "https://www.pj.gov.py/"
@@ -31,7 +67,7 @@ sources:
     base_url: "https://www.mtess.gov.py/"
     resoluciones_url: "https://www.mtess.gov.py/?page_id=31671"
     decretos_url: "https://www.mtess.gov.py/?page_id=32031"
-    note: "Ministerio de Trabajo, Empleo y Seguridad Social. Resoluciones y reglamentos del MTESS (p. ej. Res. 991/2024 - REOP) en resoluciones_url; decretos del Ejecutivo en materia laboral (p. ej. Decreto 1989/2024 - REOP) en decretos_url. BACN no indexa decretos del Ejecutivo ni resoluciones del MTESS, por eso se usa el portal del Ministerio."
+    note: "Ministerio de Trabajo, Empleo y Seguridad Social. Resoluciones y reglamentos del MTESS (p. ej. Res. 991/2024 - REOP) en resoluciones_url; decretos del Ejecutivo en materia laboral (p. ej. Decreto 1989/2024 - REOP) en decretos_url. BACN no indexa decretos del Ejecutivo ni resoluciones del MTESS, por eso se usa el portal del Ministerio. Para decretos del Ejecutivo de cualquier materia, ver también decretos_ejecutivo (API de Presidencia)."
   seguridad_social:
     authority: "IPS"
     base_url: "https://portal.ips.gov.py/sistemas/ipsportal/"

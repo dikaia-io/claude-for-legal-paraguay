@@ -4,6 +4,37 @@ Todas las novedades relevantes de **Claude for Legal Paraguay** se registran en 
 
 El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y el proyecto adhiere a [Versionado Semántico](https://semver.org/lang/es/).
 
+## [0.3.1] — 2026-08-19
+
+### Añadido
+
+- `project-status.json` como fuente única de versión, madurez y estado de los 27 evals.
+- `scripts/check_project_status.py` para impedir drift entre estado, README, marketplace,
+  manifiestos y casos versionados.
+
+### Corregido
+
+- El camino sin terminal vuelve a funcionar: v0.3.1 publica `paquete-claude-ai.zip` como asset,
+  y README, QUICKSTART y las dos guías de instalación apuntan a la descarga directa. Entre v0.2.0
+  y esta release no hubo asset descargable, así que la instalación por Claude Project no era
+  posible para quien no clonara el repo.
+- `paraguay-litigacion` deja de aparecer como beta en el marketplace: sus 7 evals fueron
+  aprobados el 2026-07-19.
+- Estado público actualizado: laboral 10/11, litigación 7/7 y contratos en cierre beta.
+- v0.3.0 no se publicó como release; v0.3.1 la reemplaza para que los usuarios instalados
+  reciban estas correcciones mediante el cambio de versión.
+
+### Seguridad
+
+- `check_sensitive.py --history` audita todos los blobs alcanzables, y el workflow de release lo
+  ejecuta antes de crear una release. Verificado sobre un clon limpio del remoto: 183 archivos,
+  cero hallazgos.
+- **Limitación conocida de `--history`:** se apoya en `git rev-list --objects --all`, que solo
+  recorre objetos alcanzables desde alguna ref. No detecta objetos huérfanos, es decir, commits
+  que se pushearon y quedaron sin rama al borrarla. Esos objetos siguen sirviéndose por SHA
+  exacto y ninguna corrida de esta guarda los va a ver. Auditarlos requiere revisar el remoto
+  fuera de un clon.
+
 ## [0.3.0] — 2026-07-27
 
 ### Añadido

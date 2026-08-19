@@ -173,7 +173,7 @@ class TestConstruirYZip(unittest.TestCase):
 class TestScriptsDeVerificacion(unittest.TestCase):
     def _correr(self, *args):
         return subprocess.run([sys.executable, *args], capture_output=True,
-                              text=True, encoding="utf-8", cwd=bpk.REPO)
+                              text=True, encoding="utf-8", errors="replace", cwd=bpk.REPO)
 
     def test_paquete_ok_y_tag_mal(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -193,6 +193,19 @@ class TestScriptsDeVerificacion(unittest.TestCase):
         self.assertEqual(ok.returncode, 0, ok.stdout + ok.stderr)
         mal = self._correr("scripts/check_versiones.py", "v9.9.9")
         self.assertEqual(mal.returncode, 1)
+
+    def test_controles_estaticos(self):
+        for script, argumentos in [
+            ("scripts/check_project_status.py", []),
+            ("scripts/validate_plugins.py", []),
+            ("scripts/validate_authorities.py", ["--strict"]),
+        ]:
+            resultado = self._correr(script, *argumentos)
+            self.assertEqual(
+                resultado.returncode,
+                0,
+                f"{script}\n{resultado.stdout}{resultado.stderr}",
+            )
 
 
 if __name__ == "__main__":

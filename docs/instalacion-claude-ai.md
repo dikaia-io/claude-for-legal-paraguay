@@ -6,8 +6,9 @@
 
 ## Los 5 pasos
 
-1. **Descargá el paquete.** Abrí este enlace (siempre apunta a la última versión):
-   <https://github.com/dikaia-io/claude-for-legal-paraguay/releases/latest/download/paquete-claude-ai.zip>
+1. **Descargá el paquete:**
+   <https://github.com/dikaia-io/claude-for-legal-paraguay/releases/latest/download/paquete-claude-ai.zip>.
+   El archivo se llama `paquete-claude-ai.zip` y figura como asset de la última release.
 2. **Descomprimilo.** Clic derecho sobre `paquete-claude-ai.zip` → «Extraer todo…». Adentro vas a
    encontrar esta guía (`LEEME-PRIMERO.md`), `instrucciones-del-proyecto.md`, `manifiesto.json`,
    `LICENSE`, `NOTICE` y una carpeta `knowledge/`.

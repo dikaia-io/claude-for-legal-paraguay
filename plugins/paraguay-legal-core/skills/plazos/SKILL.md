@@ -70,7 +70,7 @@ lunes** (anterior o siguiente) por **decreto anual** del Poder Ejecutivo. **Los 
 **Asuetos** (art. 7): son **días hábiles** y **no** tienen efecto de feriado — **salvo** que un plazo
 venza el día del asueto, en cuyo caso **el vencimiento se traslada al día hábil siguiente**.
 
-> Esta ley **derogó** la Ley 8/90 y la Ley 1723/2001: no citar las anteriores.
+> Esta ley **derogó el régimen anterior de feriados**: no citar las normas anteriores como vigentes.
 
 ---
 
@@ -137,8 +137,11 @@ del Código del Trabajo (Ley 213/1993: caducidad art. 401, prescripciones arts. 
 - Usá ese catálogo para dar la **duración legal** de un plazo laboral con su artículo (p. ej. contestar
   demanda = 6 días, art. 114; apelar = 3 días, art. 243; perención = 3 meses, art. 217).
 - **La duración no es la fecha final.** Sobre esa duración se aplican los inhábiles (§2-4) y las reglas
-  de cómputo del propio catálogo (días hábiles vs. corridos; **días de nota martes/jueves**, art. 81
-  modificado por la Ley 1110/1985 `[VERIFICAR VIGENCIA]`).
+  de cómputo del propio catálogo (días hábiles vs. corridos). En el **fuero laboral**, los días de
+  notificación automática en Secretaría son **martes y jueves**; la regla operativa fue confirmada
+  por el abogado responsable y por una providencia laboral actual aportada en sesión, que aplica
+  expresamente el **art. 1 de la Ley 1110/1985** `[VERIFICAR VIGENCIA]`. La cautela subsiste solo
+  hasta cotejar el texto de esa ley en fuente oficial.
 - Para el fuero **civil/comercial**, el régimen general de cómputo del CPC está verificado en la
   sección 9. Para el administrativo todavía no hay catálogo cargado → encuadrar con la norma del
   fuero y `[VERIFICAR VIGENCIA]`.

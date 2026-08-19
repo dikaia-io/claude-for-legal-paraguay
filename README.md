@@ -2,14 +2,20 @@
 
 Asistente jurídico para práctica profesional paraguaya, construido como **marketplace de plugins de Claude Code**. Orientado inicialmente a **derecho laboral empresarial**, **contratos civiles/comerciales** y **litigación**.
 
-> ✅ **Estado: v0.1 + desarrollo activo.** Núcleo (`paraguay-legal-core`) y MVP laboral (`paraguay-laboral`) operativos con evals aprobados. MVP litigación (`paraguay-litigacion`, 5 skills, incl. inconstitucionalidad) **estable** con 7/7 evals aprobados. MVP contratos (`paraguay-contratos`, 3 skills) en **beta** (evals de `evals/contratos/` pendientes de correr). Las normas con `verification.status: draft` se citan siempre con `[VERIFICAR VIGENCIA]`. Changelog en [`CHANGELOG.md`](CHANGELOG.md).
+<!-- project-status:start -->
+> ✅ **Estado del código: v0.3.1** (publicada).
+> Núcleo, laboral y litigación están **estables**; contratos permanece en **beta** hasta cerrar sus evals.
+> **Evals versionados:** 27 casos — 17 aprobados y 10 pendientes de cierre formal.
+> **Gate de publicación:** habilitado. El árbol y el historial alcanzable pasan las guardas de datos sensibles.
+> Las normas `draft` y toda primera mención no verificada en sesión llevan `[VERIFICAR VIGENCIA]`.
+<!-- project-status:end -->
 >
 > **¿Cómo lo uso?** → ver [`QUICKSTART.md`](QUICKSTART.md) (vía Claude Project o plugin de Claude Code).
 >
-> **¿Sos abogado y querés usarlo sin instalar nada?** Descargá el
-> [paquete para claude.ai](https://github.com/dikaia-io/claude-for-legal-paraguay/releases/latest/download/paquete-claude-ai.zip)
-> y seguí la [guía en español, sin terminal](docs/instalacion-claude-ai.md) (~15 minutos,
-> sirve la cuenta gratuita).
+> **¿Sos abogado y querés usarlo sin terminal?** Descargá
+> [`paquete-claude-ai.zip`](https://github.com/dikaia-io/claude-for-legal-paraguay/releases/latest/download/paquete-claude-ai.zip)
+> y seguí la [guía en español](docs/instalacion-claude-ai.md). No hace falta instalar programas
+> ni conocer GitHub: la cuenta gratuita de Claude alcanza.
 
 ## Qué es
 
@@ -52,7 +58,8 @@ Desde Claude Code, directo desde GitHub:
 > Instalar **a nivel usuario** para no bloquear la lectura de archivos fuera del proyecto.
 > Cada plugin de práctica declara su dependencia sobre `paraguay-legal-core`: el núcleo se
 > instala y habilita automáticamente si falta. `paraguay-contratos` está en **beta**
-> (evals pendientes de correr); las demás materias tienen sus evals aprobados.
+> (corrida preliminar 8 verdes + 1 observación; cierre formal pendiente); litigación tiene
+> 7/7 evals aprobados y laboral 10/11, con el caso extraterritorial pendiente.
 
 ### Desarrollo local
 

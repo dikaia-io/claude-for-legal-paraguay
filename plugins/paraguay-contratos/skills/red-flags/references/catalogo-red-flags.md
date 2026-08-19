@@ -160,7 +160,7 @@ contrato, pero pueden costar caro.
 ### 2.4 · Prórroga de jurisdicción o arbitraje en el extranjero
 
 - **Norma anclada:** **Ley N° 7561/2025** de Arbitraje (`verified` en el authority map; deroga la
-  Ley 1879/2002 salvo sus arts. 53-67). El sometimiento a arbitraje o a tribunales del exterior
+  Ley 1879/2002 salvo sus arts. 53-67 `[VERIFICAR VIGENCIA]`). El sometimiento a arbitraje o a tribunales del exterior
   debe leerse bajo este régimen (y, si hay consumidor de por medio, contra la Ley 1334/1998).
 - **Cómo se detecta:** cláusulas que someten los conflictos a **tribunales o árbitros de otro
   país**, a reglas de arbitraje extranjeras, o que fijan sede/ley aplicable fuera de Paraguay,

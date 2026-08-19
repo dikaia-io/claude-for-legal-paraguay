@@ -12,7 +12,7 @@
 
 ## Infracciones Documentales
 
-### 1. Libro de Registro de Empleados y Obreros (Art. 6 Decreto 580/08)
+### 1. Libro de Registro de Empleados y Obreros (Art. 6 Decreto 580/08) `[VERIFICAR VIGENCIA]`
 
 **Infracción Típica:**
 - Falta de asentamiento de trabajadores
@@ -29,7 +29,7 @@
 - Constancias de entrada y salida de trabajadores
 - Documentación que acredite las fechas de ingreso/egreso
 
-### 2. Libro de Registro de Sueldos y Jornales (Art. 6 Decreto 580/08)
+### 2. Libro de Registro de Sueldos y Jornales (Art. 6 Decreto 580/08) `[VERIFICAR VIGENCIA]`
 
 **Infracción Típica:**
 - Falta de asentamiento de trabajadores
@@ -46,7 +46,7 @@
 - Planilla de liquidación de sueldos
 - Recibos de salario firmados
 
-### 3. Libro de Registro de Vacaciones (Art. 6 inc. c Decreto 580/08)
+### 3. Libro de Registro de Vacaciones (Art. 6 inc. c Decreto 580/08) `[VERIFICAR VIGENCIA]`
 
 **Infracción Típica:**
 - No registro de vacaciones de trabajadores
@@ -220,7 +220,7 @@
 
 ## Infracciones de Seguridad e Higiene
 
-### 1. Exámenes Médicos Obligatorios (Art. 275 inc. a Ley 213/1993 y Arts. 259-263 Decreto 14390/92)
+### 1. Exámenes Médicos Obligatorios (Art. 275 inc. a Ley 213/1993 y Arts. 259-263 Decreto 14390/92) `[VERIFICAR VIGENCIA]`
 
 **Infracción Típica:**
 - Falta de presentación de exámenes médicos de admisión y periódicos

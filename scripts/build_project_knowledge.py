@@ -40,18 +40,18 @@ REPO = Path(__file__).resolve().parent.parent
 SALIDA = REPO / "build" / "paquete"
 ZIP = REPO / "build" / "paquete-claude-ai.zip"
 
-# Estado por plugin (spec §4.5). Los beta se incluyen CON banner, nunca en silencio.
-# Quitar un plugin de "beta" exige evals aprobados (regla del proyecto).
+# Estado por plugin (spec §4.5), derivado de la fuente única del proyecto.
+# Los beta se incluyen CON banner, nunca en silencio.
+_PROJECT_STATUS = json.loads((REPO / "project-status.json").read_text(encoding="utf-8"))
+_TRADUCIR_ESTADO = {"stable": "estable", "beta": "beta"}
 ESTADO_PLUGINS = {
-    "paraguay-legal-core": "estable",
-    "paraguay-laboral": "estable",
-    "paraguay-litigacion": "estable",
-    "paraguay-contratos": "beta",
+    nombre: _TRADUCIR_ESTADO[datos["status"]]
+    for nombre, datos in _PROJECT_STATUS["plugins"].items()
 }
 
 BANNER_BETA = (
-    "> ⚠️ **BETA — evals pendientes.** Materia aún sin casos de prueba corridos: "
-    "verificá la salida con especial rigor antes de uso profesional.\n\n"
+    "> ⚠️ **BETA — cierre formal de evals pendiente.** Verificá la salida con "
+    "especial rigor antes de uso profesional.\n\n"
 )
 
 

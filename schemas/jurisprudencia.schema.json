@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://claude-for-legal-paraguay/schemas/jurisprudencia.schema.json",
+  "title": "Authority map — jurisprudencia.yaml",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["criteria", "rulings"],
+  "properties": {
+    "criteria": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["topic", "related_law", "criterion", "practical_use", "verification"],
+        "properties": {
+          "topic": { "type": "string", "minLength": 1 },
+          "related_law": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+          "criterion": { "type": "string", "minLength": 1 },
+          "divergence_note": { "type": "string", "minLength": 1 },
+          "practical_use": { "type": "string", "minLength": 1 },
+          "verification": { "$ref": "#/$defs/criterionVerification" }
+        }
+      }
+    },
+    "rulings": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "caratula",
+          "tribunal",
+          "resolution_type",
+          "number",
+          "date",
+          "source_url",
+          "verification"
+        ],
+        "properties": {
+          "caratula": { "type": "string", "minLength": 1 },
+          "tribunal": { "type": "string", "minLength": 1 },
+          "resolution_type": { "type": "string", "minLength": 1 },
+          "number": { "type": ["string", "integer"] },
+          "date": { "type": "string", "format": "date" },
+          "source_url": { "type": "string", "format": "uri" },
+          "extract": { "type": "string" },
+          "verification": { "$ref": "#/$defs/rulingVerification" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "criterionVerification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "verified_at",
+        "verified_by",
+        "verified_against",
+        "official_source_checked",
+        "evidence_level",
+        "allowed_use",
+        "certainty",
+        "notes"
+      ],
+      "properties": {
+        "status": { "enum": ["draft", "verified", "deprecated"] },
+        "verified_at": { "type": ["string", "null"], "format": "date" },
+        "verified_by": { "type": ["string", "null"] },
+        "verified_against": { "type": ["string", "null"] },
+        "official_source_checked": { "type": "boolean" },
+        "evidence_level": { "enum": ["official_primary", "local_corpus", "secondary"] },
+        "allowed_use": { "const": "trend_only" },
+        "certainty": { "type": "string", "minLength": 1 },
+        "notes": { "type": ["string", "null"] }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "verified" } } },
+          "then": {
+            "properties": {
+              "verified_at": { "type": "string", "format": "date" },
+              "verified_by": { "type": "string", "minLength": 1 },
+              "verified_against": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "evidence_level": { "const": "official_primary" } } },
+          "then": { "properties": { "official_source_checked": { "const": true } } }
+        }
+      ]
+    },
+    "rulingVerification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "verified_at",
+        "verified_by",
+        "verified_against",
+        "official_source_checked",
+        "evidence_level",
+        "allowed_use",
+        "certainty",
+        "notes"
+      ],
+      "properties": {
+        "status": { "const": "verified" },
+        "verified_at": { "type": "string", "format": "date" },
+        "verified_by": { "type": "string", "minLength": 1 },
+        "verified_against": { "type": "string", "minLength": 1 },
+        "official_source_checked": { "const": true },
+        "evidence_level": { "const": "official_primary" },
+        "allowed_use": { "const": "citable" },
+        "certainty": { "type": "string", "minLength": 1 },
+        "notes": { "type": ["string", "null"] }
+      }
+    }
+  }
+}
