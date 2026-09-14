@@ -80,9 +80,17 @@ claude --plugin-dir ./plugins/paraguay-legal-core
 
 Ver [`SECURITY.md`](SECURITY.md).
 
+## Quién está detrás
+
+Lo construye y lo mantiene **[Dikaia](https://dikaia.io/?utm_source=github&utm_medium=readme&utm_campaign=c4l-paraguay)**, una empresa legaltech paraguaya que desarrolla herramientas para el ejercicio profesional en Paraguay. Lo escribe un abogado en ejercicio y se corrige con casos reales, que es de donde salen la mayoría de los evals.
+
+Mantenimiento de una sola persona: los issues y PRs se responden, pero sin plazo comprometido.
+
 ## Aviso jurídico
 
 Esta herramienta **no constituye asesoramiento legal**. Toda salida debe ser revisada por un abogado matriculado, y toda referencia normativa verificada contra la fuente oficial (BACN / Poder Judicial – CSJ) antes de su uso profesional.
+
+**Proyecto comunitario, sin afiliación con Anthropic.** Claude for Legal Paraguay no es un producto oficial de Anthropic ni está avalado por Anthropic. Toma el patrón del proyecto [`anthropics/claude-for-legal`](https://github.com/anthropics/claude-for-legal), publicado bajo Apache-2.0, y lo aplica al derecho paraguayo con contenido propio. "Claude" es una marca de Anthropic.
 
 ## Licencia
 
